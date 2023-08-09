@@ -1,8 +1,8 @@
 import 'inter-ui'
 import React, { StrictMode } from 'react'
-import { isMobile } from 'react-device-detect'
+//import { isMobile } from 'react-device-detect'
 import ReactDOM from 'react-dom'
-import ReactGA from 'react-ga'
+//import ReactGA from 'react-ga'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
 import './i18n'
@@ -18,7 +18,7 @@ import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from './theme'
 import { ApolloProvider } from '@apollo/client/react'
 import { client } from 'apollo/client'
 
-const GOOGLE_ANALYTICS_ID: string | undefined = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
+/* const GOOGLE_ANALYTICS_ID: string | undefined = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
 if (typeof GOOGLE_ANALYTICS_ID === 'string') {
   ReactGA.initialize(GOOGLE_ANALYTICS_ID)
   ReactGA.set({
@@ -37,7 +37,7 @@ window.addEventListener('error', (error) => {
     description: `${error.message} @ ${error.filename}:${error.lineno}:${error.colno}`,
     fatal: true,
   })
-})
+}) */
 
 function Updaters() {
   return (

@@ -5,6 +5,7 @@ import POLYGON_LOGO_URL from '../assets/images/polygon-logo.png'
 import CELO_LOGO_URL from '../assets/images/celo-logo.svg'
 import BNB_LOGO_URL from '../assets/images/bnb-logo.svg'
 import BASE_LOGO_URL from '../assets/images/base-logo.svg'
+import HARMONY_LOGO_URL from '../assets/images/harmony_logo.svg'
 import { ChainId } from '@uniswap/sdk-core'
 import AVALANCHE_LOGO_URL from '../assets/images/avalanche-logo.png'
 
@@ -17,6 +18,7 @@ export enum SupportedNetwork {
   BNB,
   BASE,
   AVALANCHE,
+  HARMONY,
 }
 
 export type NetworkInfo = {
@@ -117,13 +119,25 @@ export const AvalancheNetworkInfo: NetworkInfo = {
   imageURL: AVALANCHE_LOGO_URL,
 }
 
+export const HarmonyNetworkInfo: NetworkInfo = {
+  chainId: 1666600000,
+  id: SupportedNetwork.HARMONY,
+  route: 'harmony',
+  name: 'Harmony',
+  bgColor: '#0052ff',
+  primaryColor: '#0052ff',
+  secondaryColor: '#0052ff',
+  imageURL: HARMONY_LOGO_URL,
+}
+
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
-  EthereumNetworkInfo,
+  /*   EthereumNetworkInfo,
   PolygonNetworkInfo,
   OptimismNetworkInfo,
   ArbitrumNetworkInfo,
   CeloNetworkInfo,
   BNBNetworkInfo,
   BaseNetworkInfo,
-  AvalancheNetworkInfo,
+  AvalancheNetworkInfo, */
+  HarmonyNetworkInfo,
 ]

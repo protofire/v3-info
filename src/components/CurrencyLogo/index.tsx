@@ -23,6 +23,8 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'smartchain'
     case ChainId.BASE:
       return 'base'
+    case ChainId.HARMONY:
+      return 'harmony'
     default:
       return 'ethereum'
   }

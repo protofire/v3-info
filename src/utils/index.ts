@@ -13,6 +13,7 @@ import {
   CeloNetworkInfo,
   NetworkInfo,
   PolygonNetworkInfo,
+  HarmonyNetworkInfo,
 } from 'constants/networks'
 import JSBI from 'jsbi'
 import { TokenAddressMap } from '../state/lists/hooks'
@@ -48,6 +49,8 @@ export function getEtherscanLink(
       ? 'https://bscscan.com/'
       : networkVersion === PolygonNetworkInfo
       ? 'https://polygonscan.com/'
+      : networkVersion === HarmonyNetworkInfo
+      ? 'https://explorer.harmony.one'
       : networkVersion === CeloNetworkInfo
       ? 'https://celoscan.io/'
       : networkVersion === AvalancheNetworkInfo
@@ -59,6 +62,24 @@ export function getEtherscanLink(
       : networkVersion === OptimismNetworkInfo
       ? 'https://optimistic.etherscan.io'
       : `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}etherscan.io`
+
+  if (networkVersion === HarmonyNetworkInfo) {
+    switch (type) {
+      case 'transaction': {
+        return `${prefix}/tx/${data}`
+      }
+      case 'token': {
+        return `${prefix}/address/${data}`
+      }
+      case 'block': {
+        return `${prefix}/block/${data}`
+      }
+      case 'address':
+      default: {
+        return `${prefix}/address/${data}`
+      }
+    }
+  }
 
   if (networkVersion === OptimismNetworkInfo) {
     switch (type) {
