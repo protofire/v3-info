@@ -106,7 +106,8 @@
     "storybook": "start-storybook -p 6006",
     "test": "react-scripts test --env=jsdom",
     "codegen:schema": "npx apollo client:download-schema --endpoint=https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-rinkeby",
-    "codegen:generate": "apollo codegen:generate --localSchemaFile=schema.json --target=typescript --includes=src/**/*.ts --tagName=gql --addTypename --globalTypesFile=src/types/graphql-global-types.ts types"
+    "codegen:generate": "apollo codegen:generate --localSchemaFile=schema.json --target=typescript --includes=src/**/*.ts --tagName=gql --addTypename --globalTypesFile=src/types/graphql-global-types.ts types",
+    "postinstall": "yarn patch-package"
   },
   "eslintConfig": {
     "extends": "react-app",
@@ -141,6 +142,8 @@
     "lightweight-charts": "^3.3.0",
     "numbro": "^2.3.2",
     "numeral": "^2.0.6",
+    "patch-package": "^8.0.0",
+    "postinstall": "^0.8.0",
     "react-hot-keys": "^2.6.2",
     "react-hotkeys": "^2.0.0",
     "recharts": "^2.0.9",
