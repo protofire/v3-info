@@ -61,6 +61,8 @@ export function getEtherscanLink(
       ? 'https://basescan.org/'
       : networkVersion === OptimismNetworkInfo
       ? 'https://optimistic.etherscan.io'
+      : networkVersion === HarmonyNetworkInfo
+      ? 'https://explorer.harmony.one'
       : `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}etherscan.io`
 
   if (networkVersion === HarmonyNetworkInfo) {
