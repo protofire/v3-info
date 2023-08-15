@@ -38,6 +38,8 @@ const TopBar = () => {
               <Item>BNB Price:</Item>
             ) : activeNetwork.id === SupportedNetwork.AVALANCHE ? (
               <Item>AVAX Price:</Item>
+            ) : activeNetwork.id === SupportedNetwork.HARMONY ? (
+              <Item>ONE Price:</Item>
             ) : (
               <Item>Eth Price:</Item>
             )}
@@ -47,9 +49,9 @@ const TopBar = () => {
           </RowFixed>
         </AutoRow>
         <AutoRow gap="6px" style={{ justifyContent: 'flex-end' }}>
-          <StyledLink href="https://v2.info.uniswap.org/#/">V2 Analytics</StyledLink>
-          <StyledLink href="https://docs.uniswap.org/">Docs</StyledLink>
-          <StyledLink href="https://app.uniswap.org/#/swap">App</StyledLink>
+          {/* <StyledLink href="https://v2.info.uniswap.org/#/">V2 Analytics</StyledLink> */}
+          {/* <StyledLink href="https://docs.uniswap.org/">Docs</StyledLink> */}
+          <StyledLink href="https://swap.country">App</StyledLink>
         </AutoRow>
       </RowBetween>
     </Wrapper>
