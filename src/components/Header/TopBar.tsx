@@ -50,7 +50,7 @@ const TopBar = () => {
         </AutoRow>
         <AutoRow gap="6px" style={{ justifyContent: 'flex-end' }}>
           {/* <StyledLink href="https://v2.info.uniswap.org/#/">V2 Analytics</StyledLink> */}
-          {/* <StyledLink href="https://docs.uniswap.org/">Docs</StyledLink> */}
+          <StyledLink href="https://doc.swap.country/">Docs</StyledLink>
           <StyledLink href="https://stg.swap.country">App</StyledLink>
         </AutoRow>
       </RowBetween>
