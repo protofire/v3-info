@@ -109,7 +109,7 @@ export default function Menu() {
             <Code size={14} />
             Github
           </MenuItem>
-          <MenuItem id="link" href="https://harmony.one/discord">
+          <MenuItem id="link" href="https://discord.gg/gmnaNqtrRb">
             <MessageCircle size={14} />
             Discord
           </MenuItem>
