@@ -101,10 +101,10 @@ export default function Menu() {
             <Info size={14} />
             About
           </MenuItem> */}
-          <MenuItem id="link" href="https://doc.swap.country/">
+          {/* <MenuItem id="link" href="https://doc.swap.harmony.one/">
             <BookOpen size={14} />
             Docs
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem id="link" href={CODE_LINK}>
             <Code size={14} />
             Github
