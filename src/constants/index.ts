@@ -29,7 +29,10 @@ export const TOKEN_HIDE: { [key: string]: string[] } = {
   [SupportedNetwork.BNB]: [],
   [SupportedNetwork.AVALANCHE]: [],
   [SupportedNetwork.BASE]: [],
-  [SupportedNetwork.HARMONY]: ['0x94d90e9b1468ef3085bf2256d46758354b21701c'],
+  [SupportedNetwork.HARMONY]: [
+    '0x94d90e9b1468ef3085bf2256d46758354b21701c',
+    '0xdd2027fca129005b6255295ceb7e281365e50b0e',
+  ],
 }
 
 export const POOL_HIDE: { [key: string]: string[] } = {
@@ -49,7 +52,10 @@ export const POOL_HIDE: { [key: string]: string[] } = {
   [SupportedNetwork.BNB]: [],
   [SupportedNetwork.AVALANCHE]: [],
   [SupportedNetwork.BASE]: [],
-  [SupportedNetwork.HARMONY]: ['0xa66142a0ad160aa92ff1d9c97a59838438143d33'],
+  [SupportedNetwork.HARMONY]: [
+    '0xa66142a0ad160aa92ff1d9c97a59838438143d33',
+    '0xb9f888c4050b625eec62b3658dbe857f93403096',
+  ],
 }
 
 export const START_BLOCKS: { [key: string]: number } = {
