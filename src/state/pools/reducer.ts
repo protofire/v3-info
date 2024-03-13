@@ -88,6 +88,8 @@ export const initialState: PoolsState = {
     [SupportedNetwork.BNB]: {},
     [SupportedNetwork.AVALANCHE]: {},
     [SupportedNetwork.BASE]: {},
+    [SupportedNetwork.ZORA]: {},
+    [SupportedNetwork.ZORA_SEPOLIA]: {},
   },
 }
 

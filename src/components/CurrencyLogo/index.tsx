@@ -23,6 +23,10 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'smartchain'
     case ChainId.BASE:
       return 'base'
+    case ChainId.ZORA:
+      return 'zora'
+    case ChainId.ZORA_SEPOLIA:
+      return 'zora-sepolia'
     default:
       return 'ethereum'
   }

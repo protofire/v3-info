@@ -151,7 +151,10 @@ export function useFetchGlobalChartData(): {
 
   const [activeNetworkVersion] = useActiveNetworkVersion()
   const shouldUserDerivedData =
-    activeNetworkVersion.id === SupportedNetwork.ETHEREUM || activeNetworkVersion.id === SupportedNetwork.POLYGON
+    activeNetworkVersion.id === SupportedNetwork.ETHEREUM ||
+    activeNetworkVersion.id === SupportedNetwork.POLYGON ||
+    activeNetworkVersion.id === SupportedNetwork.ZORA ||
+    activeNetworkVersion.id === SupportedNetwork.ZORA_SEPOLIA
   const indexedData = data?.[activeNetworkVersion.id]
 
   // @TODO: remove this once we have fix for mainnet TVL issue

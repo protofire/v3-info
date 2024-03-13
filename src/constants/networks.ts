@@ -7,6 +7,7 @@ import BNB_LOGO_URL from '../assets/images/bnb-logo.svg'
 import BASE_LOGO_URL from '../assets/images/base-logo.svg'
 import { ChainId } from '@uniswap/sdk-core'
 import AVALANCHE_LOGO_URL from '../assets/images/avalanche-logo.png'
+import ZORA_LOGO_URL from '../assets/images/zora-logo.png'
 
 export enum SupportedNetwork {
   ETHEREUM,
@@ -17,6 +18,8 @@ export enum SupportedNetwork {
   BNB,
   BASE,
   AVALANCHE,
+  ZORA,
+  ZORA_SEPOLIA,
 }
 
 export type NetworkInfo = {
@@ -117,6 +120,28 @@ export const AvalancheNetworkInfo: NetworkInfo = {
   imageURL: AVALANCHE_LOGO_URL,
 }
 
+export const ZoraNetworkInfo: NetworkInfo = {
+  chainId: 7777777,
+  id: SupportedNetwork.ZORA,
+  route: 'zora',
+  name: 'Zora',
+  bgColor: '#0052ff',
+  primaryColor: '#0052ff',
+  secondaryColor: '#0052ff',
+  imageURL: ZORA_LOGO_URL,
+}
+
+export const ZoraSepoliaNetworkInfo: NetworkInfo = {
+  chainId: 999999999,
+  id: SupportedNetwork.ZORA_SEPOLIA,
+  route: 'zora-sepolia',
+  name: 'Zora Sepolia',
+  bgColor: '#0052ff',
+  primaryColor: '#0052ff',
+  secondaryColor: '#0052ff',
+  imageURL: ZORA_LOGO_URL,
+}
+
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   EthereumNetworkInfo,
   PolygonNetworkInfo,
@@ -126,4 +151,6 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   BNBNetworkInfo,
   BaseNetworkInfo,
   AvalancheNetworkInfo,
+  ZoraNetworkInfo,
+  ZoraSepoliaNetworkInfo,
 ]

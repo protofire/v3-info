@@ -348,3 +348,89 @@ export const celoBlockClient = new ApolloClient({
     },
   },
 })
+
+export const zoraClient = new ApolloClient({
+  uri: 'https://api.goldsky.com/api/public/project_cltg8htcp35aw01xn43dqhxmv/subgraphs/uniswap-v3-zora/1.0.0/gn',
+  cache: new InMemoryCache({
+    typePolicies: {
+      Token: {
+        // Singleton types that have no identifying field can use an empty
+        // array for their keyFields.
+        keyFields: false,
+      },
+      Pool: {
+        // Singleton types that have no identifying field can use an empty
+        // array for their keyFields.
+        keyFields: false,
+      },
+    },
+  }),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'no-cache',
+    },
+    query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+  },
+})
+
+export const zoraBlockClient = new ApolloClient({
+  uri: 'https://api.goldsky.com/api/public/project_cltpoxzc9ai1z01t72jvcek60/subgraphs/blocks-zora/1.0.0/gn',
+  cache: new InMemoryCache(),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-first',
+    },
+    query: {
+      fetchPolicy: 'cache-first',
+      errorPolicy: 'all',
+    },
+  },
+})
+
+export const zoraSepoliaClient = new ApolloClient({
+  uri: 'https://api.goldsky.com/api/public/project_cltpoxzc9ai1z01t72jvcek60/subgraphs/uniswap-v3-zora-sepolia/1.0.0/gn',
+  cache: new InMemoryCache({
+    typePolicies: {
+      Token: {
+        // Singleton types that have no identifying field can use an empty
+        // array for their keyFields.
+        keyFields: false,
+      },
+      Pool: {
+        // Singleton types that have no identifying field can use an empty
+        // array for their keyFields.
+        keyFields: false,
+      },
+    },
+  }),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'no-cache',
+    },
+    query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+  },
+})
+
+export const zoraSepoliaBlockClient = new ApolloClient({
+  uri: 'https://api.goldsky.com/api/public/project_cltpoxzc9ai1z01t72jvcek60/subgraphs/blocks-zora-sepolia/1.0.0/gn',
+  cache: new InMemoryCache(),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-first',
+    },
+    query: {
+      fetchPolicy: 'cache-first',
+      errorPolicy: 'all',
+    },
+  },
+})

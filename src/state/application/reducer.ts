@@ -35,6 +35,7 @@ const initialState: ApplicationState = {
     syncedBlock: undefined,
     headBlock: undefined,
   },
+  //TODO: change
   activeNetworkVersion: EthereumNetworkInfo,
 }
 

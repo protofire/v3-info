@@ -49,6 +49,8 @@ export const initialState: ProtocolState = {
   [SupportedNetwork.BNB]: DEFAULT_INITIAL_STATE,
   [SupportedNetwork.AVALANCHE]: DEFAULT_INITIAL_STATE,
   [SupportedNetwork.BASE]: DEFAULT_INITIAL_STATE,
+  [SupportedNetwork.ZORA]: DEFAULT_INITIAL_STATE,
+  [SupportedNetwork.ZORA_SEPOLIA]: DEFAULT_INITIAL_STATE,
 }
 
 export default createReducer(initialState, (builder) =>

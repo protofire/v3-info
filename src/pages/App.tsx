@@ -15,7 +15,13 @@ import PoolPage from './Pool/PoolPage'
 import { ExternalLink, TYPE } from 'theme'
 import { useActiveNetworkVersion, useSubgraphStatus } from 'state/application/hooks'
 import { DarkGreyCard } from 'components/Card'
-import { SUPPORTED_NETWORK_VERSIONS, EthereumNetworkInfo, OptimismNetworkInfo } from 'constants/networks'
+import {
+  SUPPORTED_NETWORK_VERSIONS,
+  // EthereumNetworkInfo,
+  OptimismNetworkInfo,
+  // ZoraNetworkInfo,
+  EthereumNetworkInfo,
+} from 'constants/networks'
 
 const AppWrapper = styled.div`
   display: flex;

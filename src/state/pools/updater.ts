@@ -8,12 +8,15 @@ import { useActiveNetworkVersion } from 'state/application/hooks'
 export default function Updater(): null {
   // updaters
   const [currentNetwork] = useActiveNetworkVersion()
+
+  console.log({ currentNetwork })
   const updatePoolData = useUpdatePoolData()
   const addPoolKeys = useAddPoolKeys()
 
   // data
   const allPoolData = useAllPoolData()
   const { loading, error, addresses } = useTopPoolAddresses()
+  // console.log({ loading, error, addresses })
 
   // add top pools on first load
   useEffect(() => {

@@ -34,6 +34,8 @@ export function useTopPoolAddresses(): {
     fetchPolicy: 'cache-first',
   })
 
+  console.log({ loading, error, data })
+
   const formattedData = useMemo(() => {
     if (data) {
       return data.pools

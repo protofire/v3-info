@@ -11,8 +11,9 @@ export const CELO_ADDRESS = '0x471EcE3750Da237f93B8E339c536989b8978a438'
 
 const WETH_ADDRESS = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
 const ARBITRUM_WETH_ADDRESS = '0x82af49447d8a07e3bd95bd0d56f35241523fbab1'
+const ZORA_WETH_ADDRESS = '0x4200000000000000000000000000000000000006'
 
-export const WETH_ADDRESSES = [WETH_ADDRESS, ARBITRUM_WETH_ADDRESS]
+export const WETH_ADDRESSES = [WETH_ADDRESS, ARBITRUM_WETH_ADDRESS, ZORA_WETH_ADDRESS]
 
 export const TOKEN_HIDE: { [key: string]: string[] } = {
   [SupportedNetwork.ETHEREUM]: [
@@ -58,6 +59,8 @@ export const START_BLOCKS: { [key: string]: number } = {
   [SupportedNetwork.BNB]: 26324014,
   [SupportedNetwork.AVALANCHE]: 31422450,
   [SupportedNetwork.BASE]: 1371680,
+  [SupportedNetwork.ZORA]: 10320368,
+  [SupportedNetwork.ZORA_SEPOLIA]: 3415210,
 }
 
 export interface WalletInfo {
