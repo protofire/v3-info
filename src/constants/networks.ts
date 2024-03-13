@@ -17,6 +17,7 @@ export enum SupportedNetwork {
   BNB,
   BASE,
   AVALANCHE,
+  ZORA,
 }
 
 export type NetworkInfo = {
@@ -117,6 +118,17 @@ export const AvalancheNetworkInfo: NetworkInfo = {
   imageURL: AVALANCHE_LOGO_URL,
 }
 
+export const ZoraNetworkInfo: NetworkInfo = {
+  chainId: 7777777,
+  id: SupportedNetwork.ZORA,
+  route: 'zora',
+  name: 'Zora',
+  bgColor: '#0052ff',
+  primaryColor: '#0052ff',
+  secondaryColor: '#0052ff',
+  imageURL: ETHEREUM_LOGO_URL,
+}
+
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   EthereumNetworkInfo,
   PolygonNetworkInfo,
@@ -126,4 +138,5 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   BNBNetworkInfo,
   BaseNetworkInfo,
   AvalancheNetworkInfo,
+  ZoraNetworkInfo,
 ]

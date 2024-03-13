@@ -16,6 +16,8 @@ import {
   avalancheBlockClient,
   baseBlockClient,
   baseClient,
+  zoraClient,
+  zoraBlockClient,
 } from 'apollo/client'
 import { NetworkInfo, SupportedNetwork } from 'constants/networks'
 import { useCallback, useMemo } from 'react'
@@ -150,6 +152,8 @@ export function useDataClient(): ApolloClient<NormalizedCacheObject> {
       return avalancheClient
     case SupportedNetwork.BASE:
       return baseClient
+    case SupportedNetwork.ZORA:
+      return zoraClient
     default:
       return client
   }
@@ -175,6 +179,8 @@ export function useBlockClient(): ApolloClient<NormalizedCacheObject> {
       return avalancheBlockClient
     case SupportedNetwork.BASE:
       return baseBlockClient
+    case SupportedNetwork.ZORA:
+      return zoraBlockClient
     default:
       return blockClient
   }
