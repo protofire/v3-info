@@ -21,7 +21,7 @@ export const blockClient = new ApolloClient({
 })
 
 export const client = new ApolloClient({
-  uri: 'https://api.goldsky.com/api/public/project_cltrhwc00o7kp01x10udcaswo/subgraphs/uniswap-v3-zora/1.0.0/gn',
+  uri: 'https://api.goldsky.com/api/public/project_cltrhwc00o7kp01x10udcaswo/subgraphs/uniswap-v3-zora/1.0.1/gn',
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
