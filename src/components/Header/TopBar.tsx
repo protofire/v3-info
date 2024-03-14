@@ -22,7 +22,7 @@ const StyledLink = styled(ExternalLink)`
   font-size: 12px;
   color: ${({ theme }) => theme.text1};
 `
-
+const SHOW_ETH_PRICE = false
 const TopBar = () => {
   const ethPrices = useEthPrices()
   const [activeNetwork] = useActiveNetworkVersion()
@@ -39,10 +39,10 @@ const TopBar = () => {
             ) : activeNetwork.id === SupportedNetwork.AVALANCHE ? (
               <Item>AVAX Price:</Item>
             ) : (
-              <Item>Eth Price:</Item>
+              <Item>{SHOW_ETH_PRICE ? `Eth Price` : ``}</Item>
             )}
             <Item fontWeight="700" ml="4px">
-              {formatDollarAmount(ethPrices?.current)}
+              {SHOW_ETH_PRICE ? formatDollarAmount(ethPrices?.current) : ''}
             </Item>
           </RowFixed>
         </AutoRow>
