@@ -6,7 +6,7 @@ export const healthClient = new ApolloClient({
 })
 
 export const blockClient = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/blocklytics/ethereum-blocks',
+  uri: 'https://api.goldsky.com/api/public/project_cltpoxzc9ai1z01t72jvcek60/subgraphs/blocks-zora/1.0.0/gn',
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -21,7 +21,7 @@ export const blockClient = new ApolloClient({
 })
 
 export const client = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3?source=uniswap',
+  uri: 'https://api.goldsky.com/api/public/project_cltg8htcp35aw01xn43dqhxmv/subgraphs/uniswap-v3-zora/1.0.0/gn',
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -307,7 +307,7 @@ export const polygonBlockClient = new ApolloClient({
 })
 
 export const celoClient = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/jesse-sawa/uniswap-celo?source=uniswap',
+  uri: 'https://api.goldsky.com/api/public/project_cltg8htcp35aw01xn43dqhxmv/subgraphs/uniswap-v3-zora/1.0.0/gn',
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -335,7 +335,7 @@ export const celoClient = new ApolloClient({
 })
 
 export const celoBlockClient = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/jesse-sawa/celo-blocks',
+  uri: 'https://api.goldsky.com/api/public/project_cltpoxzc9ai1z01t72jvcek60/subgraphs/blocks-zora/1.0.0/gn',
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {

@@ -5,7 +5,7 @@ import { TYPE, ExternalLink } from '../../theme'
 import { useActiveNetworkVersion, useSubgraphStatus } from '../../state/application/hooks'
 import { ExplorerDataType, getExplorerLink } from '../../utils'
 import useTheme from 'hooks/useTheme'
-import { EthereumNetworkInfo } from 'constants/networks'
+import { OptimismNetworkInfo } from 'constants/networks'
 import { ChainId } from '@uniswap/sdk-core'
 
 const StyledPolling = styled.div`
@@ -47,7 +47,7 @@ const rotate360 = keyframes`
     transform: rotate(360deg);
   }
 `
-
+const LATEST_BLOCK_SUPPORTED = false
 const Spinner = styled.div`
   animation: ${rotate360} 1s cubic-bezier(0.83, 0, 0.17, 1) infinite;
   transform: translateZ(0);
@@ -69,7 +69,7 @@ export default function Polling() {
   const [activeNetwork] = useActiveNetworkVersion()
   const [status] = useSubgraphStatus()
   const [isMounted, setIsMounted] = useState(true)
-  const latestBlock = activeNetwork === EthereumNetworkInfo ? status.headBlock : status.syncedBlock
+  const latestBlock = activeNetwork === OptimismNetworkInfo ? status.headBlock : status.syncedBlock
 
   useEffect(
     () => {
@@ -85,9 +85,9 @@ export default function Polling() {
     //if you pass a value to array, like this [data] than clearTimeout will run every time this value changes (useEffect re-run)
   )
 
-  return (
+  return LATEST_BLOCK_SUPPORTED ? (
     <ExternalLink
-      href={latestBlock ? getExplorerLink(ChainId.MAINNET, latestBlock.toString(), ExplorerDataType.BLOCK) : ''}
+      href={latestBlock ? getExplorerLink(ChainId.ZORA, latestBlock.toString(), ExplorerDataType.BLOCK) : ''}
     >
       <StyledPolling>
         <TYPE.small mr="4px" color={theme?.text3}>
@@ -97,5 +97,7 @@ export default function Polling() {
         <StyledPollingDot>{!isMounted && <Spinner />}</StyledPollingDot>
       </StyledPolling>
     </ExternalLink>
+  ) : (
+    <></>
   )
 }

@@ -18,7 +18,7 @@ export function isAddress(value: any): string | false {
 }
 
 const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
-  [ChainId.MAINNET]: 'https://etherscan.io',
+  [ChainId.MAINNET]: 'https://explorer.zora.energy/',
   [ChainId.GOERLI]: 'https://goerli.etherscan.io',
   [ChainId.SEPOLIA]: 'https://sepolia.etherscan.io',
   [ChainId.ARBITRUM_ONE]: 'https://arbiscan.io',
@@ -51,7 +51,7 @@ export enum ExplorerDataType {
  * @param type the type of the data
  */
 export function getExplorerLink(chainId: number, data: string, type: ExplorerDataType): string {
-  const prefix = BLOCK_EXPLORER_PREFIXES[chainId] ?? 'https://etherscan.io'
+  const prefix = BLOCK_EXPLORER_PREFIXES[chainId] ?? 'https://explorer.zora.energy'
 
   switch (type) {
     case ExplorerDataType.TRANSACTION:

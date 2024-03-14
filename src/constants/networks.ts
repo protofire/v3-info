@@ -35,10 +35,10 @@ export const EthereumNetworkInfo: NetworkInfo = {
   chainId: ChainId.MAINNET,
   id: SupportedNetwork.ETHEREUM,
   route: '',
-  name: 'Ethereum',
-  bgColor: '#fc077d',
-  primaryColor: '#fc077d',
-  secondaryColor: '#2172E5',
+  name: 'Zora',
+  bgColor: '#0052ff',
+  primaryColor: '#0052ff',
+  secondaryColor: '#0052ff',
   imageURL: ETHEREUM_LOGO_URL,
 }
 
