@@ -234,7 +234,7 @@ export default function TokenPage() {
                   </AutoColumn>
                   {activeNetwork !== EthereumNetworkInfo ? null : (
                     <RowFixed>
-                      <StyledExternalLink href={`https://app.uniswap.org/#/add/${formattedAddress}`}>
+                      <StyledExternalLink href={`https://zora-uniswap.protofire.io/#/add/${formattedAddress}`}>
                         <ButtonGray width="170px" mr="12px" height={'100%'} style={{ height: '44px' }}>
                           <RowBetween>
                             <Download size={24} />
@@ -242,7 +242,9 @@ export default function TokenPage() {
                           </RowBetween>
                         </ButtonGray>
                       </StyledExternalLink>
-                      <StyledExternalLink href={`https://app.uniswap.org/#/swap?inputCurrency=${formattedAddress}`}>
+                      <StyledExternalLink
+                        href={`https://zora-uniswap.protofire.io/#/swap?inputCurrency=${formattedAddress}`}
+                      >
                         <ButtonPrimary width="100px" bgColor={backgroundColor} style={{ height: '44px' }}>
                           Trade
                         </ButtonPrimary>
