@@ -10,6 +10,7 @@ import { formatTokenSymbol, formatTokenName } from 'utils/tokens'
 import { useActiveNetworkVersion, useClients } from 'state/application/hooks'
 
 export const TOKENS_BULK = (block: number | undefined, tokens: string[]) => {
+  const USE_BLOCK = false
   let tokenString = `[`
   tokens.map((address) => {
     return (tokenString += `"${address}",`)
@@ -19,7 +20,7 @@ export const TOKENS_BULK = (block: number | undefined, tokens: string[]) => {
     `
     query tokens {
       tokens(where: {id_in: ${tokenString}},` +
-    (block ? `block: {number: ${block}} ,` : ``) +
+    (USE_BLOCK ? `block: {number: ${block}} ,` : ``) +
     ` orderBy: totalValueLockedUSD, orderDirection: desc, subgraphError: allow) {
         id
         symbol

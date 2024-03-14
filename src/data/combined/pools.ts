@@ -8,6 +8,7 @@ import { formatTokenName, formatTokenSymbol } from 'utils/tokens'
 import { useActiveNetworkVersion, useClients } from 'state/application/hooks'
 
 export const POOLS_BULK = (block: number | undefined, pools: string[]) => {
+  const USE_BLOCK = false
   let poolString = `[`
   pools.map((address) => {
     return (poolString += `"${address}",`)
@@ -17,7 +18,7 @@ export const POOLS_BULK = (block: number | undefined, pools: string[]) => {
     `
     query pools {
       pools(where: {id_in: ${poolString}},` +
-    (block ? `block: {number: ${block}} ,` : ``) +
+    (USE_BLOCK ? `block: {number: ${block}} ,` : ``) +
     ` orderBy: totalValueLockedUSD, orderDirection: desc, subgraphError: allow) {
         id
         feeTier
