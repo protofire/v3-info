@@ -8,10 +8,11 @@ import { useMemo } from 'react'
 import { useClients } from 'state/application/hooks'
 import { useTVLOffset } from './derived'
 
+// const STARTBLOCK = 10320367
+//eslint-disable-next-line
 export const GLOBAL_DATA = (block?: string) => {
   const queryString = ` query uniswapFactories {
       factories(
-       ${block !== undefined ? `block: { number: ${block}}` : ``} 
        first: 1, subgraphError: allow) {
         txCount
         totalVolumeUSD

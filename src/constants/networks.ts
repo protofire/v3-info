@@ -131,12 +131,12 @@ export const ZoraNetworkInfo: NetworkInfo = {
 
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   EthereumNetworkInfo,
-  PolygonNetworkInfo,
-  OptimismNetworkInfo,
-  ArbitrumNetworkInfo,
-  CeloNetworkInfo,
-  BNBNetworkInfo,
-  BaseNetworkInfo,
-  AvalancheNetworkInfo,
-  ZoraNetworkInfo,
+  // PolygonNetworkInfo,
+  // OptimismNetworkInfo,
+  // ArbitrumNetworkInfo,
+  // CeloNetworkInfo,
+  // BNBNetworkInfo,
+  // BaseNetworkInfo,
+  // AvalancheNetworkInfo,
+  // ZoraNetworkInfo,
 ]

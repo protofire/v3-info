@@ -8,6 +8,7 @@ export const POLYGON_LIST =
 export const CELO_LIST = 'https://celo-org.github.io/celo-token-list/celo.tokenlist.json'
 export const BNB_LIST = 'https://raw.githubusercontent.com/plasmadlt/plasma-finance-token-list/master/bnb.json'
 export const ZORA_LIST = 'https://cloudflare-ipfs.com/ipfs/QmWaMceNbPkhQeSrqdadFURWsGapCJdoLFjaYcq1sTKn33'
+export const PLACEHOLDER_LIST = 'https://cloudflare-ipfs.com/ipfs/QmZvZDXReahErLghSs78cQRFweeSyfoJ9GsjVGtM674xg8/'
 
 // lower index == higher priority for token import
 export const DEFAULT_LIST_OF_LISTS: string[] = [
@@ -17,6 +18,7 @@ export const DEFAULT_LIST_OF_LISTS: string[] = [
   CELO_LIST,
   BNB_LIST,
   ZORA_LIST,
+  PLACEHOLDER_LIST,
   ...UNSUPPORTED_LIST_URLS, // need to load unsupported tokens as well
 ]
 
@@ -28,4 +30,5 @@ export const DEFAULT_ACTIVE_LIST_URLS: string[] = [
   CELO_LIST,
   BNB_LIST,
   ZORA_LIST,
+  PLACEHOLDER_LIST,
 ]
