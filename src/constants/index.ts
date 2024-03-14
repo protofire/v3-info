@@ -50,7 +50,7 @@ export const POOL_HIDE: { [key: string]: string[] } = {
 }
 
 export const START_BLOCKS: { [key: string]: number } = {
-  [SupportedNetwork.ETHEREUM]: 14292820,
+  [SupportedNetwork.ETHEREUM]: 10320367,
   [SupportedNetwork.POLYGON]: 25459720,
   [SupportedNetwork.ARBITRUM]: 175,
   [SupportedNetwork.OPTIMISM]: 10028767,
