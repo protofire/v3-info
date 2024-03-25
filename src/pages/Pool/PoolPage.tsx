@@ -215,7 +215,7 @@ function PoolPage({ address }: { address: string }) {
               {activeNetwork !== EthereumNetworkInfo ? null : (
                 <RowFixed>
                   <StyledExternalLink
-                    href={`https://swap-zora.protofire.io/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}
+                    href={`https://swap.zora.energy/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}
                   >
                     <ButtonGray width="170px" mr="12px" style={{ height: '44px' }}>
                       <RowBetween>
@@ -225,7 +225,7 @@ function PoolPage({ address }: { address: string }) {
                     </ButtonGray>
                   </StyledExternalLink>
                   <StyledExternalLink
-                    href={`https://swap-zora.protofire.io/#/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
+                    href={`https://swap.zora.energy/#/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
                   >
                     <ButtonPrimary width="100px" style={{ height: '44px' }}>
                       Trade

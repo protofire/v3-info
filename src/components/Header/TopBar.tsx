@@ -48,7 +48,7 @@ const TopBar = () => {
         <AutoRow $gap="6px" style={{ justifyContent: 'flex-end' }}>
           {/* <StyledLink href="https://v2.info.uniswap.org/#/">V2 Analytics</StyledLink> */}
           <StyledLink href="https://docs.uniswap.org/">Docs</StyledLink>
-          <StyledLink href="https://swap-zora.protofire.io/">App</StyledLink>
+          <StyledLink href="https://swap.zora.energy/">App</StyledLink>
         </AutoRow>
       </RowBetween>
     </Wrapper>
