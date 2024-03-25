@@ -6,7 +6,7 @@ export const healthClient = new ApolloClient({
 })
 
 export const blockClient = new ApolloClient({
-  uri: 'https://api.goldsky.com/api/public/project_cltpoxzc9ai1z01t72jvcek60/subgraphs/blocks-zora/1.0.0/gn',
+  uri: 'https://api.goldsky.com/api/public/project_clhk16b61ay9t49vm6ntn4mkz/subgraphs/zora-v3-info-blocks/1.0.0/gn',
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -21,7 +21,7 @@ export const blockClient = new ApolloClient({
 })
 
 export const client = new ApolloClient({
-  uri: 'https://api.goldsky.com/api/public/project_cltrhwc00o7kp01x10udcaswo/subgraphs/uniswap-v3-zora/1.0.1/gn',
+  uri: 'https://api.goldsky.com/api/public/project_clhk16b61ay9t49vm6ntn4mkz/subgraphs/uniswap-v3-zora-network/1.0.0/gn',
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
