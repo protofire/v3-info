@@ -130,7 +130,7 @@ export default function Home() {
       <PageWrapper>
         <ThemedBackgroundGlobal $backgroundColor={activeNetwork.bgColor} />
         <AutoColumn $gap="16px">
-          <TYPE.main>Zora Swap Overview</TYPE.main>
+          <TYPE.main>Zora Network Swap Overview</TYPE.main>
           <ResponsiveRow>
             <ChartWrapper>
               <LineChart
