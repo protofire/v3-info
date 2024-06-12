@@ -1,5 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 
+const API_KEY = process.env.REACT_APP_GRAPH_API_KEY ?? '2f4a91bec2a65276da7373494a68652e'
+
 export const healthClient = new ApolloClient({
   uri: 'https://api.thegraph.com/index-node/graphql',
   cache: new InMemoryCache(),
@@ -350,7 +352,7 @@ export const celoBlockClient = new ApolloClient({
 })
 
 export const harmonyClient = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/nick8319/uniswap-v3-harmony',
+  uri: `https://gateway-arbitrum.network.thegraph.com/api/${API_KEY}/subgraphs/id/GVkp9F6TzzC5hY4g18Ukzb6gGcYDfQrpMpcj867jsenJ`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -378,7 +380,7 @@ export const harmonyClient = new ApolloClient({
 })
 
 export const harmonyBlockClient = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/nick8319/harmony-blocks',
+  uri: `https://gateway-arbitrum.network.thegraph.com/api/${API_KEY}/subgraphs/id/6JSHL8vRkeQnR91gG4kwm8cF2WGrsTXV3fgq4LTxrtGw`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
