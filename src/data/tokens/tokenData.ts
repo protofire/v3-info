@@ -19,7 +19,7 @@ export const TOKENS_BULK = (block: number | undefined, tokens: string[]) => {
     `
     query tokens {
       tokens(where: {id_in: ${tokenString}},` +
-    (block ? `block: {number: ${block}} ,` : ``) +
+    // (block ? `block: {number: ${block}} ,` : ``) +
     ` orderBy: totalValueLockedUSD, orderDirection: desc, subgraphError: allow) {
         id
         symbol
