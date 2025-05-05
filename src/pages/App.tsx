@@ -125,11 +125,6 @@ export default function App() {
         <AppWrapper>
           <URLWarning />
           <HeaderWrapper>
-            <WarningWrapper>
-              <WarningBanner>
-                {`Some data may be missing — we're currently working on restoring full data. Thank you for your patience.`}
-              </WarningBanner>
-            </WarningWrapper>
             {showNotSyncedWarning && (
               <WarningWrapper>
                 <WarningBanner>
