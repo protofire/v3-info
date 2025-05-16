@@ -352,7 +352,7 @@ export const celoBlockClient = new ApolloClient({
 })
 
 export const harmonyClient = new ApolloClient({
-  uri: `https://gateway-arbitrum.network.thegraph.com/api/${API_KEY}/subgraphs/id/GVkp9F6TzzC5hY4g18Ukzb6gGcYDfQrpMpcj867jsenJ`,
+  uri: `https://graph.swap.country/subgraphs/name/harmony-uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
