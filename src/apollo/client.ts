@@ -1,7 +1,5 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 
-const API_KEY = process.env.REACT_APP_GRAPH_API_KEY ?? '2f4a91bec2a65276da7373494a68652e'
-
 export const healthClient = new ApolloClient({
   uri: 'https://api.thegraph.com/index-node/graphql',
   cache: new InMemoryCache(),
