@@ -380,7 +380,7 @@ export const harmonyClient = new ApolloClient({
 })
 
 export const harmonyBlockClient = new ApolloClient({
-  uri: `https://gateway-arbitrum.network.thegraph.com/api/${API_KEY}/subgraphs/id/6JSHL8vRkeQnR91gG4kwm8cF2WGrsTXV3fgq4LTxrtGw`,
+  uri: `https://graph.swap.country/subgraphs/name/harmony-blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
