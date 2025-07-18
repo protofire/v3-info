@@ -1,7 +1,10 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 
+<<<<<<< HEAD
 const API_KEY = process.env.REACT_APP_GRAPH_API_KEY ?? '8b31a2bf0253ba2d6292f5207a3b23d1'
 
+=======
+>>>>>>> harmony-stg
 export const healthClient = new ApolloClient({
   uri: 'https://api.thegraph.com/index-node/graphql',
   cache: new InMemoryCache(),
@@ -380,7 +383,7 @@ export const harmonyClient = new ApolloClient({
 })
 
 export const harmonyBlockClient = new ApolloClient({
-  uri: `https://gateway-arbitrum.network.thegraph.com/api/${API_KEY}/subgraphs/id/6JSHL8vRkeQnR91gG4kwm8cF2WGrsTXV3fgq4LTxrtGw`,
+  uri: `https://graph.swap.country/subgraphs/name/harmony-blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
