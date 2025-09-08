@@ -523,7 +523,7 @@ export const cyberBlockClient = new ApolloClient({
 })
 
 export const shapeClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/shape/v3-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/shape/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -551,7 +551,7 @@ export const shapeClient = new ApolloClient({
 })
 
 export const shapeBlockClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/shape/blocks-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/shape/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
