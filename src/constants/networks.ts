@@ -282,7 +282,7 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // BaseNetworkInfo,
   // AvalancheNetworkInfo,
   // AbstractTestnetNetworkInfo,
-  ZeroNetworkNetworkInfo,
+  // ZeroNetworkNetworkInfo,
   // CyberNetworkNetworkInfo,
   // BobNetworkNetworkInfo,
   // ShapeNetworkNetworkInfo,
