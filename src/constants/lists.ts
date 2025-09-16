@@ -7,7 +7,7 @@ export const SHAPE_LIST = getTokenListApiURL('shape')
 export const REDSTONE_LIST = getTokenListApiURL('redstone')
 export const REDSTONE_GARNET_LIST = getTokenListApiURL('garnet')
 export const INK_LIST = getTokenListApiURL('ink')
-export const ABSTRACT_LIST = getTokenListApiURL('abstract')
+export const ABSTRACT_LIST = "https://raw.githubusercontent.com/protofire/token-list/refs/heads/main/tokenList.json"
 export const ANIME_TESTNET_LIST = getTokenListApiURL('anime-testnet')
 export const MODE_LIST = getTokenListApiURL('mode')
 
