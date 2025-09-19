@@ -171,7 +171,7 @@ export default function TokenPage() {
             No pool has been created with this token yet. Create one
             <StyledExternalLink
               style={{ marginLeft: '4px' }}
-              href={`https://staging.reservoir.w3us.site/#/add/${formattedAddress}`}
+              href={`https://staging.shapeswap.xyz/#/add/${formattedAddress}`}
             >
               here.
             </StyledExternalLink>
@@ -233,7 +233,7 @@ export default function TokenPage() {
                 </AutoColumn>
                 {activeNetwork !== EthereumNetworkInfo ? null : (
                   <RowFixed>
-                    <StyledExternalLink href={`https://staging.reservoir.w3us.site/#/add/${formattedAddress}`}>
+                    <StyledExternalLink href={`https://staging.shapeswap.xyz/#/add/${formattedAddress}`}>
                       <ButtonGray width="170px" mr="12px" height={'100%'} style={{ height: '44px' }}>
                         <RowBetween>
                           <Download size={24} />
@@ -241,9 +241,7 @@ export default function TokenPage() {
                         </RowBetween>
                       </ButtonGray>
                     </StyledExternalLink>
-                    <StyledExternalLink
-                      href={`https://staging.reservoir.w3us.site/#/swap?inputCurrency=${formattedAddress}`}
-                    >
+                    <StyledExternalLink href={`https://staging.shapeswap.xyz/#/swap?inputCurrency=${formattedAddress}`}>
                       <ButtonPrimary width="100px" bgColor={backgroundColor} style={{ height: '44px' }}>
                         Trade
                       </ButtonPrimary>

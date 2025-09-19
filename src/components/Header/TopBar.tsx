@@ -21,7 +21,7 @@ const StyledLink = styled(ExternalLink)`
 `
 
 const TopBar = () => {
-  const interfaceUrl = process.env.REACT_APP_INTERFACE_URL ?? 'https://shape-swap.w3us.site'
+  const interfaceUrl = process.env.REACT_APP_INTERFACE_URL ?? 'https://shapeswap.xyz'
 
   return (
     <Wrapper>
