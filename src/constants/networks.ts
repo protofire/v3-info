@@ -49,6 +49,7 @@ export type NetworkInfo = {
   name: string
   imageURL: string
   bgColor: string
+  bgColorDark?: string
   primaryColor: string
   secondaryColor: string
 }
@@ -233,7 +234,8 @@ export const AbstractNetworkInfo: NetworkInfo = {
   id: SupportedNetwork.ABSTRACT,
   route: 'abstract',
   name: 'Abstract',
-  bgColor: '#00DE73',
+  bgColor: '#FFC2C2',
+  bgColorDark: '#D26378',
   primaryColor: '#07C983',
   secondaryColor: '#2172E5',
   imageURL: ABSTRACT_LOGO_URL,

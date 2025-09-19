@@ -27,7 +27,7 @@ const Container = styled.div`
 `
 
 const Wrapper = styled(Row)`
-  background-color: ${({ theme }) => theme.black};
+  background-color: ${({ theme }) => theme.bg2};
   padding: 10px 16px;
   width: 500px;
   height: 38px;
@@ -100,7 +100,7 @@ const Blackout = styled.div`
   min-height: 100vh;
   width: 100vw;
   z-index: -40;
-  background-color: black;
+  background-color: ${({ theme }) => theme.bg0};
   opacity: 0.7;
   left: 0;
   top: 0;
