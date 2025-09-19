@@ -7,24 +7,13 @@ export const SHAPE_LIST = getTokenListApiURL('shape')
 export const REDSTONE_LIST = getTokenListApiURL('redstone')
 export const REDSTONE_GARNET_LIST = getTokenListApiURL('garnet')
 export const INK_LIST = getTokenListApiURL('ink')
-export const ABSTRACT_LIST = "https://raw.githubusercontent.com/protofire/token-list/refs/heads/main/tokenList.json"
+export const ABSTRACT_LIST =
+  'https://raw.githubusercontent.com/protofire/token-list/refs/heads/main/networks/abstract.json'
 export const ANIME_TESTNET_LIST = getTokenListApiURL('anime-testnet')
 export const MODE_LIST = getTokenListApiURL('mode')
 
 // default lists to be 'active' aka searched across
-export const DEFAULT_ACTIVE_LIST_URLS: string[] = [
-  ABSTRACT_TESTNET_LIST,
-  ZERO_LIST,
-  BOB_LIST,
-  CYBER_LIST,
-  SHAPE_LIST,
-  REDSTONE_LIST,
-  REDSTONE_GARNET_LIST,
-  INK_LIST,
-  ABSTRACT_LIST,
-  ANIME_TESTNET_LIST,
-  MODE_LIST,
-]
+export const DEFAULT_ACTIVE_LIST_URLS: string[] = [ABSTRACT_LIST]
 
 // lower index == higher priority for token import
 export const DEFAULT_LIST_OF_LISTS: string[] = [
