@@ -214,7 +214,7 @@ function PoolPage({ address }: { address: string }) {
             {activeNetwork !== AbstractTestnetNetworkInfo ? null : (
               <RowFixed>
                 <StyledExternalLink
-                  href={`https://staging.reservoir.w3us.site/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}
+                  href={`https://staging.shapeswap.xyz/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}
                 >
                   <ButtonGray width="170px" mr="12px" style={{ height: '44px' }}>
                     <RowBetween>
@@ -224,7 +224,7 @@ function PoolPage({ address }: { address: string }) {
                   </ButtonGray>
                 </StyledExternalLink>
                 <StyledExternalLink
-                  href={`https://staging.reservoir.w3us.site/#/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
+                  href={`https://staging.shapeswap.xyz/#/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
                 >
                   <ButtonPrimary width="100px" style={{ height: '44px' }}>
                     Trade
