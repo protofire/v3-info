@@ -695,7 +695,7 @@ export const inkBlockClient = new ApolloClient({
 })
 
 export const abstractClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/abstract/v3-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/abstract/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
