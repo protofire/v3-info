@@ -8,7 +8,7 @@ export const healthClient = new ApolloClient({
 })
 
 export const blockClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/absctract-testnet/blocks-subgraph`,
+  uri: `${GRAPH_NODE_URL}/subgraphs/name/abstract/blocks-subgraph`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -23,7 +23,7 @@ export const blockClient = new ApolloClient({
 })
 
 export const client = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/absctract-testnet/v3-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/abstract/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
