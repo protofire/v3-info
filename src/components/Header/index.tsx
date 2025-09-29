@@ -105,9 +105,10 @@ const StyledNavLink = styled(NavLink)<{ $isActive: boolean }>`
   background-color: ${({ theme, $isActive }) => ($isActive ? theme.bg2 : 'unset')};
   color: ${({ theme, $isActive }) => ($isActive ? theme.text1 : theme.text3)};
 
-  :hover,
-  :focus {
-    color: ${({ theme }) => darken(0.1, theme.text1)};
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => darken(0.1, theme.text1)} !important;
+    background-color: ${({ theme }) => theme.bg2} !important;
   }
 `
 
@@ -129,9 +130,10 @@ const StyledExternalLink = styled.a<{ $isActive: boolean }>`
   background-color: ${({ theme, $isActive }) => ($isActive ? theme.bg2 : 'unset')};
   color: ${({ theme, $isActive }) => ($isActive ? theme.text1 : theme.text3)};
 
-  :hover,
-  :focus {
-    color: ${({ theme, $isActive }) => ($isActive ? theme.text1 : theme.text3)};
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => darken(0.1, theme.text1)} !important;
+    background-color: ${({ theme }) => theme.bg2} !important;
   }
 `
 
