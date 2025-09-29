@@ -25,10 +25,11 @@ const HeaderFrame = styled.div`
   position: relative;
   padding: 0.75rem 1rem;
   z-index: 2;
-  box-shadow: ${({ theme }) =>
-    theme.bg0 === '#F7F8FA' ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'};
+  box-shadow: none;
 
-  background-color: ${({ theme }) => theme.bg0};
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   @media (max-width: 1080px) {
     grid-template-columns: 1fr;
@@ -103,12 +104,14 @@ const StyledNavLink = styled(NavLink)<{ $isActive: boolean }>`
 
   border-radius: ${({ $isActive }) => ($isActive ? '12px' : 'unset')};
   background-color: ${({ theme, $isActive }) => ($isActive ? theme.bg2 : 'unset')};
-  color: ${({ theme, $isActive }) => ($isActive ? theme.text1 : theme.text3)};
+  color: ${({ theme }) => theme.text2};
 
   &:hover,
   &:focus {
     color: ${({ theme }) => darken(0.1, theme.text1)} !important;
-    background-color: ${({ theme }) => theme.bg2} !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     border-radius: 12px !important;
   }
 `
@@ -129,12 +132,14 @@ const StyledExternalLink = styled.a<{ $isActive: boolean }>`
 
   border-radius: ${({ $isActive }) => ($isActive ? '12px' : 'unset')};
   background-color: ${({ theme, $isActive }) => ($isActive ? theme.bg2 : 'unset')};
-  color: ${({ theme, $isActive }) => ($isActive ? theme.text1 : theme.text3)};
+  color: ${({ theme }) => theme.text2};
 
   &:hover,
   &:focus {
     color: ${({ theme }) => darken(0.1, theme.text1)} !important;
-    background-color: ${({ theme }) => theme.bg2} !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     border-radius: 12px !important;
   }
 `
@@ -183,17 +188,21 @@ const ThemeButton = styled.button`
   gap: 6px;
   height: 35px;
   border: none;
-  background-color: ${({ theme }) => theme.bg3};
-  color: ${({ theme }) => theme.text1};
+  background-color: ${({ theme }) =>
+    theme.bg0 === '#F7F8FA' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: ${({ theme }) => theme.text2};
   border-radius: 8px;
   padding: 0 10px;
   margin-left: 8px;
   cursor: pointer;
   :hover {
-    background-color: ${({ theme }) => theme.bg4};
+    background-color: ${({ theme }) =>
+      theme.bg0 === '#F7F8FA' ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.2)'};
   }
   svg {
-    stroke: ${({ theme }) => theme.text1};
+    stroke: ${({ theme }) => theme.text2};
   }
 `
 

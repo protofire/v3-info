@@ -8,7 +8,7 @@ import { ExternalLink } from '../../theme'
 
 const StyledMenuIcon = styled(MenuIcon)`
   path {
-    stroke: ${({ theme }) => theme.text1};
+    stroke: ${({ theme }) => theme.text2};
   }
 `
 
@@ -20,7 +20,10 @@ const StyledMenuButton = styled.button`
   margin: 0;
   padding: 0;
   height: 35px;
-  background-color: ${({ theme }) => theme.bg3};
+  background-color: ${({ theme }) =>
+    theme.bg0 === '#F7F8FA' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   padding: 0.15rem 0.5rem;
   border-radius: 0.5rem;
@@ -29,7 +32,8 @@ const StyledMenuButton = styled.button`
   :focus {
     cursor: pointer;
     outline: none;
-    background-color: ${({ theme }) => theme.bg4};
+    background-color: ${({ theme }) =>
+      theme.bg0 === '#F7F8FA' ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.2)'};
   }
 
   svg {

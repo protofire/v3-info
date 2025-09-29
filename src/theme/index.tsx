@@ -59,22 +59,22 @@ export function colors(darkMode: boolean): Colors {
     advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
 
     //primary colors
-    primary1: darkMode ? '#2172E5' : '#00DE73',
-    primary2: darkMode ? '#3680E7' : '#FF8CC3',
-    primary3: darkMode ? '#4D8FEA' : '#FF99C9',
-    primary4: darkMode ? '#376bad70' : '#F6DDE8',
-    primary5: darkMode ? '#153d6f70' : '#FDEAF1',
+    primary1: darkMode ? '#DE6579' : '#DE6579',
+    primary2: darkMode ? '#FFDDE3' : '#FFDDE3',
+    primary3: darkMode ? '#C9485F' : '#C9485F',
+    primary4: darkMode ? '#FFDDE3' : '#FFDDE3',
+    primary5: darkMode ? '#FFDDE3' : '#FFDDE3',
 
     // color text
-    primaryText1: darkMode ? '#6da8ff' : '#00DE73',
+    primaryText1: darkMode ? '#DE6579' : '#DE6579',
 
     // secondary colors
-    secondary1: darkMode ? '#2172E5' : '#00DE73',
-    secondary2: darkMode ? '#17000b26' : '#F6DDE8',
-    secondary3: darkMode ? '#17000b26' : '#FDEAF1',
+    secondary1: darkMode ? '#DE6579' : '#DE6579',
+    secondary2: darkMode ? '#FFDDE3' : '#FFDDE3',
+    secondary3: darkMode ? '#FFDDE3' : '#FFDDE3',
 
     // other
-    pink1: '#00DE73',
+    pink1: '#DE6579',
     red1: '#FD4040',
     red2: '#F82D3A',
     red3: '#D60000',
@@ -124,7 +124,11 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
 
   const themeObject = useMemo(() => theme(darkMode), [darkMode])
 
-  return <StyledComponentsThemeProvider theme={themeObject}>{children}</StyledComponentsThemeProvider>
+  return (
+    <StyledComponentsThemeProvider theme={themeObject}>
+      <div style={{ transition: 'all 0.3s ease' }}>{children}</div>
+    </StyledComponentsThemeProvider>
+  )
 }
 
 const TextWrapper = styled(Text)<{ color: keyof Colors }>`
@@ -183,13 +187,18 @@ export const TYPE = {
 }
 
 export const FixedGlobalStyle = createGlobalStyle`
+* {
+  font-family: 'Dosis', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
 html, input, textarea, button {
-  font-family: 'Inter', sans-serif;
-  font-display: fallback;
+  font-family: 'Dosis', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+  font-display: swap;
 }
 @supports (font-variation-settings: normal) {
   html, input, textarea, button {
-    font-family: 'Inter var', sans-serif;
+    font-family: 'Dosis', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
   }
 }
 
@@ -225,7 +234,8 @@ html {
 export const ThemedGlobalStyle = createGlobalStyle`
 html {
   color: ${({ theme }) => theme.text1};
-  background-color: ${({ theme }) => theme.bg1};
+  background-color: transparent;
+  transition: color 0.3s ease;
 }
 
 .three-line-legend-dark {
@@ -251,8 +261,13 @@ html {
 
 body {
   min-height: 100vh;
-  background-position: 0 -30vh;
+  background-image: ${({ theme }) =>
+    theme.bg0 === '#F7F8FA' ? 'url(/images/bg-light.png)' : 'url(/images/bg-dark.png)'};
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-
+  background-attachment: fixed;
+  background-color: transparent;
+  transition: background-image 0.3s ease;
 }
 `

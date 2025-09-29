@@ -24,7 +24,10 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   border-radius: 12px;
-  background-color: ${({ theme }) => theme.bg1};
+  background-color: ${({ theme }) =>
+    theme.bg0 === '#F7F8FA' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 6px 8px;
   margin-right: 12px;
 

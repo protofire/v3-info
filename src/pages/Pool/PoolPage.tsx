@@ -346,7 +346,11 @@ function PoolPage({ address }: { address: string }) {
           </ContentLayout>
           <TYPE.main fontSize="24px">Transactions</TYPE.main>
           <DarkGreyCard>
-            {transactions ? <TransactionTable transactions={transactions} /> : <LocalLoader fill={false} />}
+            {transactions ? (
+              <TransactionTable transactions={transactions} color="#DE6579" />
+            ) : (
+              <LocalLoader fill={false} />
+            )}
           </DarkGreyCard>
         </AutoColumn>
       ) : (

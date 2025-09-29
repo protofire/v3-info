@@ -27,7 +27,10 @@ const Container = styled.div`
 `
 
 const Wrapper = styled(Row)`
-  background-color: ${({ theme }) => theme.bg3};
+  background-color: ${({ theme }) =>
+    theme.bg0 === '#F7F8FA' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'};
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 10px 16px;
   width: 500px;
   height: 38px;
@@ -50,15 +53,15 @@ const StyledInput = styled.input`
   width: 100%;
   font-size: 16px;
   outline: none;
-  color: ${({ theme }) => theme.text1};
+  color: ${({ theme }) => theme.text2};
 
-  ::placeholder {
-    color: ${({ theme }) => theme.text3};
+  &::placeholder {
+    color: ${({ theme }) => theme.text1};
     font-size: 16px;
   }
 
   @media screen and (max-width: 640px) {
-    ::placeholder {
+    &::placeholder {
       font-size: 1rem;
     }
   }
@@ -247,7 +250,11 @@ const Search = ({ ...rest }: React.HTMLAttributes<HTMLDivElement>) => {
             }}
             onBlur={() => setFocused(false)}
           />
-          {!focused && <TYPE.gray pl="2px">⌘/</TYPE.gray>}
+          {!focused && (
+            <TYPE.main pl="2px" color="text2">
+              ⌘/
+            </TYPE.main>
+          )}
         </Wrapper>
         <Menu $hide={!showMenu} ref={menuRef}>
           <AutoColumn $gap="lg">

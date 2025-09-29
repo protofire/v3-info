@@ -252,7 +252,7 @@ export default function Home() {
         <RowBetween>
           <TYPE.main>Transactions</TYPE.main>
         </RowBetween>
-        {transactions ? <TransactionsTable transactions={transactions} color={activeNetwork.primaryColor} /> : null}
+        {transactions ? <TransactionsTable transactions={transactions} color="#DE6579" /> : null}
       </AutoColumn>
     </PageWrapper>
     // </Trace>
