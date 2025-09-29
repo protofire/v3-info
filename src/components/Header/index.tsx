@@ -109,6 +109,7 @@ const StyledNavLink = styled(NavLink)<{ $isActive: boolean }>`
   &:focus {
     color: ${({ theme }) => darken(0.1, theme.text1)} !important;
     background-color: ${({ theme }) => theme.bg2} !important;
+    border-radius: 12px !important;
   }
 `
 
@@ -134,6 +135,7 @@ const StyledExternalLink = styled.a<{ $isActive: boolean }>`
   &:focus {
     color: ${({ theme }) => darken(0.1, theme.text1)} !important;
     background-color: ${({ theme }) => theme.bg2} !important;
+    border-radius: 12px !important;
   }
 `
 
