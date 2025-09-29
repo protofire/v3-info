@@ -11,7 +11,7 @@ import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
 import { AutoColumn } from 'components/Column'
 import { useDarkModeManager } from 'state/user/hooks'
-import { Sun, Moon } from 'react-feather'
+import { Sun, Moon, ExternalLink } from 'react-feather'
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -23,23 +23,22 @@ const HeaderFrame = styled.div`
   width: 100%;
   top: 0;
   position: relative;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   z-index: 2;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: ${({ theme }) =>
+    theme.bg0 === '#F7F8FA' ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'};
 
   background-color: ${({ theme }) => theme.bg0};
 
   @media (max-width: 1080px) {
     grid-template-columns: 1fr;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     width: calc(100%);
     position: relative;
   }
 
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
   `}
 `
 
@@ -109,6 +108,30 @@ const StyledNavLink = styled(NavLink)<{ $isActive: boolean }>`
   :hover,
   :focus {
     color: ${({ theme }) => darken(0.1, theme.text1)};
+  }
+`
+
+const StyledExternalLink = styled.a<{ $isActive: boolean }>`
+  ${({ theme }) => theme.flexRowNoWrap}
+  align-items: center;
+  justify-content: center;
+  border-radius: 3rem;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  width: fit-content;
+  margin: 0 6px;
+  padding: 8px 12px;
+  font-weight: 500;
+
+  border-radius: ${({ $isActive }) => ($isActive ? '12px' : 'unset')};
+  background-color: ${({ theme, $isActive }) => ($isActive ? theme.bg2 : 'unset')};
+  color: ${({ theme, $isActive }) => ($isActive ? theme.text1 : theme.text3)};
+
+  :hover,
+  :focus {
+    color: ${({ theme, $isActive }) => ($isActive ? theme.text1 : theme.text3)};
   }
 `
 
@@ -202,6 +225,16 @@ export default function Header() {
           >
             Tokens
           </StyledNavLink>
+          <StyledExternalLink
+            href="https://sakuraswap.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            id={`swap-nav-link`}
+            $isActive={false}
+          >
+            Swap
+            <ExternalLink size={14} style={{ marginLeft: '4px' }} />
+          </StyledExternalLink>
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
