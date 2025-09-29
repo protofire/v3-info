@@ -40,6 +40,8 @@ import {
   modeClient,
   animeClient,
   animeBlockClient,
+  flowTestnetClient,
+  flowTestnetBlockClient,
 } from 'apollo/client'
 import { NetworkInfo, SupportedNetwork } from 'constants/networks'
 import { useCallback, useMemo } from 'react'
@@ -202,6 +204,8 @@ export function useDataClient(): ApolloClient<NormalizedCacheObject> {
       return modeClient
     case SupportedNetwork.ANIME:
       return animeClient
+    case SupportedNetwork.FLOW_TESTNET:
+      return flowTestnetClient
     default:
       return client
   }
@@ -251,6 +255,8 @@ export function useBlockClient(): ApolloClient<NormalizedCacheObject> {
       return modeBlockClient
     case SupportedNetwork.ANIME:
       return animeBlockClient
+    case SupportedNetwork.FLOW_TESTNET:
+      return flowTestnetBlockClient
     default:
       return blockClient
   }

@@ -1,10 +1,11 @@
 import { RowFixed, RowBetween } from 'components/Row'
 import {
-  AbstractTestnetNetworkInfo,
+  //AbstractTestnetNetworkInfo,
   AvalancheNetworkInfo,
   BNBNetworkInfo,
   CeloNetworkInfo,
   PolygonNetworkInfo,
+  FlowTestnetNetworkInfo,
   SUPPORTED_NETWORK_VERSIONS,
 } from 'constants/networks'
 import useTheme from 'hooks/useTheme'
@@ -123,7 +124,7 @@ export default function NetworkDropdown() {
             </TYPE.main>
             {SUPPORTED_NETWORK_VERSIONS.map((n) => {
               return (
-                <StyledInternalLink key={n.id} to={`${n === AbstractTestnetNetworkInfo ? '' : '/' + n.route}/`}>
+                <StyledInternalLink key={n.id} to={`${n === FlowTestnetNetworkInfo ? '' : '/' + n.route}/`}>
                   <NetworkRow
                     onClick={() => {
                       setShowMenu(false)

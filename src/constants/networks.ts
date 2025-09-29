@@ -18,6 +18,7 @@ import INK_LOGO_URL from '../assets/images/ink-logo.png'
 import ANIME_TESTNET_LOGO_URL from '../assets/images/anime-logo.png'
 import ANIME_LOGO_URL from '../assets/images/anime-logo.png'
 import MODE_LOGO_URL from '../assets/images/mode-logo.png'
+import FLOW_LOGO_URL from '../assets/images/flow-logo.png'
 
 export enum SupportedNetwork {
   ETHEREUM,
@@ -40,6 +41,7 @@ export enum SupportedNetwork {
   ANIME_TESTNET,
   MODE,
   ANIME,
+  FLOW_TESTNET,
 }
 
 export type NetworkInfo = {
@@ -272,6 +274,17 @@ export const AnimeNetworkInfo: NetworkInfo = {
   imageURL: ANIME_LOGO_URL,
 }
 
+export const FlowTestnetNetworkInfo: NetworkInfo = {
+  chainId: ChainId.FLOW_TESTNET,
+  id: SupportedNetwork.FLOW_TESTNET,
+  route: 'flow-testnet',
+  name: 'Flow EVM Testnet',
+  bgColor: '#00A3E0',
+  primaryColor: '#00A3E0',
+  secondaryColor: '#0080B6',
+  imageURL: FLOW_LOGO_URL,
+}
+
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // EthereumNetworkInfo,
   // PolygonNetworkInfo,
@@ -289,7 +302,8 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // RedstoneNetworkInfo,
   // RedstoneGarnetNetworkInfo,
   // InkNetworkInfo,
-  AbstractNetworkInfo,
+  //AbstractNetworkInfo,
+  FlowTestnetNetworkInfo,
   // AnimeTestnetNetworkInfo,
   // ModeNetworkInfo,
   // AnimeNetworkInfo,

@@ -26,7 +26,7 @@ import DensityChart from 'components/DensityChart'
 import { MonoSpace } from 'components/shared'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
-import { AbstractTestnetNetworkInfo, EthereumNetworkInfo } from 'constants/networks'
+import { EthereumNetworkInfo, FlowTestnetNetworkInfo } from 'constants/networks'
 import { GenericImageWrapper } from 'components/Logo'
 import { Navigate, useParams } from 'react-router-dom'
 // import { Trace } from '@uniswap/analytics'
@@ -211,10 +211,10 @@ function PoolPage({ address }: { address: string }) {
                 </StyledInternalLink>
               </ResponsiveRow>
             </AutoColumn>
-            {activeNetwork !== AbstractTestnetNetworkInfo ? null : (
+            {activeNetwork !== FlowTestnetNetworkInfo ? null : (
               <RowFixed>
                 <StyledExternalLink
-                  href={`https://staging.reservoir.w3us.site/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}
+                  href={`https://staging.flowswap.io/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}
                 >
                   <ButtonGray width="170px" mr="12px" style={{ height: '44px' }}>
                     <RowBetween>
@@ -224,7 +224,7 @@ function PoolPage({ address }: { address: string }) {
                   </ButtonGray>
                 </StyledExternalLink>
                 <StyledExternalLink
-                  href={`https://staging.reservoir.w3us.site/#/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
+                  href={`https://staging.flowswap.io/#/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
                 >
                   <ButtonPrimary width="100px" style={{ height: '44px' }}>
                     Trade

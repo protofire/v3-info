@@ -32,6 +32,8 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'bob'
     case ChainId.CYBER:
       return 'cyeth'
+    case ChainId.FLOW_TESTNET:
+      return 'flow-testnet'
     default:
       return 'ethereum'
   }
@@ -75,6 +77,7 @@ export default function CurrencyLogo({
   const celo = useCombinedActiveList()?.[42220]
   const bnbList = useCombinedActiveList()?.[ChainId.BNB]
   const baseList = useCombinedActiveList()?.[ChainId.BASE]
+  const flowTestnetList = useCombinedActiveList()?.[ChainId.FLOW_TESTNET]
 
   const [activeNetwork] = useActiveNetworkVersion()
 
@@ -128,6 +131,14 @@ export default function CurrencyLogo({
   }, [checkSummed, celo])
   const uriLocationsCelo = useHttpLocations(celoURI)
 
+  const flowTestnetURI = useMemo(() => {
+    if (checkSummed && flowTestnetList?.[checkSummed]) {
+      return flowTestnetList?.[checkSummed].token.logoURI
+    }
+    return undefined
+  }, [checkSummed, flowTestnetList])
+  const uriLocationsFlowTestnet = useHttpLocations(flowTestnetURI)
+
   //temp until token logo issue merged
   const tempSources: { [address: string]: string } = useMemo(() => {
     return {
@@ -149,6 +160,7 @@ export default function CurrencyLogo({
         ...uriLocationsCelo,
         ...uriLocationsBNB,
         ...uriLocationsBase,
+        ...uriLocationsFlowTestnet,
         override,
       ]
     }
@@ -163,6 +175,7 @@ export default function CurrencyLogo({
     uriLocationsCelo,
     uriLocationsBNB,
     uriLocationsBase,
+    uriLocationsFlowTestnet,
   ])
 
   if (activeNetwork === OptimismNetworkInfo && address === '0x4200000000000000000000000000000000000006') {

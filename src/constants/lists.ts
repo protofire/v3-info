@@ -10,10 +10,12 @@ export const INK_LIST = getTokenListApiURL('ink')
 export const ABSTRACT_LIST = getTokenListApiURL('abstract')
 export const ANIME_TESTNET_LIST = getTokenListApiURL('anime-testnet')
 export const MODE_LIST = getTokenListApiURL('mode')
+export const FLOW_TESTNET_LIST =
+  'https://github.com/protofire/token-list/raw/refs/heads/main/networks/flow-testnet.json'
 
 // default lists to be 'active' aka searched across
 export const DEFAULT_ACTIVE_LIST_URLS: string[] = [
-  ABSTRACT_TESTNET_LIST,
+  /* ABSTRACT_TESTNET_LIST,
   ZERO_LIST,
   BOB_LIST,
   CYBER_LIST,
@@ -23,7 +25,8 @@ export const DEFAULT_ACTIVE_LIST_URLS: string[] = [
   INK_LIST,
   ABSTRACT_LIST,
   ANIME_TESTNET_LIST,
-  MODE_LIST,
+  MODE_LIST, */
+  FLOW_TESTNET_LIST,
 ]
 
 // lower index == higher priority for token import

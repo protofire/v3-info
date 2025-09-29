@@ -36,7 +36,7 @@ import { MonoSpace } from 'components/shared'
 import dayjs from 'dayjs'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
-import { EthereumNetworkInfo } from 'constants/networks'
+import { EthereumNetworkInfo, FlowTestnetNetworkInfo } from 'constants/networks'
 import { GenericImageWrapper } from 'components/Logo'
 import { useCMCLink } from 'hooks/useCMCLink'
 import CMCLogo from '../../assets/images/cmc.png'
@@ -171,7 +171,7 @@ export default function TokenPage() {
             No pool has been created with this token yet. Create one
             <StyledExternalLink
               style={{ marginLeft: '4px' }}
-              href={`https://staging.reservoir.w3us.site/#/add/${formattedAddress}`}
+              href={`https://staging.flowswap.io/#/add/${formattedAddress}`}
             >
               here.
             </StyledExternalLink>
@@ -231,9 +231,9 @@ export default function TokenPage() {
                     (<Percent value={tokenData.priceUSDChange} />)
                   </RowFlat>
                 </AutoColumn>
-                {activeNetwork !== EthereumNetworkInfo ? null : (
+                {activeNetwork !== FlowTestnetNetworkInfo ? null : (
                   <RowFixed>
-                    <StyledExternalLink href={`https://staging.reservoir.w3us.site/#/add/${formattedAddress}`}>
+                    <StyledExternalLink href={`https://staging.flowswap.io/#/add/${formattedAddress}`}>
                       <ButtonGray width="170px" mr="12px" height={'100%'} style={{ height: '44px' }}>
                         <RowBetween>
                           <Download size={24} />
@@ -241,9 +241,7 @@ export default function TokenPage() {
                         </RowBetween>
                       </ButtonGray>
                     </StyledExternalLink>
-                    <StyledExternalLink
-                      href={`https://staging.reservoir.w3us.site/#/swap?inputCurrency=${formattedAddress}`}
-                    >
+                    <StyledExternalLink href={`https://staging.flowswap.io/#/swap?inputCurrency=${formattedAddress}`}>
                       <ButtonPrimary width="100px" bgColor={backgroundColor} style={{ height: '44px' }}>
                         Trade
                       </ButtonPrimary>
