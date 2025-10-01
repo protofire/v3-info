@@ -294,5 +294,5 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   AbstractNetworkInfo,
   // AnimeTestnetNetworkInfo,
   // ModeNetworkInfo,
-  // AnimeNetworkInfo,
+  AnimeNetworkInfo,
 ]
