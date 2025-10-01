@@ -23,12 +23,15 @@ function serializeToken(token: Token): SerializedToken {
 }
 
 export function useIsDarkMode(): boolean {
-  return true
+  const userDarkMode = useSelector((state: AppState) => state.user.userDarkMode)
+  const matchesDarkMode = useSelector((state: AppState) => state.user.matchesDarkMode)
+  if (userDarkMode !== null && userDarkMode !== undefined) return userDarkMode
+  return matchesDarkMode ?? true
 }
 
 export function useDarkModeManager(): [boolean, () => void] {
   const dispatch = useDispatch<AppDispatch>()
-  const darkMode = true
+  const darkMode = useIsDarkMode()
 
   const toggleSetDarkMode = useCallback(() => {
     dispatch(updateUserDarkMode({ userDarkMode: !darkMode }))
