@@ -76,7 +76,7 @@ export const ToggleElementFree = styled.span<{ isActive?: boolean; fontSize?: st
   justify-content: center;
   height: 100%;
   background: ${({ theme, isActive }) => (isActive ? theme.black : 'none')};
-  color: ${({ theme, isActive }) => (isActive ? theme.text1 : theme.text2)};
+  color: ${({ theme, isActive }) => (isActive ? theme.white : theme.text2)};
   font-size: ${({ fontSize }) => fontSize ?? '1rem'};
   font-weight: 600;
   white-space: nowrap;

@@ -11,7 +11,7 @@ import { Flex } from 'rebass'
 
 const Wrapper = styled.div`
   width: 100%;
-  background-color: ${({ theme }) => theme.black};
+  background-color: ${({ theme }) => theme.bg2};
   padding: 10px 20px;
 `
 
