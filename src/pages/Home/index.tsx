@@ -24,6 +24,7 @@ import { useActiveNetworkVersion } from 'state/application/hooks'
 import { useTransformedVolumeData } from 'hooks/chart'
 import { SmallOptionButton } from 'components/Button'
 import { VolumeWindow } from 'types'
+import { useIsDarkMode } from 'state/user/hooks'
 
 const ChartWrapper = styled.div`
   width: 49%;
@@ -124,10 +125,13 @@ export default function Home() {
     return formatDollarAmount(protocolData?.tvlUSD, 2, true)
   }, [liquidityHover, protocolData?.tvlUSD])
 
+  const isDarkMode = useIsDarkMode()
   return (
     // <Trace page={'home-page'} shouldLogImpression>
     <PageWrapper>
-      <ThemedBackgroundGlobal $backgroundColor={activeNetwork.bgColor} />
+      <ThemedBackgroundGlobal
+        $backgroundColor={!isDarkMode ? activeNetwork.bgColor : activeNetwork.bgColorDark ?? '#FFF'}
+      />
       <AutoColumn $gap="16px">
         <TYPE.main>Swap Overview</TYPE.main>
         <ResponsiveRow>
