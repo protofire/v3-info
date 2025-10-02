@@ -36,7 +36,7 @@ import { MonoSpace } from 'components/shared'
 import dayjs from 'dayjs'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
-import { EthereumNetworkInfo, FlowTestnetNetworkInfo } from 'constants/networks'
+import { EthereumNetworkInfo, FlowMainnetNetworkInfo } from 'constants/networks'
 import { GenericImageWrapper } from 'components/Logo'
 import { useCMCLink } from 'hooks/useCMCLink'
 import CMCLogo from '../../assets/images/cmc.png'
@@ -231,7 +231,7 @@ export default function TokenPage() {
                     (<Percent value={tokenData.priceUSDChange} />)
                   </RowFlat>
                 </AutoColumn>
-                {activeNetwork !== FlowTestnetNetworkInfo ? null : (
+                {activeNetwork !== FlowMainnetNetworkInfo ? null : (
                   <RowFixed>
                     <StyledExternalLink href={`https://staging.flowswap.io/#/add/${formattedAddress}`}>
                       <ButtonGray width="170px" mr="12px" height={'100%'} style={{ height: '44px' }}>

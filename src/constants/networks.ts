@@ -42,6 +42,7 @@ export enum SupportedNetwork {
   MODE,
   ANIME,
   FLOW_TESTNET,
+  FLOW_MAINNET,
 }
 
 export type NetworkInfo = {
@@ -285,6 +286,17 @@ export const FlowTestnetNetworkInfo: NetworkInfo = {
   imageURL: FLOW_LOGO_URL,
 }
 
+export const FlowMainnetNetworkInfo: NetworkInfo = {
+  chainId: ChainId.FLOW_MAINNET,
+  id: SupportedNetwork.FLOW_MAINNET,
+  route: 'flow',
+  name: 'Flow Mainnet',
+  bgColor: '#1D2374',
+  primaryColor: '#00EF8B',
+  secondaryColor: '#02D87E',
+  imageURL: FLOW_LOGO_URL,
+}
+
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // EthereumNetworkInfo,
   // PolygonNetworkInfo,
@@ -303,6 +315,7 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // RedstoneGarnetNetworkInfo,
   // InkNetworkInfo,
   //AbstractNetworkInfo,
+  FlowMainnetNetworkInfo,
   FlowTestnetNetworkInfo,
   // AnimeTestnetNetworkInfo,
   // ModeNetworkInfo,

@@ -32,6 +32,8 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'bob'
     case ChainId.CYBER:
       return 'cyeth'
+    case ChainId.FLOW_MAINNET:
+      return 'flow'
     case ChainId.FLOW_TESTNET:
       return 'flow-testnet'
     default:

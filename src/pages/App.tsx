@@ -15,7 +15,7 @@ import PoolPage from './Pool/PoolPage'
 import { ExternalLink, TYPE } from 'theme'
 import { useActiveNetworkVersion, useSubgraphStatus } from 'state/application/hooks'
 import { DarkGreyCard } from 'components/Card'
-import { SUPPORTED_NETWORK_VERSIONS, OptimismNetworkInfo, FlowTestnetNetworkInfo } from 'constants/networks'
+import { SUPPORTED_NETWORK_VERSIONS, OptimismNetworkInfo, FlowMainnetNetworkInfo } from 'constants/networks'
 import { Link } from 'rebass'
 import { forkConfig } from 'forkConfig'
 
@@ -113,7 +113,7 @@ export default function App() {
   const [activeNetwork, setActiveNetwork] = useActiveNetworkVersion()
   useEffect(() => {
     if (location.pathname === '/') {
-      setActiveNetwork(FlowTestnetNetworkInfo)
+      setActiveNetwork(FlowMainnetNetworkInfo)
     } else {
       SUPPORTED_NETWORK_VERSIONS.map((n) => {
         if (location.pathname.includes(n.route.toLocaleLowerCase())) {

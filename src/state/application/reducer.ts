@@ -10,7 +10,7 @@ import {
   setOpenModal,
   updateActiveNetworkVersion,
 } from './actions'
-import { FlowTestnetNetworkInfo } from '../../constants/networks'
+import { FlowMainnetNetworkInfo } from '../../constants/networks'
 
 type PopupList = Array<{ key: string; show: boolean; content: PopupContent; removeAfterMs: number | null }>
 
@@ -35,7 +35,7 @@ const initialState: ApplicationState = {
     syncedBlock: undefined,
     headBlock: undefined,
   },
-  activeNetworkVersion: FlowTestnetNetworkInfo,
+  activeNetworkVersion: FlowMainnetNetworkInfo,
 }
 
 export default createReducer(initialState, (builder) =>

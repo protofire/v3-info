@@ -5,7 +5,7 @@ import {
   BNBNetworkInfo,
   CeloNetworkInfo,
   PolygonNetworkInfo,
-  FlowTestnetNetworkInfo,
+  FlowMainnetNetworkInfo,
   SUPPORTED_NETWORK_VERSIONS,
 } from 'constants/networks'
 import useTheme from 'hooks/useTheme'
@@ -124,7 +124,7 @@ export default function NetworkDropdown() {
             </TYPE.main>
             {SUPPORTED_NETWORK_VERSIONS.map((n) => {
               return (
-                <StyledInternalLink key={n.id} to={`${n === FlowTestnetNetworkInfo ? '' : '/' + n.route}/`}>
+                <StyledInternalLink key={n.id} to={`${n === FlowMainnetNetworkInfo ? '' : '/' + n.route}/`}>
                   <NetworkRow
                     onClick={() => {
                       setShowMenu(false)
