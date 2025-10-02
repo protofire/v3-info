@@ -1,5 +1,5 @@
 import { getVersionUpgrade, minVersionBump, VersionUpgrade } from '@uniswap/token-lists'
-import { ABSTRACT_TESTNET_LIST, UNSUPPORTED_LIST_URLS } from 'constants/lists'
+import { ABSTRACT_LIST, UNSUPPORTED_LIST_URLS } from 'constants/lists'
 import { useCallback, useEffect } from 'react'
 import { useAllLists } from 'state/lists/hooks'
 import { useFetchListCallback } from '../../hooks/useFetchListCallback'
@@ -25,7 +25,7 @@ export default function Updater(): null {
     )
   }, [fetchList, isWindowVisible, lists])
 
-  dispatch(enableList(ABSTRACT_TESTNET_LIST))
+  dispatch(enableList(ABSTRACT_LIST))
 
   // fetch all lists every 10 minutes, but only after we initialize library
   useInterval(fetchAllListsCallback, 1000 * 60 * 10)
