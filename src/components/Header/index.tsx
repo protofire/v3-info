@@ -3,13 +3,15 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { darken } from 'polished'
 import styled from 'styled-components'
 import LogoDark from '../../assets/svg/logo_green.svg'
-import Menu from '../Menu'
+// import Menu from '../Menu'
 import Row, { RowFixed, RowBetween } from '../Row'
 import SearchSmall from 'components/Search'
 import NetworkDropdown from 'components/Menu/NetworkDropdown'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
 import { AutoColumn } from 'components/Column'
+import { useDarkModeManager } from 'state/user/hooks'
+import { Sun, Moon, ExternalLink } from 'react-feather'
 
 const HeaderFrame = styled.div`
   display: grid;
@@ -21,24 +23,22 @@ const HeaderFrame = styled.div`
   width: 100%;
   top: 0;
   position: relative;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   z-index: 2;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: ${({ theme }) =>
+    theme.bg0 === '#F7F8FA' ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)'};
 
   background-color: ${({ theme }) => theme.bg0};
 
   @media (max-width: 1080px) {
     grid-template-columns: 1fr;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     width: calc(100%);
     position: relative;
   }
 
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
   `}
 `
 
@@ -105,9 +105,37 @@ const StyledNavLink = styled(NavLink)<{ $isActive: boolean }>`
   background-color: ${({ theme, $isActive }) => ($isActive ? theme.bg2 : 'unset')};
   color: ${({ theme, $isActive }) => ($isActive ? theme.text1 : theme.text3)};
 
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => darken(0.1, theme.text1)};
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 12px !important;
+  }
+`
+
+const StyledExternalLink = styled.a<{ $isActive: boolean }>`
+  ${({ theme }) => theme.flexRowNoWrap}
+  align-items: center;
+  justify-content: center;
+  border-radius: 3rem;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  width: fit-content;
+  margin: 0 6px;
+  padding: 8px 12px;
+  font-weight: 500;
+
+  border-radius: ${({ $isActive }) => ($isActive ? '12px' : 'unset')};
+  background-color: ${({ theme, $isActive }) => ($isActive ? theme.bg2 : 'unset')};
+  color: ${({ theme, $isActive }) => ($isActive ? theme.text1 : theme.text3)};
+
   :hover,
   :focus {
-    color: ${({ theme }) => darken(0.1, theme.text1)};
+    color: ${({ theme, $isActive }) => ($isActive ? theme.text1 : theme.text3)};
   }
 `
 
@@ -149,10 +177,31 @@ const SmallContentGrouping = styled.div`
   }
 `
 
+const ThemeButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 35px;
+  border: none;
+  background-color: ${({ theme }) => theme.bg3};
+  color: ${({ theme }) => theme.text1};
+  border-radius: 8px;
+  padding: 0 10px;
+  margin-left: 8px;
+  cursor: pointer;
+  :hover {
+    background-color: ${({ theme }) => theme.bg4};
+  }
+  svg {
+    stroke: ${({ theme }) => theme.text1};
+  }
+`
+
 export default function Header() {
   const [activeNewtork] = useActiveNetworkVersion()
 
   const { pathname } = useLocation()
+  const [darkMode, toggleDarkMode] = useDarkModeManager()
 
   return (
     <HeaderFrame>
@@ -180,18 +229,34 @@ export default function Header() {
           >
             Tokens
           </StyledNavLink>
+          <StyledExternalLink
+            href="https://staging.flowswap.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            id={`swap-nav-link`}
+            $isActive={false}
+          >
+            Swap
+            <ExternalLink size={14} style={{ marginLeft: '4px' }} />
+          </StyledExternalLink>
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
         <NetworkDropdown />
         <SearchSmall />
-        <Menu />
+        <ThemeButton onClick={toggleDarkMode} aria-label="Toggle theme">
+          {darkMode ? <Moon size={18} /> : <Sun size={18} />}
+        </ThemeButton>
+        {/* <Menu /> */}
       </HeaderControls>
       <SmallContentGrouping>
         <AutoColumn $gap="sm">
           <RowBetween>
             <NetworkDropdown />
-            <Menu />
+            <ThemeButton onClick={toggleDarkMode} aria-label="Toggle theme">
+              {darkMode ? <Moon size={18} /> : <Sun size={18} />}
+            </ThemeButton>
+            {/* <Menu /> */}
           </RowBetween>
           <SearchSmall />
         </AutoColumn>

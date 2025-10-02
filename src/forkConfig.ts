@@ -4,4 +4,5 @@ export const forkConfig = {
   socials: false,
   latestSyncedBlockSupported: false,
   chartDataPending: false,
+  enableTopBar: false,
 }

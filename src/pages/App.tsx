@@ -158,9 +158,12 @@ export default function App() {
                 </UrlBanner>
               </BannerWrapper>
             )}
-            <Hide1080>
-              <TopBar />
-            </Hide1080>
+            {forkConfig.enableTopBar && (
+              <Hide1080>
+                <TopBar />
+              </Hide1080>
+            )}
+
             <Header />
           </HeaderWrapper>
           {subgraphStatus.available === false ? (
