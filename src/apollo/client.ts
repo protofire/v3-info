@@ -394,7 +394,7 @@ export const abstractTestnetBlockClient = new ApolloClient({
   },
 })
 export const zeroClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/zero/v3-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/zero/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -422,7 +422,7 @@ export const zeroClient = new ApolloClient({
 })
 
 export const zeroBlockClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/zero/blocks-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/zero/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -824,7 +824,7 @@ export const modeBlockClient = new ApolloClient({
 })
 
 export const animeClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/anime/v3-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/anime/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -852,7 +852,7 @@ export const animeClient = new ApolloClient({
 })
 
 export const animeBlockClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/anime/blocks-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/anime/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
