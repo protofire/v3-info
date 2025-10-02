@@ -394,7 +394,7 @@ export const abstractTestnetBlockClient = new ApolloClient({
   },
 })
 export const zeroClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/zero/v3-subgraph`,
+  uri: `${GRAPH_NODE_URL}/subgraphs/name/zero/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -422,7 +422,7 @@ export const zeroClient = new ApolloClient({
 })
 
 export const zeroBlockClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/zero/blocks-subgraph`,
+  uri: `${GRAPH_NODE_URL}/subgraphs/name/zero/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {

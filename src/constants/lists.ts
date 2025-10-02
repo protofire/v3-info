@@ -2,9 +2,9 @@ export const UNSUPPORTED_LIST_URLS: string[] = []
 export const ABSTRACT_LIST =
   'https://raw.githubusercontent.com/protofire/token-list/refs/heads/main/networks/abstract.json'
 export const ANIME_LIST = 'https://raw.githubusercontent.com/protofire/token-list/refs/heads/main/networks/anime.json'
-
+export const ZERO_LIST = 'https://raw.githubusercontent.com/protofire/token-list/refs/heads/main/networks/zero.json'
 // default lists to be 'active' aka searched across
-export const DEFAULT_ACTIVE_LIST_URLS: string[] = [ABSTRACT_LIST, ANIME_LIST]
+export const DEFAULT_ACTIVE_LIST_URLS: string[] = [ABSTRACT_LIST, ANIME_LIST, ZERO_LIST]
 
 // lower index == higher priority for token import
 export const DEFAULT_LIST_OF_LISTS: string[] = [
