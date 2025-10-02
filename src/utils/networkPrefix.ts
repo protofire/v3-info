@@ -1,8 +1,8 @@
-import { ShapeNetworkNetworkInfo, NetworkInfo } from 'constants/networks'
+import { FlowTestnetNetworkInfo, NetworkInfo } from 'constants/networks'
 
 export function networkPrefix(activeNewtork: NetworkInfo) {
-  const isShape = activeNewtork === ShapeNetworkNetworkInfo
-  if (isShape) {
+  const isFlow = activeNewtork === FlowTestnetNetworkInfo
+  if (isFlow) {
     return '/'
   }
   const prefix = '/' + activeNewtork.route.toLocaleLowerCase() + '/'
