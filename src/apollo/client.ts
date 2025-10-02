@@ -8,7 +8,7 @@ export const healthClient = new ApolloClient({
 })
 
 export const blockClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/abstract/blocks-subgraph`,
+  uri: `${GRAPH_NODE_URL}/subgraphs/name/abstract/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
