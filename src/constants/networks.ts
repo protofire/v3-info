@@ -157,9 +157,10 @@ export const ZeroNetworkNetworkInfo: NetworkInfo = {
   id: SupportedNetwork.ZERO,
   route: 'zero',
   name: 'Zero Mainnet',
-  bgColor: '#0052ff',
-  primaryColor: '#0052ff',
-  secondaryColor: '#0052ff',
+  bgColor: '#FFC2C2',
+  bgColorDark: '#D26378',
+  primaryColor: '#5a45c6ff',
+  secondaryColor: '#2172E5',
   imageURL: ZERO_LOGO_URL,
 }
 
@@ -268,9 +269,10 @@ export const AnimeNetworkInfo: NetworkInfo = {
   id: SupportedNetwork.ANIME,
   route: 'anime',
   name: 'Anime',
-  bgColor: '#0052ff',
-  primaryColor: '#0052ff',
-  secondaryColor: '#0052ff',
+  bgColor: '#FFC2C2',
+  bgColorDark: '#D26378',
+  primaryColor: '#e2e762ff',
+  secondaryColor: '#2172E5',
   imageURL: ANIME_LOGO_URL,
 }
 
@@ -284,7 +286,6 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // BaseNetworkInfo,
   // AvalancheNetworkInfo,
   // AbstractTestnetNetworkInfo,
-  // ZeroNetworkNetworkInfo,
   // CyberNetworkNetworkInfo,
   // BobNetworkNetworkInfo,
   // ShapeNetworkNetworkInfo,
@@ -294,5 +295,6 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   AbstractNetworkInfo,
   // AnimeTestnetNetworkInfo,
   // ModeNetworkInfo,
-  // AnimeNetworkInfo,
+  ZeroNetworkNetworkInfo,
+  AnimeNetworkInfo,
 ]
