@@ -152,7 +152,7 @@ export default function App() {
               <BannerWrapper>
                 <UrlBanner>
                   {`info.uniswap.org is being deprecated on June 11th. Explore the new combined V2 and V3 analytics at `}
-                  <Link href={'https://staging.flowswap.io'}>
+                  <Link href={'https://flowswap.io'}>
                     <Decorator>app.uniswap.org</Decorator>
                   </Link>
                 </UrlBanner>
