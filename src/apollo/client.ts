@@ -8,7 +8,7 @@ export const healthClient = new ApolloClient({
 })
 
 export const blockClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/abstract/blocks-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/abstract/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -352,7 +352,7 @@ export const celoBlockClient = new ApolloClient({
 })
 
 export const abstractTestnetClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/absctract-testnet/v3-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/absctract-testnet/v3-subgraph`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -380,7 +380,7 @@ export const abstractTestnetClient = new ApolloClient({
 })
 
 export const abstractTestnetBlockClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/absctract-testnet/blocks-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/absctract-testnet/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -723,7 +723,7 @@ export const abstractClient = new ApolloClient({
 })
 
 export const abstractBlockClient = new ApolloClient({
-  uri: `${GRAPH_NODE_URL}/subgraphs/name/abstract/blocks-subgraph`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/abstract/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
