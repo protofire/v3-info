@@ -76,6 +76,9 @@ const Title = styled(NavLink)`
   :hover {
     cursor: pointer;
   }
+  @media (max-width: 1080px) {
+    display: none;
+  }
   ${({ theme }) => theme.mediaWidth.upToSmall`
     justify-self: center;
   `};

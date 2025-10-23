@@ -271,7 +271,7 @@ export const AnimeNetworkInfo: NetworkInfo = {
   name: 'Anime',
   bgColor: '#FFC2C2',
   bgColorDark: '#D26378',
-  primaryColor: '#e2e762ff',
+  primaryColor: '#c18b33',
   secondaryColor: '#2172E5',
   imageURL: ANIME_LOGO_URL,
 }
