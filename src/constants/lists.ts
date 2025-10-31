@@ -11,7 +11,7 @@ export const ABSTRACT_LIST = getTokenListApiURL('abstract')
 export const ANIME_TESTNET_LIST = getTokenListApiURL('anime-testnet')
 export const MODE_LIST = getTokenListApiURL('mode')
 export const FLOW_TESTNET_LIST =
-  'https://github.com/protofire/token-list/raw/refs/heads/main/networks/flow-testnet.json'
+  'https://cyan-legislative-leech-117.mypinata.cloud/ipfs/QmWFoYN4bFDB3g42pp8w9qgfS8gYVbo6wmeoCWiDcXFmcZ'
 
 // default lists to be 'active' aka searched across
 export const DEFAULT_ACTIVE_LIST_URLS: string[] = [
