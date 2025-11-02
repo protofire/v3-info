@@ -943,3 +943,42 @@ export const flowBlockClient = new ApolloClient({
     },
   },
 })
+
+export const baseSepoliaClient = new ApolloClient({
+  uri: 'https://graph.swap.w3us.site/subgraphs/name/base-sepolia/uniswap-v3',
+  cache: new InMemoryCache({
+    typePolicies: {
+      Token: {
+        keyFields: false,
+      },
+      Pool: {
+        keyFields: false,
+      },
+    },
+  }),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'no-cache',
+    },
+    query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+  },
+})
+
+export const baseSepoliaBlockClient = new ApolloClient({
+  uri: 'https://graph.swap.w3us.site/subgraphs/name/base-sepolia/blocks',
+  cache: new InMemoryCache(),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-first',
+    },
+    query: {
+      fetchPolicy: 'cache-first',
+      errorPolicy: 'all',
+    },
+  },
+})

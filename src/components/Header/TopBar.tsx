@@ -21,7 +21,7 @@ const StyledLink = styled(ExternalLink)`
 `
 
 const TopBar = () => {
-  const interfaceUrl = process.env.REACT_APP_INTERFACE_URL ?? `https://staging.flowswap.io`
+  const interfaceUrl = process.env.REACT_APP_INTERFACE_URL ?? `https://testing.swap.w3us.site`
 
   return (
     <Wrapper>
@@ -31,7 +31,7 @@ const TopBar = () => {
           <StyledLink href={`${interfaceUrl}/#/swap`}>
             <Flex alignItems={'center'}>
               <ChevronLeft width={16} height={16} />
-              Back to FlowSwap
+              Back to Base Sepolia Swap
             </Flex>
           </StyledLink>
         </AutoRow>

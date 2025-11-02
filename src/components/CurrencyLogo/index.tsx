@@ -36,6 +36,8 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'flow'
     case ChainId.FLOW_TESTNET:
       return 'flow-testnet'
+    case ChainId.BASE_SEPOLIA:
+      return 'base-sepolia'
     default:
       return 'ethereum'
   }

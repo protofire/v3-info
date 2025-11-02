@@ -15,7 +15,7 @@ import PoolPage from './Pool/PoolPage'
 import { ExternalLink, TYPE } from 'theme'
 import { useActiveNetworkVersion, useSubgraphStatus } from 'state/application/hooks'
 import { DarkGreyCard } from 'components/Card'
-import { SUPPORTED_NETWORK_VERSIONS, OptimismNetworkInfo, FlowMainnetNetworkInfo } from 'constants/networks'
+import { SUPPORTED_NETWORK_VERSIONS, OptimismNetworkInfo, BASE_SEPOLIANetworkInfo } from 'constants/networks'
 import { Link } from 'rebass'
 import { forkConfig } from 'forkConfig'
 
@@ -113,7 +113,7 @@ export default function App() {
   const [activeNetwork, setActiveNetwork] = useActiveNetworkVersion()
   useEffect(() => {
     if (location.pathname === '/') {
-      setActiveNetwork(FlowMainnetNetworkInfo)
+      setActiveNetwork(BASE_SEPOLIANetworkInfo)
     } else {
       SUPPORTED_NETWORK_VERSIONS.map((n) => {
         if (location.pathname.includes(n.route.toLocaleLowerCase())) {
@@ -152,7 +152,7 @@ export default function App() {
               <BannerWrapper>
                 <UrlBanner>
                   {`info.uniswap.org is being deprecated on June 11th. Explore the new combined V2 and V3 analytics at `}
-                  <Link href={'https://staging.flowswap.io'}>
+                  <Link href={'https://testing.swap.w3us.site'}>
                     <Decorator>app.uniswap.org</Decorator>
                   </Link>
                 </UrlBanner>
