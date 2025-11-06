@@ -1,5 +1,5 @@
 import { RowFixed, RowBetween } from 'components/Row'
-import { FlowMainnetNetworkInfo, SUPPORTED_NETWORK_VERSIONS } from 'constants/networks'
+import { BASE_SEPOLIANetworkInfo, SUPPORTED_NETWORK_VERSIONS } from 'constants/networks'
 import useTheme from 'hooks/useTheme'
 import React, { useState, useRef } from 'react'
 import { ChevronDown } from 'react-feather'
@@ -100,7 +100,7 @@ export default function NetworkDropdown() {
             </TYPE.main>
             {SUPPORTED_NETWORK_VERSIONS.map((n) => {
               return (
-                <StyledInternalLink key={n.id} to={`${n === FlowMainnetNetworkInfo ? '' : '/' + n.route}/`}>
+                <StyledInternalLink key={n.id} to={`${n === BASE_SEPOLIANetworkInfo ? '' : '/' + n.route}/`}>
                   <NetworkRow
                     onClick={() => {
                       setShowMenu(false)

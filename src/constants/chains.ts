@@ -15,6 +15,7 @@ export const CHAIN_IDS_TO_NAMES = {
   [ChainId.BNB]: 'bnb',
   [ChainId.AVALANCHE]: 'avalanche',
   [ChainId.BASE]: 'base',
+  [ChainId.BASE_SEPOLIA]: 'base_sepolia',
 } as const
 
 // Include ChainIds in this array if they are not supported by the UX yet, but are already in the SDK.
@@ -136,15 +137,17 @@ export function getChainPriority(chainId: ChainId): number {
     case ChainId.POLYGON:
     case ChainId.POLYGON_MUMBAI:
       return 3
-    case ChainId.BASE:
+    case ChainId.BASE_SEPOLIA:
       return 4
-    case ChainId.BNB:
+    case ChainId.BASE:
       return 5
-    case ChainId.AVALANCHE:
+    case ChainId.BNB:
       return 6
+    case ChainId.AVALANCHE:
+      return 7
     case ChainId.CELO:
     case ChainId.CELO_ALFAJORES:
-      return 7
+      return 8
     default:
       return 8
   }

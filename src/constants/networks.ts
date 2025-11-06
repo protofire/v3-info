@@ -19,6 +19,7 @@ import ANIME_TESTNET_LOGO_URL from '../assets/images/anime-logo.png'
 import ANIME_LOGO_URL from '../assets/images/anime-logo.png'
 import MODE_LOGO_URL from '../assets/images/mode-logo.png'
 import FLOW_LOGO_URL from '../assets/images/flow-logo.png'
+import BASE_SEPOLIA_LOGO_URL from '../assets/images/base-sepolia-logo.svg'
 
 export enum SupportedNetwork {
   ETHEREUM,
@@ -43,6 +44,7 @@ export enum SupportedNetwork {
   ANIME,
   FLOW_TESTNET,
   FLOW_MAINNET,
+  BASE_SEPOLIA,
 }
 
 export type NetworkInfo = {
@@ -299,6 +301,17 @@ export const FlowMainnetNetworkInfo: NetworkInfo = {
   imageURL: FLOW_LOGO_URL,
 }
 
+export const BASE_SEPOLIANetworkInfo: NetworkInfo = {
+  chainId: ChainId.BASE_SEPOLIA,
+  id: SupportedNetwork.BASE_SEPOLIA,
+  route: 'base-sepolia',
+  name: 'Base Sepolia',
+  bgColor: '#0052ff',
+  primaryColor: '#0052ff',
+  secondaryColor: '#0052ff',
+  imageURL: BASE_SEPOLIA_LOGO_URL,
+}
+
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // EthereumNetworkInfo,
   // PolygonNetworkInfo,
@@ -317,9 +330,10 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // RedstoneGarnetNetworkInfo,
   // InkNetworkInfo,
   //AbstractNetworkInfo,
-  FlowMainnetNetworkInfo,
-  FlowTestnetNetworkInfo,
+  // FlowMainnetNetworkInfo,
+  // FlowTestnetNetworkInfo,
   // AnimeTestnetNetworkInfo,
   // ModeNetworkInfo,
   // AnimeNetworkInfo,
+  BASE_SEPOLIANetworkInfo,
 ]
