@@ -10,8 +10,7 @@ export const INK_LIST = getTokenListApiURL('ink')
 export const ABSTRACT_LIST = getTokenListApiURL('abstract')
 export const ANIME_TESTNET_LIST = getTokenListApiURL('anime-testnet')
 export const MODE_LIST = getTokenListApiURL('mode')
-export const FLOW_TESTNET_LIST =
-  'https://cyan-legislative-leech-117.mypinata.cloud/ipfs/QmXPqqYJsTLvSrkLZAZnzVsfbCyZAopzE91ALsjnPSsbWF'
+export const FLOW_TESTNET_LIST = 'https://assets.swap.w3us.site/networks/flow.json'
 
 // default lists to be 'active' aka searched across
 export const DEFAULT_ACTIVE_LIST_URLS: string[] = [
