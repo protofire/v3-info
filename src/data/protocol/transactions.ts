@@ -132,7 +132,7 @@ export async function fetchTopTransactions(
     })
 
     if (error || loading || !data) {
-    return undefined
+      return undefined
     }
 
     const formatted = data.transactions.reduce((accum: Transaction[], t: TransactionEntry) => {
