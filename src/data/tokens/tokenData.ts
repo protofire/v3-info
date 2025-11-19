@@ -8,6 +8,7 @@ import { TokenData } from 'state/tokens/reducer'
 import { useEthPrices } from 'hooks/useEthPrices'
 import { formatTokenSymbol, formatTokenName } from 'utils/tokens'
 import { useActiveNetworkVersion, useClients } from 'state/application/hooks'
+import { getTokenOverride } from './overrides'
 
 export const TOKENS_BULK = (block: number | undefined, tokens: string[]) => {
   let tokenString = `[`
@@ -196,11 +197,13 @@ export function useFetchedTokenDatas(tokenAddresses: string[]): {
         ? parseFloat(current.feesUSD)
         : 0
 
+    const override = getTokenOverride(address)
+
     accum[address] = {
       exists: !!current,
       address,
-      name: current ? formatTokenName(address, current.name, activeNetwork) : '',
-      symbol: current ? formatTokenSymbol(address, current.symbol, activeNetwork) : '',
+      name: override?.name ?? (current ? formatTokenName(address, current.name, activeNetwork) : ''),
+      symbol: override?.symbol ?? (current ? formatTokenSymbol(address, current.symbol, activeNetwork) : ''),
       volumeUSD,
       volumeUSDChange,
       volumeUSDWeek,

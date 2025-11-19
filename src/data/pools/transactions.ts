@@ -2,6 +2,7 @@ import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Transaction, TransactionType } from 'types'
 import { formatTokenSymbol } from 'utils/tokens'
+import { getTokenOverride } from '../tokens/overrides'
 
 const POOL_TRANSACTIONS = gql`
   query transactions($address: Bytes!) {
@@ -162,13 +163,16 @@ export async function fetchPoolTransactions(
   }
 
   const mints = data.mints.map((m) => {
+    const token0Override = getTokenOverride(m.pool.token0.id)
+    const token1Override = getTokenOverride(m.pool.token1.id)
+
     return {
       type: TransactionType.MINT,
       hash: m.transaction.id,
       timestamp: m.timestamp,
       sender: m.origin,
-      token0Symbol: formatTokenSymbol(m.pool.token0.id, m.pool.token0.symbol),
-      token1Symbol: formatTokenSymbol(m.pool.token1.id, m.pool.token1.symbol),
+      token0Symbol: token0Override?.symbol ?? formatTokenSymbol(m.pool.token0.id, m.pool.token0.symbol),
+      token1Symbol: token1Override?.symbol ?? formatTokenSymbol(m.pool.token1.id, m.pool.token1.symbol),
       token0Address: m.pool.token0.id,
       token1Address: m.pool.token1.id,
       amountUSD: parseFloat(m.amountUSD),
@@ -177,13 +181,16 @@ export async function fetchPoolTransactions(
     }
   })
   const burns = data.burns.map((m) => {
+    const token0Override = getTokenOverride(m.pool.token0.id)
+    const token1Override = getTokenOverride(m.pool.token1.id)
+
     return {
       type: TransactionType.BURN,
       hash: m.transaction.id,
       timestamp: m.timestamp,
       sender: m.owner,
-      token0Symbol: formatTokenSymbol(m.pool.token0.id, m.pool.token0.symbol),
-      token1Symbol: formatTokenSymbol(m.pool.token1.id, m.pool.token1.symbol),
+      token0Symbol: token0Override?.symbol ?? formatTokenSymbol(m.pool.token0.id, m.pool.token0.symbol),
+      token1Symbol: token1Override?.symbol ?? formatTokenSymbol(m.pool.token1.id, m.pool.token1.symbol),
       token0Address: m.pool.token0.id,
       token1Address: m.pool.token1.id,
       amountUSD: parseFloat(m.amountUSD),
@@ -193,13 +200,16 @@ export async function fetchPoolTransactions(
   })
 
   const swaps = data.swaps.map((m) => {
+    const token0Override = getTokenOverride(m.pool.token0.id)
+    const token1Override = getTokenOverride(m.pool.token1.id)
+
     return {
       type: TransactionType.SWAP,
       hash: m.transaction.id,
       timestamp: m.timestamp,
       sender: m.origin,
-      token0Symbol: formatTokenSymbol(m.pool.token0.id, m.pool.token0.symbol),
-      token1Symbol: formatTokenSymbol(m.pool.token1.id, m.pool.token1.symbol),
+      token0Symbol: token0Override?.symbol ?? formatTokenSymbol(m.pool.token0.id, m.pool.token0.symbol),
+      token1Symbol: token1Override?.symbol ?? formatTokenSymbol(m.pool.token1.id, m.pool.token1.symbol),
       token0Address: m.pool.token0.id,
       token1Address: m.pool.token1.id,
       amountUSD: parseFloat(m.amountUSD),
