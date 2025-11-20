@@ -12,7 +12,7 @@ const overrides: Record<string, TokenMetadataOverride> = {
   //   description: 'This token represents ...'
   // },
   '0xf1815bd50389c46847f0bda824ec8da914045d14': {
-    name: 'Bridged USDC (Stargate)',
+    name: 'USDC',
     symbol: 'USDC',
   },
 }
