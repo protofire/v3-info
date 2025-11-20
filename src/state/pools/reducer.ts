@@ -1,4 +1,5 @@
 import { currentTimestamp } from './../../utils/index'
+import { getTokenOverride } from 'data/tokens/overrides'
 import { updatePoolData, addPoolKeys, updatePoolChartData, updatePoolTransactions, updateTickData } from './actions'
 import { createReducer } from '@reduxjs/toolkit'
 import { SerializedToken } from 'state/user/actions'
@@ -108,14 +109,26 @@ export const initialState: PoolsState = {
 export default createReducer(initialState, (builder) =>
   builder
     .addCase(updatePoolData, (state, { payload: { pools, networkId } }) => {
-      pools.map(
-        (poolData) =>
-          (state.byAddress[networkId][poolData.address] = {
-            ...state.byAddress[networkId][poolData.address],
-            data: poolData,
-            lastUpdated: currentTimestamp(),
-          }),
-      )
+      pools.map((poolData) => {
+        const override0 = getTokenOverride(poolData.token0.address)
+        const override1 = getTokenOverride(poolData.token1.address)
+
+        if (override0) {
+          poolData.token0.name = override0.name ?? poolData.token0.name
+          poolData.token0.symbol = override0.symbol ?? poolData.token0.symbol
+        }
+
+        if (override1) {
+          poolData.token1.name = override1.name ?? poolData.token1.name
+          poolData.token1.symbol = override1.symbol ?? poolData.token1.symbol
+        }
+
+        return (state.byAddress[networkId][poolData.address] = {
+          ...state.byAddress[networkId][poolData.address],
+          data: poolData,
+          lastUpdated: currentTimestamp(),
+        })
+      })
     })
     // add address to byAddress keys if not included yet
     .addCase(addPoolKeys, (state, { payload: { poolAddresses, networkId } }) => {

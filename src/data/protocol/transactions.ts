@@ -2,6 +2,7 @@ import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
 import gql from 'graphql-tag'
 import { Transaction, TransactionType } from 'types'
 import { formatTokenSymbol } from 'utils/tokens'
+import { getTokenOverride } from 'data/tokens/overrides'
 
 const GLOBAL_TRANSACTIONS = gql`
   query transactions {
@@ -135,52 +136,27 @@ export async function fetchTopTransactions(
     }
 
     const formatted = data.transactions.reduce((accum: Transaction[], t: TransactionEntry) => {
-      const mintEntries = t.mints.map((m) => {
-        return {
-          type: TransactionType.MINT,
-          hash: t.id,
-          timestamp: t.timestamp,
-          sender: m.origin,
-          token0Symbol: formatTokenSymbol(m.pool.token0.id, m.pool.token0.symbol),
-          token1Symbol: formatTokenSymbol(m.pool.token1.id, m.pool.token1.symbol),
-          token0Address: m.pool.token0.id,
-          token1Address: m.pool.token1.id,
-          amountUSD: parseFloat(m.amountUSD),
-          amountToken0: parseFloat(m.amount0),
-          amountToken1: parseFloat(m.amount1),
-        }
-      })
-      const burnEntries = t.burns.map((m) => {
-        return {
-          type: TransactionType.BURN,
-          hash: t.id,
-          timestamp: t.timestamp,
-          sender: m.origin,
-          token0Symbol: formatTokenSymbol(m.pool.token0.id, m.pool.token0.symbol),
-          token1Symbol: formatTokenSymbol(m.pool.token1.id, m.pool.token1.symbol),
-          token0Address: m.pool.token0.id,
-          token1Address: m.pool.token1.id,
-          amountUSD: parseFloat(m.amountUSD),
-          amountToken0: parseFloat(m.amount0),
-          amountToken1: parseFloat(m.amount1),
-        }
+      const formatTokens = (token0: any, token1: any) => ({
+        token0Symbol: getTokenOverride(token0.id)?.symbol ?? formatTokenSymbol(token0.id, token0.symbol),
+        token1Symbol: getTokenOverride(token1.id)?.symbol ?? formatTokenSymbol(token1.id, token1.symbol),
+        token0Address: token0.id,
+        token1Address: token1.id,
       })
 
-      const swapEntries = t.swaps.map((m) => {
-        return {
-          hash: t.id,
-          type: TransactionType.SWAP,
-          timestamp: t.timestamp,
-          sender: m.origin,
-          token0Symbol: formatTokenSymbol(m.pool.token0.id, m.pool.token0.symbol),
-          token1Symbol: formatTokenSymbol(m.pool.token1.id, m.pool.token1.symbol),
-          token0Address: m.pool.token0.id,
-          token1Address: m.pool.token1.id,
-          amountUSD: parseFloat(m.amountUSD),
-          amountToken0: parseFloat(m.amount0),
-          amountToken1: parseFloat(m.amount1),
-        }
+      const createEntry = (type: TransactionType, data: any, origin: string) => ({
+        type,
+        hash: t.id,
+        timestamp: t.timestamp,
+        sender: origin,
+        ...formatTokens(data.pool.token0, data.pool.token1),
+        amountUSD: parseFloat(data.amountUSD),
+        amountToken0: parseFloat(data.amount0),
+        amountToken1: parseFloat(data.amount1),
       })
+
+      const mintEntries = t.mints.map((m) => createEntry(TransactionType.MINT, m, m.origin))
+      const burnEntries = t.burns.map((m) => createEntry(TransactionType.BURN, m, m.origin))
+      const swapEntries = t.swaps.map((m) => createEntry(TransactionType.SWAP, m, m.origin))
       accum = [...accum, ...mintEntries, ...burnEntries, ...swapEntries]
       return accum
     }, [])
