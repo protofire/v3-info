@@ -169,7 +169,7 @@ export default function TokenPage() {
         !tokenData.exists ? (
           <LightGreyCard style={{ textAlign: 'center' }}>
             No pool has been created with this token yet. Create one
-            <StyledExternalLink style={{ marginLeft: '4px' }} href={`https://flowswap.io/#/add/${formattedAddress}`}>
+            <StyledExternalLink style={{ marginLeft: '4px' }} href={`https://placeholder.io/#/add/${formattedAddress}`}>
               here.
             </StyledExternalLink>
           </LightGreyCard>
@@ -230,7 +230,7 @@ export default function TokenPage() {
                 </AutoColumn>
                 {activeNetwork !== StableTestnetNetworkInfo ? null : (
                   <RowFixed>
-                    <StyledExternalLink href={`https://flowswap.io/#/add/${formattedAddress}`}>
+                    <StyledExternalLink href={`https://placeholder.io/#/add/${formattedAddress}`}>
                       <ButtonGray width="170px" mr="12px" height={'100%'} style={{ height: '44px' }}>
                         <RowBetween>
                           <Download size={24} />
@@ -238,7 +238,7 @@ export default function TokenPage() {
                         </RowBetween>
                       </ButtonGray>
                     </StyledExternalLink>
-                    <StyledExternalLink href={`https://flowswap.io/#/swap?inputCurrency=${formattedAddress}`}>
+                    <StyledExternalLink href={`https://placeholder.io/#/swap?inputCurrency=${formattedAddress}`}>
                       <ButtonPrimary width="100px" bgColor={backgroundColor} style={{ height: '44px' }}>
                         Trade
                       </ButtonPrimary>

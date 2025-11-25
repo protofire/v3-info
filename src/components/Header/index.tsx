@@ -230,7 +230,7 @@ export default function Header() {
             Tokens
           </StyledNavLink>
           <StyledExternalLink
-            href="https://flowswap.io"
+            href="https://temp.xyz"
             target="_blank"
             rel="noopener noreferrer"
             id={`swap-nav-link`}
