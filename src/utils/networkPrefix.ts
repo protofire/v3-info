@@ -1,7 +1,7 @@
-import { FlowTestnetNetworkInfo, NetworkInfo } from 'constants/networks'
+import { StableTestnetNetworkInfo, NetworkInfo } from 'constants/networks'
 
 export function networkPrefix(activeNewtork: NetworkInfo) {
-  const isFlow = activeNewtork === FlowTestnetNetworkInfo
+  const isFlow = activeNewtork === StableTestnetNetworkInfo
   if (isFlow) {
     return '/'
   }

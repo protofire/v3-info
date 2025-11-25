@@ -121,8 +121,7 @@ export function getChainPriority(chainId: ChainId): number {
     //case ChainId.SHAPE:
     //case ChainId.REDSTONE:
     //case ChainId.REDSTONE_GARNET:
-    case ChainId.FLOW_MAINNET: // Flow Mainnet
-    case ChainId.FLOW_TESTNET: // Flow Testnet
+    case ChainId.STABLE_TESTNET:
       return 0
     case ChainId.MAINNET:
     case ChainId.GOERLI:

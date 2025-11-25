@@ -18,7 +18,7 @@ import INK_LOGO_URL from '../assets/images/ink-logo.png'
 import ANIME_TESTNET_LOGO_URL from '../assets/images/anime-logo.png'
 import ANIME_LOGO_URL from '../assets/images/anime-logo.png'
 import MODE_LOGO_URL from '../assets/images/mode-logo.png'
-import FLOW_LOGO_URL from '../assets/images/flow-logo.png'
+import STABLE_LOGO_URL from '../assets/images/stable-logo.svg'
 
 export enum SupportedNetwork {
   ETHEREUM,
@@ -41,8 +41,7 @@ export enum SupportedNetwork {
   ANIME_TESTNET,
   MODE,
   ANIME,
-  FLOW_TESTNET,
-  FLOW_MAINNET,
+  STABLE_TESTNET,
 }
 
 export type NetworkInfo = {
@@ -277,26 +276,15 @@ export const AnimeNetworkInfo: NetworkInfo = {
   imageURL: ANIME_LOGO_URL,
 }
 
-export const FlowTestnetNetworkInfo: NetworkInfo = {
-  chainId: ChainId.FLOW_TESTNET,
-  id: SupportedNetwork.FLOW_TESTNET,
-  route: 'flow-testnet',
-  name: 'Flow EVM Testnet',
-  bgColor: '#00A3E0',
-  primaryColor: '#00A3E0',
-  secondaryColor: '#0080B6',
-  imageURL: FLOW_LOGO_URL,
-}
-
-export const FlowMainnetNetworkInfo: NetworkInfo = {
-  chainId: ChainId.FLOW_MAINNET,
-  id: SupportedNetwork.FLOW_MAINNET,
-  route: 'flow',
-  name: 'Flow Mainnet',
-  bgColor: '#1D2374',
-  primaryColor: '#00EF8B',
-  secondaryColor: '#02D87E',
-  imageURL: FLOW_LOGO_URL,
+export const StableTestnetNetworkInfo: NetworkInfo = {
+  chainId: ChainId.STABLE_TESTNET,
+  id: SupportedNetwork.STABLE_TESTNET,
+  route: 'stable-testnet',
+  name: 'Stable Testnet',
+  bgColor: '#02502F',
+  primaryColor: '#35D07F',
+  secondaryColor: '#9ACDB2',
+  imageURL: STABLE_LOGO_URL,
 }
 
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
@@ -317,9 +305,10 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // RedstoneGarnetNetworkInfo,
   // InkNetworkInfo,
   //AbstractNetworkInfo,
-  FlowMainnetNetworkInfo,
-  FlowTestnetNetworkInfo,
+  // StableTestnetNetworkInfo,
+  // StableTestnetNetworkInfo,
   // AnimeTestnetNetworkInfo,
   // ModeNetworkInfo,
   // AnimeNetworkInfo,
+  StableTestnetNetworkInfo,
 ]

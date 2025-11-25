@@ -32,10 +32,8 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'bob'
     case ChainId.CYBER:
       return 'cyeth'
-    case ChainId.FLOW_MAINNET:
-      return 'flow'
-    case ChainId.FLOW_TESTNET:
-      return 'flow-testnet'
+    case ChainId.STABLE_TESTNET:
+      return 'USDT0'
     default:
       return 'ethereum'
   }
@@ -79,7 +77,7 @@ export default function CurrencyLogo({
   const celo = useCombinedActiveList()?.[42220]
   const bnbList = useCombinedActiveList()?.[ChainId.BNB]
   const baseList = useCombinedActiveList()?.[ChainId.BASE]
-  const flowTestnetList = useCombinedActiveList()?.[ChainId.FLOW_TESTNET]
+  const flowTestnetList = useCombinedActiveList()?.[ChainId.STABLE_TESTNET]
 
   const [activeNetwork] = useActiveNetworkVersion()
 

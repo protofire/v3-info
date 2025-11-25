@@ -26,7 +26,7 @@ import DensityChart from 'components/DensityChart'
 import { MonoSpace } from 'components/shared'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
-import { EthereumNetworkInfo, FlowMainnetNetworkInfo } from 'constants/networks'
+import { EthereumNetworkInfo, StableTestnetNetworkInfo } from 'constants/networks'
 import { GenericImageWrapper } from 'components/Logo'
 import { Navigate, useParams } from 'react-router-dom'
 // import { Trace } from '@uniswap/analytics'
@@ -211,7 +211,7 @@ function PoolPage({ address }: { address: string }) {
                 </StyledInternalLink>
               </ResponsiveRow>
             </AutoColumn>
-            {activeNetwork !== FlowMainnetNetworkInfo ? null : (
+            {activeNetwork !== StableTestnetNetworkInfo ? null : (
               <RowFixed>
                 <StyledExternalLink
                   href={`https://flowswap.io/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}

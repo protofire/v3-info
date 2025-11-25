@@ -100,8 +100,7 @@ export const initialState: PoolsState = {
     [SupportedNetwork.ANIME_TESTNET]: {},
     [SupportedNetwork.MODE]: {},
     [SupportedNetwork.ANIME]: {},
-    [SupportedNetwork.FLOW_TESTNET]: {},
-    [SupportedNetwork.FLOW_MAINNET]: {},
+    [SupportedNetwork.STABLE_TESTNET]: {},
   },
 }
 

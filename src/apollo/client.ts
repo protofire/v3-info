@@ -866,8 +866,8 @@ export const animeBlockClient = new ApolloClient({
   },
 })
 
-export const flowTestnetClient = new ApolloClient({
-  uri: 'https://graph.swap.w3us.site/subgraphs/name/flow-testnet/uniswap-v3',
+export const stableTestnetClient = new ApolloClient({
+  uri: 'https://graph.swap.w3us.site/subgraphs/name/stable-testnet-v2/uniswap-v3',
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -890,47 +890,8 @@ export const flowTestnetClient = new ApolloClient({
   },
 })
 
-export const flowTestnetBlockClient = new ApolloClient({
-  uri: 'https://graph.swap.w3us.site/subgraphs/name/flow-testnet/blocks',
-  cache: new InMemoryCache(),
-  queryDeduplication: true,
-  defaultOptions: {
-    watchQuery: {
-      fetchPolicy: 'cache-first',
-    },
-    query: {
-      fetchPolicy: 'cache-first',
-      errorPolicy: 'all',
-    },
-  },
-})
-
-export const flowClient = new ApolloClient({
-  uri: 'https://graph.swap.w3us.site/subgraphs/name/flow/uniswap-v3',
-  cache: new InMemoryCache({
-    typePolicies: {
-      Token: {
-        keyFields: false,
-      },
-      Pool: {
-        keyFields: false,
-      },
-    },
-  }),
-  queryDeduplication: true,
-  defaultOptions: {
-    watchQuery: {
-      fetchPolicy: 'no-cache',
-    },
-    query: {
-      fetchPolicy: 'no-cache',
-      errorPolicy: 'all',
-    },
-  },
-})
-
-export const flowBlockClient = new ApolloClient({
-  uri: 'https://graph.swap.w3us.site/subgraphs/name/flow/blocks',
+export const stableTestnetBlockClient = new ApolloClient({
+  uri: 'https://graph.swap.w3us.site/subgraphs/name/stable-testnet/blocks',
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
