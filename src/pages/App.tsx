@@ -15,7 +15,7 @@ import PoolPage from './Pool/PoolPage'
 import { ExternalLink, TYPE } from 'theme'
 import { useActiveNetworkVersion, useSubgraphStatus } from 'state/application/hooks'
 import { DarkGreyCard } from 'components/Card'
-import { SUPPORTED_NETWORK_VERSIONS, OptimismNetworkInfo, StableTestnetNetworkInfo } from 'constants/networks'
+import { SUPPORTED_NETWORK_VERSIONS, OptimismNetworkInfo, StableNetworkInfo } from 'constants/networks'
 import { Link } from 'rebass'
 import { forkConfig } from 'forkConfig'
 
@@ -113,7 +113,7 @@ export default function App() {
   const [activeNetwork, setActiveNetwork] = useActiveNetworkVersion()
   useEffect(() => {
     if (location.pathname === '/') {
-      setActiveNetwork(StableTestnetNetworkInfo)
+      setActiveNetwork(StableNetworkInfo)
     } else {
       SUPPORTED_NETWORK_VERSIONS.map((n) => {
         if (location.pathname.includes(n.route.toLocaleLowerCase())) {
@@ -143,7 +143,7 @@ export default function App() {
             {showNotSyncedWarning && (
               <BannerWrapper>
                 <WarningBanner>
-                  {`Warning: 
+                  {`Warning:
                   Data has only synced to  block ${subgraphStatus.syncedBlock} (out of ${subgraphStatus.headBlock}). Please check back soon.`}
                 </WarningBanner>
               </BannerWrapper>
@@ -152,7 +152,7 @@ export default function App() {
               <BannerWrapper>
                 <UrlBanner>
                   {`info.uniswap.org is being deprecated on June 11th. Explore the new combined V2 and V3 analytics at `}
-                  <Link href={'https://placeholder.io'}>
+                  <Link href={'https://staging.swap.stable.xyz'}>
                     <Decorator>app.uniswap.org</Decorator>
                   </Link>
                 </UrlBanner>

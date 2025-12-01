@@ -34,6 +34,8 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'cyeth'
     case ChainId.STABLE_TESTNET:
       return 'USDT0'
+    case ChainId.STABLE:
+      return 'USDT0'
     default:
       return 'ethereum'
   }
@@ -77,7 +79,7 @@ export default function CurrencyLogo({
   const celo = useCombinedActiveList()?.[42220]
   const bnbList = useCombinedActiveList()?.[ChainId.BNB]
   const baseList = useCombinedActiveList()?.[ChainId.BASE]
-  const flowTestnetList = useCombinedActiveList()?.[ChainId.STABLE_TESTNET]
+  const stableList = useCombinedActiveList()?.[ChainId.STABLE]
 
   const [activeNetwork] = useActiveNetworkVersion()
 
@@ -132,11 +134,11 @@ export default function CurrencyLogo({
   const uriLocationsCelo = useHttpLocations(celoURI)
 
   const flowTestnetURI = useMemo(() => {
-    if (checkSummed && flowTestnetList?.[checkSummed]) {
-      return flowTestnetList?.[checkSummed].token.logoURI
+    if (checkSummed && stableList?.[checkSummed]) {
+      return stableList?.[checkSummed].token.logoURI
     }
     return undefined
-  }, [checkSummed, flowTestnetList])
+  }, [checkSummed, stableList])
   const uriLocationsFlowTestnet = useHttpLocations(flowTestnetURI)
 
   //temp until token logo issue merged

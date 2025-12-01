@@ -21,7 +21,7 @@ const StyledLink = styled(ExternalLink)`
 `
 
 const TopBar = () => {
-  const interfaceUrl = process.env.REACT_APP_INTERFACE_URL ?? ``
+  const interfaceUrl = process.env.REACT_APP_INTERFACE_URL ?? `https://staging.swap.stable.xyz`
 
   return (
     <Wrapper>

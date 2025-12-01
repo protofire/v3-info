@@ -42,6 +42,7 @@ export enum SupportedNetwork {
   MODE,
   ANIME,
   STABLE_TESTNET,
+  STABLE,
 }
 
 export type NetworkInfo = {
@@ -287,6 +288,17 @@ export const StableTestnetNetworkInfo: NetworkInfo = {
   imageURL: STABLE_LOGO_URL,
 }
 
+export const StableNetworkInfo: NetworkInfo = {
+  chainId: ChainId.STABLE,
+  id: SupportedNetwork.STABLE,
+  route: 'stable',
+  name: 'Stable',
+  bgColor: '#02502F',
+  primaryColor: '#35D07F',
+  secondaryColor: '#9ACDB2',
+  imageURL: STABLE_LOGO_URL,
+}
+
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // EthereumNetworkInfo,
   // PolygonNetworkInfo,
@@ -304,11 +316,10 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // RedstoneNetworkInfo,
   // RedstoneGarnetNetworkInfo,
   // InkNetworkInfo,
-  //AbstractNetworkInfo,
-  // StableTestnetNetworkInfo,
-  // StableTestnetNetworkInfo,
+  // AbstractNetworkInfo,
   // AnimeTestnetNetworkInfo,
   // ModeNetworkInfo,
   // AnimeNetworkInfo,
   StableTestnetNetworkInfo,
+  StableNetworkInfo,
 ]

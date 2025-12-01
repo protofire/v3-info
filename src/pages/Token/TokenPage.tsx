@@ -36,7 +36,7 @@ import { MonoSpace } from 'components/shared'
 import dayjs from 'dayjs'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
-import { EthereumNetworkInfo, StableTestnetNetworkInfo } from 'constants/networks'
+import { EthereumNetworkInfo, StableNetworkInfo } from 'constants/networks'
 import { GenericImageWrapper } from 'components/Logo'
 import { useCMCLink } from 'hooks/useCMCLink'
 import CMCLogo from '../../assets/images/cmc.png'
@@ -169,7 +169,10 @@ export default function TokenPage() {
         !tokenData.exists ? (
           <LightGreyCard style={{ textAlign: 'center' }}>
             No pool has been created with this token yet. Create one
-            <StyledExternalLink style={{ marginLeft: '4px' }} href={`https://placeholder.io/#/add/${formattedAddress}`}>
+            <StyledExternalLink
+              style={{ marginLeft: '4px' }}
+              href={`https://staging.swap.stable.xyz/#/add/${formattedAddress}`}
+            >
               here.
             </StyledExternalLink>
           </LightGreyCard>
@@ -228,9 +231,9 @@ export default function TokenPage() {
                     (<Percent value={tokenData.priceUSDChange} />)
                   </RowFlat>
                 </AutoColumn>
-                {activeNetwork !== StableTestnetNetworkInfo ? null : (
+                {activeNetwork !== StableNetworkInfo ? null : (
                   <RowFixed>
-                    <StyledExternalLink href={`https://placeholder.io/#/add/${formattedAddress}`}>
+                    <StyledExternalLink href={`https://staging.swap.stable.xyz/#/add/${formattedAddress}`}>
                       <ButtonGray width="170px" mr="12px" height={'100%'} style={{ height: '44px' }}>
                         <RowBetween>
                           <Download size={24} />
@@ -238,7 +241,9 @@ export default function TokenPage() {
                         </RowBetween>
                       </ButtonGray>
                     </StyledExternalLink>
-                    <StyledExternalLink href={`https://placeholder.io/#/swap?inputCurrency=${formattedAddress}`}>
+                    <StyledExternalLink
+                      href={`https://staging.swap.stable.xyz/#/swap?inputCurrency=${formattedAddress}`}
+                    >
                       <ButtonPrimary width="100px" bgColor={backgroundColor} style={{ height: '44px' }}>
                         Trade
                       </ButtonPrimary>

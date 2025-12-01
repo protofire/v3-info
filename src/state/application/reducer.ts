@@ -1,5 +1,5 @@
 import { createReducer, nanoid } from '@reduxjs/toolkit'
-import { NetworkInfo } from 'constants/networks'
+import { NetworkInfo, StableNetworkInfo } from 'constants/networks'
 import {
   addPopup,
   PopupContent,
@@ -10,7 +10,6 @@ import {
   setOpenModal,
   updateActiveNetworkVersion,
 } from './actions'
-import { StableTestnetNetworkInfo } from '../../constants/networks'
 
 type PopupList = Array<{ key: string; show: boolean; content: PopupContent; removeAfterMs: number | null }>
 
@@ -35,7 +34,7 @@ const initialState: ApplicationState = {
     syncedBlock: undefined,
     headBlock: undefined,
   },
-  activeNetworkVersion: StableTestnetNetworkInfo,
+  activeNetworkVersion: StableNetworkInfo,
 }
 
 export default createReducer(initialState, (builder) =>

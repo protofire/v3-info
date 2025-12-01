@@ -904,3 +904,42 @@ export const stableTestnetBlockClient = new ApolloClient({
     },
   },
 })
+
+export const stableClient = new ApolloClient({
+  uri: 'https://graph.swap.w3us.site/subgraphs/name/stable/uniswap-v3',
+  cache: new InMemoryCache({
+    typePolicies: {
+      Token: {
+        keyFields: false,
+      },
+      Pool: {
+        keyFields: false,
+      },
+    },
+  }),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'no-cache',
+    },
+    query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+  },
+})
+
+export const stableBlockClient = new ApolloClient({
+  uri: 'https://graph.swap.w3us.site/subgraphs/name/stable/blocks',
+  cache: new InMemoryCache(),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-first',
+    },
+    query: {
+      fetchPolicy: 'cache-first',
+      errorPolicy: 'all',
+    },
+  },
+})
