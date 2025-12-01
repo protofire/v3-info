@@ -27,15 +27,18 @@ const Wrapper = styled(GreyCard)`
   padding: 12px;
 `
 
+import { getOrderedTokens } from 'utils/pairNaming'
+
 const DataCard = ({ poolData }: { poolData: PoolData }) => {
+  const [token0, token1] = getOrderedTokens(poolData.token0, poolData.token1)
   return (
     <Container to={'pools/' + poolData.address}>
       <Wrapper>
         <AutoColumn $gap="sm">
           <RowFixed>
-            <DoubleCurrencyLogo address0={poolData.token0.address} address1={poolData.token1.address} size={16} />
+            <DoubleCurrencyLogo address0={token0.address} address1={token1.address} size={16} />
             <TYPE.label ml="8px">
-              <HoverInlineText maxCharacters={10} text={`${poolData.token0.symbol}/${poolData.token1.symbol}`} />
+              <HoverInlineText maxCharacters={10} text={`${token0.symbol}/${token1.symbol}`} />
             </TYPE.label>
             <GreyBadge ml="10px" fontSize="12px">
               {feeTierPercent(poolData.feeTier)}

@@ -65,8 +65,11 @@ const SORT_FIELD = {
   volumeUSDWeek: 'volumeUSDWeek',
 }
 
+import { getOrderedTokens } from 'utils/pairNaming'
+
 const DataRow = ({ poolData, index }: { poolData: PoolData; index: number }) => {
   const [activeNetwork] = useActiveNetworkVersion()
+  const [token0, token1] = getOrderedTokens(poolData.token0, poolData.token1)
 
   return (
     <LinkWrapper to={networkPrefix(activeNetwork) + 'pools/' + poolData.address}>
@@ -74,9 +77,9 @@ const DataRow = ({ poolData, index }: { poolData: PoolData; index: number }) => 
         <Label fontWeight={400}>{index + 1}</Label>
         <Label fontWeight={400}>
           <RowFixed>
-            <DoubleCurrencyLogo address0={poolData.token0.address} address1={poolData.token1.address} />
+            <DoubleCurrencyLogo address0={token0.address} address1={token1.address} />
             <TYPE.label ml="8px">
-              {poolData.token0.symbol}/{poolData.token1.symbol}
+              {token0.symbol}/{token1.symbol}
             </TYPE.label>
             <GreyBadge ml="10px" fontSize="14px">
               {feeTierPercent(poolData.feeTier)}
