@@ -2,7 +2,6 @@ import React, { Suspense, useState, useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import Header from '../components/Header'
-// import URLWarning from '../components/Header/URLWarning'
 import Popups from '../components/Popups'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
 import Home from './Home'
@@ -15,7 +14,7 @@ import PoolPage from './Pool/PoolPage'
 import { ExternalLink, TYPE } from 'theme'
 import { useActiveNetworkVersion, useSubgraphStatus } from 'state/application/hooks'
 import { DarkGreyCard } from 'components/Card'
-import { SUPPORTED_NETWORK_VERSIONS, OptimismNetworkInfo, StableNetworkInfo } from 'constants/networks'
+import { OptimismNetworkInfo, StableNetworkInfo, StableTestnetNetworkInfo } from 'constants/networks'
 import { Link } from 'rebass'
 import { forkConfig } from 'forkConfig'
 
@@ -112,14 +111,10 @@ export default function App() {
   const location = useLocation()
   const [activeNetwork, setActiveNetwork] = useActiveNetworkVersion()
   useEffect(() => {
-    if (location.pathname === '/') {
-      setActiveNetwork(StableNetworkInfo)
+    if (location.pathname.includes(StableTestnetNetworkInfo.route)) {
+      setActiveNetwork(StableTestnetNetworkInfo)
     } else {
-      SUPPORTED_NETWORK_VERSIONS.map((n) => {
-        if (location.pathname.includes(n.route.toLocaleLowerCase())) {
-          setActiveNetwork(n)
-        }
-      })
+      setActiveNetwork(StableNetworkInfo)
     }
   }, [location.pathname, setActiveNetwork])
 
