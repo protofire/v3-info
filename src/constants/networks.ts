@@ -18,7 +18,7 @@ import INK_LOGO_URL from '../assets/images/ink-logo.png'
 import ANIME_TESTNET_LOGO_URL from '../assets/images/anime-logo.png'
 import ANIME_LOGO_URL from '../assets/images/anime-logo.png'
 import MODE_LOGO_URL from '../assets/images/mode-logo.png'
-import STABLE_LOGO_URL from '../assets/images/stable-logo.svg'
+import STABLE_LOGO_URL from '../assets/images/stable-logo.png'
 
 export enum SupportedNetwork {
   ETHEREUM,
