@@ -56,14 +56,15 @@ const HeaderControls = styled.div`
 const HeaderRow = styled(RowFixed)`
   @media (max-width: 1080px) {
     width: 100%;
+    margin-bottom: 20px;
   }
 `
 
 const HeaderLinks = styled(Row)`
   justify-content: center;
   @media (max-width: 1080px) {
-    padding: 0.5rem;
-    justify-content: flex-end;
+    justify-content: space-around;
+    margin-left: 12px;
   }
 `
 
@@ -79,6 +80,9 @@ const Title = styled(NavLink)`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     justify-self: center;
   `};
+  @media (max-width: 1080px) {
+    margin-right: 0;
+  }
 `
 
 const UniIcon = styled.div`
@@ -113,6 +117,11 @@ const StyledNavLink = styled(NavLink)<{ $isActive: boolean }>`
     -webkit-backdrop-filter: blur(10px) !important;
     border-radius: 12px !important;
   }
+
+  @media (max-width: 1080px) {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
 `
 
 const StyledExternalLink = styled.a<{ $isActive: boolean }>`
@@ -136,6 +145,11 @@ const StyledExternalLink = styled.a<{ $isActive: boolean }>`
   :hover,
   :focus {
     color: ${({ theme, $isActive }) => ($isActive ? theme.text1 : theme.text3)};
+  }
+
+  @media (max-width: 1080px) {
+    padding: 10px 12px;
+    font-size: 0.8rem;
   }
 `
 
@@ -197,18 +211,28 @@ const ThemeButton = styled.button`
   }
 `
 
+const Logo = styled.img`
+  width: 48px;
+  display: block;
+  @media (max-width: 1080px) {
+    width: 35px;
+  }
+`
+
 export default function Header() {
   const [activeNewtork] = useActiveNetworkVersion()
 
   const { pathname } = useLocation()
   const [darkMode, toggleDarkMode] = useDarkModeManager()
 
+  const interfaceUrl = process.env.REACT_APP_INTERFACE_URL ?? `https://swap.stable.xyz`
+
   return (
     <HeaderFrame>
       <HeaderRow>
         <Title to={networkPrefix(activeNewtork)}>
           <UniIcon>
-            <img width={'48px'} src={LogoDark} alt="logo" />
+            <Logo src={LogoDark} alt="logo" />
           </UniIcon>
         </Title>
         <HeaderLinks>
@@ -230,7 +254,7 @@ export default function Header() {
             Tokens
           </StyledNavLink>
           <StyledExternalLink
-            href="https://staging.swap.stable.xyz"
+            href={interfaceUrl}
             target="_blank"
             rel="noopener noreferrer"
             id={`swap-nav-link`}

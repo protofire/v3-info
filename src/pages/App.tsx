@@ -120,6 +120,7 @@ export default function App() {
 
   // subgraph health
   const [subgraphStatus] = useSubgraphStatus()
+  const interfaceUrl = process.env.REACT_APP_INTERFACE_URL ?? `https://swap.stable.xyz`
 
   const showNotSyncedWarning =
     subgraphStatus.headBlock && subgraphStatus.syncedBlock && activeNetwork === OptimismNetworkInfo
@@ -147,7 +148,7 @@ export default function App() {
               <BannerWrapper>
                 <UrlBanner>
                   {`info.uniswap.org is being deprecated on June 11th. Explore the new combined V2 and V3 analytics at `}
-                  <Link href={'https://staging.swap.stable.xyz'}>
+                  <Link href={interfaceUrl}>
                     <Decorator>app.uniswap.org</Decorator>
                   </Link>
                 </UrlBanner>

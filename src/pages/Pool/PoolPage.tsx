@@ -143,6 +143,7 @@ function PoolPage({ address }: { address: string }) {
 
   //watchlist
   const [savedPools, addSavedPool] = useSavedPools()
+  const interfaceUrl = process.env.REACT_APP_INTERFACE_URL ?? `https://swap.stable.xyz`
 
   return (
     // <Trace page={InterfacePageName.POOL_PAGE} shouldLogImpression>
@@ -214,7 +215,7 @@ function PoolPage({ address }: { address: string }) {
             {activeNetwork !== StableNetworkInfo ? null : (
               <RowFixed>
                 <StyledExternalLink
-                  href={`https://staging.swap.stable.xyz/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}
+                  href={`${interfaceUrl}/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}
                 >
                   <ButtonGray width="170px" mr="12px" style={{ height: '44px' }}>
                     <RowBetween>
@@ -224,7 +225,7 @@ function PoolPage({ address }: { address: string }) {
                   </ButtonGray>
                 </StyledExternalLink>
                 <StyledExternalLink
-                  href={`https://staging.swap.stable.xyz/#/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
+                  href={`${interfaceUrl}/#/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
                 >
                   <ButtonPrimary width="100px" style={{ height: '44px' }}>
                     Trade
