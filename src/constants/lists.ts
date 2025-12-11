@@ -10,7 +10,7 @@ export const INK_LIST = getTokenListApiURL('ink')
 export const ABSTRACT_LIST = getTokenListApiURL('abstract')
 export const ANIME_TESTNET_LIST = getTokenListApiURL('anime-testnet')
 export const MODE_LIST = getTokenListApiURL('mode')
-export const STABLE_LIST = 'https://assets.swap.w3us.site/networks/stable.json'
+export const STABLE_LIST = 'https://assets.swap.w3us.site/networks/stable.json?v=2.0.0'
 
 // default lists to be 'active' aka searched across
 export const DEFAULT_ACTIVE_LIST_URLS: string[] = [
