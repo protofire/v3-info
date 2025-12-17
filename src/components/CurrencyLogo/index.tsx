@@ -36,6 +36,8 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'flow'
     case ChainId.FLOW_TESTNET:
       return 'flow-testnet'
+    case ChainId.ZIRCUIT_GARFIELD_TESTNET:
+      return 'zircuit-garfield-testnet'
     default:
       return 'ethereum'
   }

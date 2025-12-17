@@ -10,6 +10,8 @@ export const INK_LIST = getTokenListApiURL('ink')
 export const ABSTRACT_LIST = getTokenListApiURL('abstract')
 export const ANIME_TESTNET_LIST = getTokenListApiURL('anime-testnet')
 export const MODE_LIST = getTokenListApiURL('mode')
+export const ZIRCUIT_GARFIELD_TESTNET_LIST =
+  'https://raw.githubusercontent.com/DenSmolnski/test-token-list/refs/heads/main/networks/zircuit-testnet.json'
 export const FLOW_TESTNET_LIST =
   'https://github.com/protofire/token-list/raw/refs/heads/main/networks/flow-testnet.json'
 
@@ -26,7 +28,7 @@ export const DEFAULT_ACTIVE_LIST_URLS: string[] = [
   ABSTRACT_LIST,
   ANIME_TESTNET_LIST,
   MODE_LIST, */
-  FLOW_TESTNET_LIST,
+  ZIRCUIT_GARFIELD_TESTNET_LIST,
 ]
 
 // lower index == higher priority for token import

@@ -10,7 +10,7 @@ import {
   setOpenModal,
   updateActiveNetworkVersion,
 } from './actions'
-import { FlowMainnetNetworkInfo } from '../../constants/networks'
+import { ZIRCUIT_GARFIELD_TESTNETNetworkInfo } from '../../constants/networks'
 
 type PopupList = Array<{ key: string; show: boolean; content: PopupContent; removeAfterMs: number | null }>
 
@@ -35,7 +35,7 @@ const initialState: ApplicationState = {
     syncedBlock: undefined,
     headBlock: undefined,
   },
-  activeNetworkVersion: FlowMainnetNetworkInfo,
+  activeNetworkVersion: ZIRCUIT_GARFIELD_TESTNETNetworkInfo,
 }
 
 export default createReducer(initialState, (builder) =>

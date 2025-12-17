@@ -102,6 +102,7 @@ export const initialState: PoolsState = {
     [SupportedNetwork.ANIME]: {},
     [SupportedNetwork.FLOW_TESTNET]: {},
     [SupportedNetwork.FLOW_MAINNET]: {},
+    [SupportedNetwork.ZIRCUIT_GARFIELD_TESTNET]: {},
   },
 }
 

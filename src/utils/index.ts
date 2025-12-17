@@ -42,6 +42,7 @@ const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   [ChainId.REDSTONE_GARNET]: 'https://explorer.garnetchain.com',
   [ChainId.FLOW_TESTNET]: 'https://evm-testnet.flowscan.io/',
   [ChainId.FLOW_MAINNET]: 'https://evm.flowscan.io',
+  [ChainId.ZIRCUIT_GARFIELD_TESTNET]: 'https://explorer.garfield-testnet.zircuit.com',
 }
 
 export enum ExplorerDataType {

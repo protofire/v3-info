@@ -44,6 +44,8 @@ import {
   flowTestnetBlockClient,
   flowClient,
   flowBlockClient,
+  zircuitGarfieldTestnetClient,
+  zircuitGarfieldTestnetBlockClient,
 } from 'apollo/client'
 import { NetworkInfo, SupportedNetwork } from 'constants/networks'
 import { useCallback, useMemo } from 'react'
@@ -210,6 +212,8 @@ export function useDataClient(): ApolloClient<NormalizedCacheObject> {
       return flowTestnetClient
     case SupportedNetwork.FLOW_MAINNET:
       return flowClient
+    case SupportedNetwork.ZIRCUIT_GARFIELD_TESTNET:
+      return zircuitGarfieldTestnetClient
     default:
       return client
   }
@@ -263,6 +267,8 @@ export function useBlockClient(): ApolloClient<NormalizedCacheObject> {
       return flowTestnetBlockClient
     case SupportedNetwork.FLOW_MAINNET:
       return flowBlockClient
+    case SupportedNetwork.ZIRCUIT_GARFIELD_TESTNET:
+      return zircuitGarfieldTestnetBlockClient
     default:
       return blockClient
   }

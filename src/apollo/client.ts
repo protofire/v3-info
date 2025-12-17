@@ -943,3 +943,28 @@ export const flowBlockClient = new ApolloClient({
     },
   },
 })
+
+export const zircuitGarfieldTestnetClient = new ApolloClient({
+  uri: `${GRAPH_NODE_URL}/subgraphs/name/zircuit-garfield-testnet/v3-subgraph`,
+  cache: new InMemoryCache({
+    typePolicies: {
+      Token: { keyFields: false },
+      Pool: { keyFields: false },
+    },
+  }),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: { fetchPolicy: 'no-cache' },
+    query: { fetchPolicy: 'no-cache', errorPolicy: 'all' },
+  },
+})
+
+export const zircuitGarfieldTestnetBlockClient = new ApolloClient({
+  uri: `${GRAPH_NODE_URL}/subgraphs/name/zircuit-garfield-testnet/blocks-subgraph`,
+  cache: new InMemoryCache(),
+  queryDeduplication: true,
+  defaultOptions: {
+    watchQuery: { fetchPolicy: 'cache-first' },
+    query: { fetchPolicy: 'cache-first', errorPolicy: 'all' },
+  },
+})

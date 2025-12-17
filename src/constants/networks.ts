@@ -19,6 +19,7 @@ import ANIME_TESTNET_LOGO_URL from '../assets/images/anime-logo.png'
 import ANIME_LOGO_URL from '../assets/images/anime-logo.png'
 import MODE_LOGO_URL from '../assets/images/mode-logo.png'
 import FLOW_LOGO_URL from '../assets/images/flow-logo.png'
+import ZIRCUIT_GARFIELD_TESTNET_LOGO_URL from '../assets/images/zircuit-garfield-testnet-logo.png'
 
 export enum SupportedNetwork {
   ETHEREUM,
@@ -43,6 +44,7 @@ export enum SupportedNetwork {
   ANIME,
   FLOW_TESTNET,
   FLOW_MAINNET,
+  ZIRCUIT_GARFIELD_TESTNET,
 }
 
 export type NetworkInfo = {
@@ -299,6 +301,17 @@ export const FlowMainnetNetworkInfo: NetworkInfo = {
   imageURL: FLOW_LOGO_URL,
 }
 
+export const ZIRCUIT_GARFIELD_TESTNETNetworkInfo: NetworkInfo = {
+  chainId: ChainId.ZIRCUIT_GARFIELD_TESTNET,
+  id: SupportedNetwork.ZIRCUIT_GARFIELD_TESTNET,
+  route: 'zircuit-garfield-testnet',
+  name: 'Zircuit Garfield Testnet',
+  bgColor: '#6B46C1',
+  primaryColor: '#6B46C1',
+  secondaryColor: '#9333EA',
+  imageURL: ZIRCUIT_GARFIELD_TESTNET_LOGO_URL,
+}
+
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // EthereumNetworkInfo,
   // PolygonNetworkInfo,
@@ -317,9 +330,10 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // RedstoneGarnetNetworkInfo,
   // InkNetworkInfo,
   //AbstractNetworkInfo,
-  FlowMainnetNetworkInfo,
-  FlowTestnetNetworkInfo,
+  // FlowMainnetNetworkInfo,
+  // FlowTestnetNetworkInfo,
   // AnimeTestnetNetworkInfo,
   // ModeNetworkInfo,
   // AnimeNetworkInfo,
+  ZIRCUIT_GARFIELD_TESTNETNetworkInfo,
 ]
