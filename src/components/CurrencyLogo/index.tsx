@@ -32,6 +32,8 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'bob'
     case ChainId.CYBER:
       return 'cyeth'
+    case 48900 as any: // ZIRCUIT
+      return 'zircuit'
     default:
       return 'ethereum'
   }

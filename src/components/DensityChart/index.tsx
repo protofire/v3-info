@@ -289,7 +289,7 @@ export default function DensityChart({ address }: DensityChartProps) {
             <XAxis reversed={true} tick={false} />
             <Bar
               dataKey="activeLiquidity"
-              fill="#2172E5"
+              fill="#0cb259"
               isAnimationActive={false}
               shape={(props) => {
                 // eslint-disable-next-line react/prop-types

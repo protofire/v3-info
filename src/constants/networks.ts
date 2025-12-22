@@ -7,17 +7,7 @@ import BNB_LOGO_URL from '../assets/images/bnb-logo.svg'
 import BASE_LOGO_URL from '../assets/images/base-logo.svg'
 import { ChainId } from '@uniswap/sdk-core'
 import AVALANCHE_LOGO_URL from '../assets/images/avalanche-logo.png'
-import ABSTRACT_LOGO_URL from '../assets/images/abstract-logo.png'
-import ZERO_LOGO_URL from '../assets/images/zero-logo.png'
-import BOB_LOGO_URL from '../assets/images/bob-logo.png'
-import CYBER_LOGO_URL from '../assets/images/cyber-logo.png'
-import SHAPE_LOGO_URL from '../assets/images/shape-logo.png'
-import REDSTONE_LOGO_URL from '../assets/images/redstone-logo.svg'
-import REDSTONE_GARNET_LOGO_URL from '../assets/images/redstone-garnet-logo.png'
-import INK_LOGO_URL from '../assets/images/ink-logo.png'
-import ANIME_TESTNET_LOGO_URL from '../assets/images/anime-logo.png'
-import ANIME_LOGO_URL from '../assets/images/anime-logo.png'
-import MODE_LOGO_URL from '../assets/images/mode-logo.png'
+import ZIRCUIT_LOGO_URL from '../assets/images/zircuit-logo.png'
 
 export enum SupportedNetwork {
   ETHEREUM,
@@ -40,6 +30,7 @@ export enum SupportedNetwork {
   ANIME_TESTNET,
   MODE,
   ANIME,
+  ZIRCUIT,
 }
 
 export type NetworkInfo = {
@@ -61,7 +52,7 @@ export const EthereumNetworkInfo: NetworkInfo = {
   name: 'Ethereum',
   bgColor: '#fc077d',
   primaryColor: '#fc077d',
-  secondaryColor: '#2172E5',
+  secondaryColor: '#0cb259',
   imageURL: ETHEREUM_LOGO_URL,
 }
 
@@ -141,139 +132,15 @@ export const AvalancheNetworkInfo: NetworkInfo = {
   imageURL: AVALANCHE_LOGO_URL,
 }
 
-export const AbstractTestnetNetworkInfo: NetworkInfo = {
-  chainId: 11124,
-  id: SupportedNetwork.ABSTRACT_TESTNET,
-  route: '',
-  name: 'Abstract Testnet',
-  bgColor: '#00DE73',
-  primaryColor: '#07C983',
-  secondaryColor: '#2172E5',
-  imageURL: ABSTRACT_LOGO_URL,
-}
-
-export const ZeroNetworkNetworkInfo: NetworkInfo = {
-  chainId: 543210,
-  id: SupportedNetwork.ZERO,
-  route: 'zero',
-  name: 'Zero Mainnet',
-  bgColor: '#FFC2C2',
-  bgColorDark: '#D26378',
-  primaryColor: '#5a45c6ff',
-  secondaryColor: '#2172E5',
-  imageURL: ZERO_LOGO_URL,
-}
-
-export const BobNetworkNetworkInfo: NetworkInfo = {
-  chainId: 60808,
-  id: SupportedNetwork.BOB,
-  route: 'bob',
-  name: 'Bob',
-  bgColor: '#fff',
-  primaryColor: '#f45d00',
-  secondaryColor: '#fff',
-  imageURL: BOB_LOGO_URL,
-}
-
-export const CyberNetworkNetworkInfo: NetworkInfo = {
-  chainId: 7560,
-  id: SupportedNetwork.CYBER,
-  route: 'cyber',
-  name: 'Cyber',
-  bgColor: '#fff',
-  primaryColor: '#08dc10',
-  secondaryColor: '#fff',
-  imageURL: CYBER_LOGO_URL,
-}
-
-export const ShapeNetworkNetworkInfo: NetworkInfo = {
-  chainId: 360,
-  id: SupportedNetwork.SHAPE,
-  route: 'shape',
-  name: 'Shape',
-  bgColor: '#828282',
-  primaryColor: '#828282',
-  secondaryColor: '#fff',
-  imageURL: SHAPE_LOGO_URL,
-}
-
-export const RedstoneNetworkInfo: NetworkInfo = {
-  chainId: 690,
-  id: SupportedNetwork.REDSTONE,
-  route: 'redstone',
-  name: 'Redstone',
-  bgColor: '#F01B36',
-  primaryColor: '#F01B36',
-  secondaryColor: '#FB7876',
-  imageURL: REDSTONE_LOGO_URL,
-}
-
-export const RedstoneGarnetNetworkInfo: NetworkInfo = {
-  chainId: 17069,
-  id: SupportedNetwork.REDSTONE_GARNET,
-  route: 'garnet-holesky',
-  name: 'Garnet Holesky',
-  bgColor: '#F01B36',
-  primaryColor: '#F01B36',
-  secondaryColor: '#FB7876',
-  imageURL: REDSTONE_GARNET_LOGO_URL,
-}
-
-export const InkNetworkInfo: NetworkInfo = {
-  chainId: ChainId.INK,
-  id: SupportedNetwork.INK,
-  route: 'ink',
-  name: 'Ink',
-  bgColor: '#0052ff',
-  primaryColor: '#0052ff',
-  secondaryColor: '#0052ff',
-  imageURL: INK_LOGO_URL,
-}
-
-export const AbstractNetworkInfo: NetworkInfo = {
-  chainId: ChainId.ABSTRACT_MAINNET,
-  id: SupportedNetwork.ABSTRACT,
-  route: 'abstract',
-  name: 'Abstract',
-  bgColor: '#FFC2C2',
-  bgColorDark: '#D26378',
-  primaryColor: '#07C983',
-  secondaryColor: '#2172E5',
-  imageURL: ABSTRACT_LOGO_URL,
-}
-
-export const AnimeTestnetNetworkInfo: NetworkInfo = {
-  chainId: ChainId.ANIME_TESTNET,
-  id: SupportedNetwork.ANIME_TESTNET,
-  route: 'anime-testnet',
-  name: 'Anime Testnet',
-  bgColor: '#0052ff',
-  primaryColor: '#0052ff',
-  secondaryColor: '#0052ff',
-  imageURL: ANIME_TESTNET_LOGO_URL,
-}
-
-export const ModeNetworkInfo: NetworkInfo = {
-  chainId: ChainId.MODE,
-  id: SupportedNetwork.MODE,
-  route: 'mode',
-  name: 'Mode',
-  bgColor: '#d4fb04',
-  primaryColor: '#d4fb04',
-  secondaryColor: '#d4fb04',
-  imageURL: MODE_LOGO_URL,
-}
-
-export const AnimeNetworkInfo: NetworkInfo = {
-  chainId: ChainId.ANIME,
-  id: SupportedNetwork.ANIME,
-  route: 'anime',
-  name: 'Anime',
-  bgColor: '#FFC2C2',
-  bgColorDark: '#D26378',
-  primaryColor: '#c18b33',
-  secondaryColor: '#2172E5',
-  imageURL: ANIME_LOGO_URL,
+export const ZircuitNetworkInfo: NetworkInfo = {
+  chainId: 48900 as any,
+  id: SupportedNetwork.ZIRCUIT,
+  route: 'zircuit',
+  name: 'Zircuit',
+  bgColor: '#0cb259',
+  primaryColor: '#0cb259',
+  secondaryColor: '#0cb259',
+  imageURL: ZIRCUIT_LOGO_URL,
 }
 
 export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
@@ -292,9 +159,10 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   // RedstoneNetworkInfo,
   // RedstoneGarnetNetworkInfo,
   // InkNetworkInfo,
-  AbstractNetworkInfo,
+  // AbstractNetworkInfo,
   // AnimeTestnetNetworkInfo,
   // ModeNetworkInfo,
-  ZeroNetworkNetworkInfo,
-  AnimeNetworkInfo,
+  // ZeroNetworkNetworkInfo,
+  // AnimeNetworkInfo,
+  ZircuitNetworkInfo,
 ]

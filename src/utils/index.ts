@@ -40,6 +40,7 @@ const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   [ChainId.SHAPE]: 'https://shapescan.xyz',
   [ChainId.REDSTONE]: 'https://explorer.redstone.xyz',
   [ChainId.REDSTONE_GARNET]: 'https://explorer.garnetchain.com',
+  [48900]: 'https://explorer.zircuit.com',
 }
 
 export enum ExplorerDataType {
@@ -64,7 +65,7 @@ export function getExplorerLink(chainId: number, data: string, type: ExplorerDat
       return `${prefix}/tx/${data}`
 
     case ExplorerDataType.TOKEN:
-      return `${prefix}/${chainId === ChainId.ABSTRACT_TESTNET ? 'token' : 'address'}/${data}`
+      return `${prefix}/${chainId === ChainId.ZIRCUIT ? 'token' : 'address'}/${data}`
 
     case ExplorerDataType.BLOCK:
       return `${prefix}/block/${data}`

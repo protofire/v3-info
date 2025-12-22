@@ -17,9 +17,8 @@ const ToggleElement = styled.span<{ isActive?: boolean; isOnSwitch?: boolean }>`
   font-weight: ${({ isOnSwitch }) => (isOnSwitch ? '500' : '400')};
   :hover {
     user-select: ${({ isOnSwitch }) => (isOnSwitch ? 'none' : 'initial')};
-    background: ${({ theme, isActive, isOnSwitch }) =>
-      isActive ? (isOnSwitch ? theme.primary1 : theme.text3) : 'none'};
-    color: ${({ theme, isActive, isOnSwitch }) => (isActive ? (isOnSwitch ? theme.white : theme.text2) : theme.text3)};
+    background: ${({ theme, isActive }) => (isActive ? theme.primary1 : 'none')};
+    color: ${({ theme, isActive }) => (isActive ? theme.white : theme.text3)};
   }
 `
 
@@ -76,7 +75,7 @@ export const ToggleElementFree = styled.span<{ isActive?: boolean; fontSize?: st
   justify-content: center;
   height: 100%;
   background: ${({ theme, isActive }) => (isActive ? theme.black : 'none')};
-  color: ${({ theme, isActive }) => (isActive ? theme.text1 : theme.text2)};
+  color: ${({ theme, isActive }) => (isActive ? theme.white : theme.text2)};
   font-size: ${({ fontSize }) => fontSize ?? '1rem'};
   font-weight: 600;
   white-space: nowrap;

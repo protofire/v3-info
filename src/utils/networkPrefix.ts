@@ -1,8 +1,8 @@
-import { AbstractTestnetNetworkInfo, NetworkInfo } from 'constants/networks'
+import { NetworkInfo, ZircuitNetworkInfo } from 'constants/networks'
 
 export function networkPrefix(activeNewtork: NetworkInfo) {
-  const isAbstract = activeNewtork === AbstractTestnetNetworkInfo
-  if (isAbstract) {
+  const isZircuit = activeNewtork === ZircuitNetworkInfo
+  if (isZircuit) {
     return '/'
   }
   const prefix = '/' + activeNewtork.route.toLocaleLowerCase() + '/'

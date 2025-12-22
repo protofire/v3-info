@@ -40,6 +40,8 @@ import {
   modeClient,
   animeClient,
   animeBlockClient,
+  zircuitClient,
+  zircuitBlockClient,
 } from 'apollo/client'
 import { NetworkInfo, SupportedNetwork } from 'constants/networks'
 import { useCallback, useMemo } from 'react'
@@ -201,6 +203,8 @@ export function useDataClient(): ApolloClient<NormalizedCacheObject> {
       return modeClient
     case SupportedNetwork.ANIME:
       return animeClient
+    case SupportedNetwork.ZIRCUIT:
+      return zircuitClient
     default:
       return client
   }
@@ -250,6 +254,8 @@ export function useBlockClient(): ApolloClient<NormalizedCacheObject> {
       return modeBlockClient
     case SupportedNetwork.ANIME:
       return animeBlockClient
+    case SupportedNetwork.ZIRCUIT:
+      return zircuitBlockClient
     default:
       return blockClient
   }
