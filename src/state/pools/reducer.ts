@@ -4,7 +4,7 @@ import { createReducer } from '@reduxjs/toolkit'
 import { SerializedToken } from 'state/user/actions'
 import { Transaction } from 'types'
 import { PoolTickData } from 'data/pools/tickData'
-import { SupportedNetwork } from 'constants/networks'
+import { getEnabledChains } from 'config/chains'
 
 export interface Pool {
   address: string
@@ -80,27 +80,7 @@ export interface PoolsState {
 
 export const initialState: PoolsState = {
   byAddress: {
-    [SupportedNetwork.ETHEREUM]: {},
-    [SupportedNetwork.ARBITRUM]: {},
-    [SupportedNetwork.OPTIMISM]: {},
-    [SupportedNetwork.POLYGON]: {},
-    [SupportedNetwork.CELO]: {},
-    [SupportedNetwork.BNB]: {},
-    [SupportedNetwork.AVALANCHE]: {},
-    [SupportedNetwork.BASE]: {},
-    [SupportedNetwork.ABSTRACT_TESTNET]: {},
-    [SupportedNetwork.ZERO]: {},
-    [SupportedNetwork.BOB]: {},
-    [SupportedNetwork.CYBER]: {},
-    [SupportedNetwork.SHAPE]: {},
-    [SupportedNetwork.REDSTONE]: {},
-    [SupportedNetwork.REDSTONE_GARNET]: {},
-    [SupportedNetwork.INK]: {},
-    [SupportedNetwork.ABSTRACT]: {},
-    [SupportedNetwork.ANIME_TESTNET]: {},
-    [SupportedNetwork.MODE]: {},
-    [SupportedNetwork.ANIME]: {},
-    [SupportedNetwork.ZIRCUIT]: {},
+    ...Object.fromEntries(getEnabledChains().map((c) => [String(c.chainId), {}])),
   },
 }
 

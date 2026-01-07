@@ -1,5 +1,6 @@
 import { Token } from '@uniswap/sdk-core'
-import { CeloNetworkInfo, NetworkInfo, PolygonNetworkInfo } from 'constants/networks'
+import { ChainId } from '@uniswap/sdk-core'
+import { NetworkInfo } from 'constants/networks'
 import { CELO_ADDRESS, MATIC_ADDRESS, WETH_ADDRESSES } from '../constants'
 
 export interface SerializedToken {
@@ -22,12 +23,12 @@ export function serializeToken(token: Token): SerializedToken {
 
 export function formatTokenSymbol(address: string, symbol: string, activeNetwork?: NetworkInfo) {
   // dumb catch for matic
-  if (address === MATIC_ADDRESS && activeNetwork === PolygonNetworkInfo) {
+  if (address === MATIC_ADDRESS && activeNetwork?.chainId === ChainId.POLYGON) {
     return 'MATIC'
   }
 
   // dumb catch for Celo
-  if (address === CELO_ADDRESS && activeNetwork === CeloNetworkInfo) {
+  if (address === CELO_ADDRESS && activeNetwork?.chainId === ChainId.CELO) {
     return 'CELO'
   }
 
@@ -39,12 +40,12 @@ export function formatTokenSymbol(address: string, symbol: string, activeNetwork
 
 export function formatTokenName(address: string, name: string, activeNetwork?: NetworkInfo) {
   // dumb catch for matic
-  if (address === MATIC_ADDRESS && activeNetwork === PolygonNetworkInfo) {
+  if (address === MATIC_ADDRESS && activeNetwork?.chainId === ChainId.POLYGON) {
     return 'MATIC'
   }
 
   // dumb catch for Celo
-  if (address === CELO_ADDRESS && activeNetwork === CeloNetworkInfo) {
+  if (address === CELO_ADDRESS && activeNetwork?.chainId === ChainId.CELO) {
     return 'CELO'
   }
 

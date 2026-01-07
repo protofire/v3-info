@@ -1,8 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { Connector } from '@web3-react/types'
 import ms from 'ms'
-
-import { SupportedNetwork } from './networks'
+import { ChainId } from '@uniswap/sdk-core'
 
 export const MAX_UINT128 = BigNumber.from(2).pow(128).sub(1)
 
@@ -15,37 +14,18 @@ const ABSTRACT_TESTNET_WETH_ADDRESS = '0x9EDCde0257F2386Ce177C3a7FCdd97787F0D841
 
 export const WETH_ADDRESSES = [WETH_ADDRESS, ARBITRUM_WETH_ADDRESS, ABSTRACT_TESTNET_WETH_ADDRESS]
 
-export const TOKEN_HIDE: { [key: string]: string[] } = {
-  [SupportedNetwork.ETHEREUM]: [
+const TOKEN_HIDE_BY_CHAIN_ID: Record<number, string[]> = {
+  [ChainId.MAINNET]: [
     '0xd46ba6d942050d489dbd938a2c909a5d5039a161',
     '0x7dfb72a2aad08c937706f21421b15bfc34cba9ca',
     '0x12b32f10a499bf40db334efe04226cca00bf2d9b',
     '0x160de4468586b6b2f8a92feb0c260fc6cfc743b1',
   ],
-  [SupportedNetwork.POLYGON]: ['0x8d52c2d70a7c28a9daac2ff12ad9bfbf041cd318'],
-  [SupportedNetwork.ARBITRUM]: [],
-  [SupportedNetwork.OPTIMISM]: [],
-  [SupportedNetwork.CELO]: [],
-  [SupportedNetwork.BNB]: [],
-  [SupportedNetwork.AVALANCHE]: [],
-  [SupportedNetwork.BASE]: [],
-  [SupportedNetwork.ABSTRACT_TESTNET]: [],
-  [SupportedNetwork.ZERO]: [],
-  [SupportedNetwork.BOB]: [],
-  [SupportedNetwork.CYBER]: [],
-  [SupportedNetwork.SHAPE]: [],
-  [SupportedNetwork.REDSTONE]: [],
-  [SupportedNetwork.REDSTONE_GARNET]: [],
-  [SupportedNetwork.INK]: [],
-  [SupportedNetwork.ABSTRACT]: [],
-  [SupportedNetwork.ANIME_TESTNET]: [],
-  [SupportedNetwork.MODE]: [],
-  [SupportedNetwork.ANIME]: [],
-  [SupportedNetwork.ZIRCUIT]: [],
+  [ChainId.POLYGON]: ['0x8d52c2d70a7c28a9daac2ff12ad9bfbf041cd318'],
 }
 
-export const POOL_HIDE: { [key: string]: string[] } = {
-  [SupportedNetwork.ETHEREUM]: [
+const POOL_HIDE_BY_CHAIN_ID: Record<number, string[]> = {
+  [ChainId.MAINNET]: [
     '0x86d257cdb7bc9c0df10e84c8709697f92770b335',
     '0xf8dbd52488978a79dfe6ffbd81a01fc5948bf9ee',
     '0x8fe8d9bb8eeba3ed688069c3d6b556c9ca258248',
@@ -54,50 +34,30 @@ export const POOL_HIDE: { [key: string]: string[] } = {
     '0x8c0411f2ad5470a66cb2e9c64536cfb8dcd54d51',
     '0x055284a4ca6532ecc219ac06b577d540c686669d',
   ],
-  [SupportedNetwork.POLYGON]: ['0x5f616541c801e2b9556027076b730e0197974f6a'],
-  [SupportedNetwork.ARBITRUM]: [],
-  [SupportedNetwork.OPTIMISM]: [],
-  [SupportedNetwork.CELO]: [],
-  [SupportedNetwork.BNB]: [],
-  [SupportedNetwork.AVALANCHE]: [],
-  [SupportedNetwork.BASE]: [],
-  [SupportedNetwork.ABSTRACT_TESTNET]: [],
-  [SupportedNetwork.ZERO]: [],
-  [SupportedNetwork.BOB]: [],
-  [SupportedNetwork.CYBER]: [],
-  [SupportedNetwork.SHAPE]: [],
-  [SupportedNetwork.REDSTONE]: [],
-  [SupportedNetwork.REDSTONE_GARNET]: [],
-  [SupportedNetwork.INK]: [],
-  [SupportedNetwork.ABSTRACT]: [],
-  [SupportedNetwork.ANIME_TESTNET]: [],
-  [SupportedNetwork.MODE]: [],
-  [SupportedNetwork.ANIME]: [],
-  [SupportedNetwork.ZIRCUIT]: [],
+  [ChainId.POLYGON]: ['0x5f616541c801e2b9556027076b730e0197974f6a'],
 }
 
-export const START_BLOCKS: { [key: string]: number } = {
-  [SupportedNetwork.ETHEREUM]: 14292820,
-  [SupportedNetwork.POLYGON]: 25459720,
-  [SupportedNetwork.ARBITRUM]: 175,
-  [SupportedNetwork.OPTIMISM]: 10028767,
-  [SupportedNetwork.CELO]: 13916355,
-  [SupportedNetwork.BNB]: 26324014,
-  [SupportedNetwork.AVALANCHE]: 31422450,
-  [SupportedNetwork.BASE]: 1371680,
-  [SupportedNetwork.ABSTRACT_TESTNET]: 356725,
-  [SupportedNetwork.ZERO]: 727,
-  [SupportedNetwork.BOB]: 5188280,
-  [SupportedNetwork.CYBER]: 9567951,
-  [SupportedNetwork.SHAPE]: 6022152,
-  [SupportedNetwork.REDSTONE]: 924516,
-  [SupportedNetwork.REDSTONE_GARNET]: 586081,
-  [SupportedNetwork.INK]: 284117,
-  [SupportedNetwork.ABSTRACT]: 5617,
-  [SupportedNetwork.ANIME_TESTNET]: 1651650,
-  [SupportedNetwork.MODE]: 19222570,
-  [SupportedNetwork.ANIME]: 57516,
-  [SupportedNetwork.ZIRCUIT]: 23026744,
+const START_BLOCK_BY_CHAIN_ID: Record<number, number> = {
+  [ChainId.MAINNET]: 14292820,
+  [ChainId.POLYGON]: 25459720,
+  [ChainId.ARBITRUM_ONE]: 175,
+  [ChainId.OPTIMISM]: 10028767,
+  [ChainId.CELO]: 13916355,
+  [ChainId.BNB]: 26324014,
+  [ChainId.AVALANCHE]: 31422450,
+  [ChainId.BASE]: 1371680,
+}
+
+export function getTokenHideList(chainId: number): string[] {
+  return TOKEN_HIDE_BY_CHAIN_ID[chainId] ?? []
+}
+
+export function getPoolHideList(chainId: number): string[] {
+  return POOL_HIDE_BY_CHAIN_ID[chainId] ?? []
+}
+
+export function getStartBlock(chainId: number): number | undefined {
+  return START_BLOCK_BY_CHAIN_ID[chainId]
 }
 
 export interface WalletInfo {

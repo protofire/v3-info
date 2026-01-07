@@ -5,7 +5,6 @@ import Logo from '../Logo'
 import { useCombinedActiveList } from 'state/lists/hooks'
 import useHttpLocations from 'hooks/useHttpLocations'
 import { useActiveNetworkVersion } from 'state/application/hooks'
-import { OptimismNetworkInfo } from 'constants/networks'
 import EthereumLogo from '../../assets/images/ethereum-logo.png'
 import { ChainId } from '@uniswap/sdk-core'
 import tokenLogoLookup from 'utils/tokenLogoFetch'
@@ -32,8 +31,6 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'bob'
     case ChainId.CYBER:
       return 'cyeth'
-    case 48900 as any: // ZIRCUIT
-      return 'zircuit'
     default:
       return 'ethereum'
   }
@@ -167,7 +164,7 @@ export default function CurrencyLogo({
     uriLocationsBase,
   ])
 
-  if (activeNetwork === OptimismNetworkInfo && address === '0x4200000000000000000000000000000000000006') {
+  if (activeNetwork.chainId === ChainId.OPTIMISM && address === '0x4200000000000000000000000000000000000006') {
     return <StyledEthereumLogo src={EthereumLogo} size={size} style={style} {...rest} />
   }
 

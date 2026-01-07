@@ -1,12 +1,5 @@
 import { RowFixed, RowBetween } from 'components/Row'
-import {
-  ZircuitNetworkInfo,
-  AvalancheNetworkInfo,
-  BNBNetworkInfo,
-  CeloNetworkInfo,
-  PolygonNetworkInfo,
-  SUPPORTED_NETWORK_VERSIONS,
-} from 'constants/networks'
+import { SUPPORTED_NETWORK_VERSIONS } from 'constants/networks'
 import useTheme from 'hooks/useTheme'
 import React, { useState, useRef } from 'react'
 import { ChevronDown } from 'react-feather'
@@ -15,7 +8,6 @@ import styled from 'styled-components'
 import { StyledInternalLink, TYPE } from 'theme'
 import { useOnClickOutside } from 'hooks/useOnClickOutside'
 import { AutoColumn } from 'components/Column'
-import { EthereumNetworkInfo } from '../../constants/networks'
 
 const Container = styled.div`
   position: relative;
@@ -105,13 +97,9 @@ export default function NetworkDropdown() {
           <TYPE.main fontSize="14px" ml="8px" mt="-2px" mr="2px" style={{ whiteSpace: 'nowrap' }}>
             {activeNetwork.name}
           </TYPE.main>
-          {[EthereumNetworkInfo, PolygonNetworkInfo, CeloNetworkInfo, BNBNetworkInfo, AvalancheNetworkInfo].includes(
-            activeNetwork,
-          ) ? null : (
-            <Badge $bgColor={activeNetwork.primaryColor} style={{ margin: '0 4px' }}>
-              L2
-            </Badge>
-          )}
+          <Badge $bgColor={activeNetwork.primaryColor} style={{ margin: '0 4px' }}>
+            {activeNetwork.isDefault ? 'Default' : 'Alt'}
+          </Badge>
           <ChevronDown size="20px" />
         </RowFixed>
       </Wrapper>
@@ -123,17 +111,17 @@ export default function NetworkDropdown() {
             </TYPE.main>
             {SUPPORTED_NETWORK_VERSIONS.map((n) => {
               return (
-                <StyledInternalLink key={n.id} to={`${n === ZircuitNetworkInfo ? '' : '/' + n.route}/`}>
+                <StyledInternalLink key={n.key} to={`${n.isDefault ? '' : '/' + n.route}/`}>
                   <NetworkRow
                     onClick={() => {
                       setShowMenu(false)
                     }}
-                    active={activeNetwork.id === n.id}
+                    active={activeNetwork.chainId === n.chainId}
                   >
                     <RowFixed>
                       <LogaContainer>
                         <LogoWrapper src={n.imageURL} />
-                        {activeNetwork.id === n.id && <GreenDot />}
+                        {activeNetwork.chainId === n.chainId && <GreenDot />}
                       </LogaContainer>
                       <TYPE.main ml="12px">{n.name}</TYPE.main>
                     </RowFixed>

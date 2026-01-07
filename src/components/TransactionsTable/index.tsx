@@ -14,7 +14,7 @@ import { PageButtons, Arrow, Break } from 'components/shared'
 import useTheme from 'hooks/useTheme'
 import HoverInlineText from 'components/HoverInlineText'
 import { useActiveNetworkVersion } from 'state/application/hooks'
-import { OptimismNetworkInfo } from 'constants/networks'
+import { ChainId } from '@uniswap/sdk-core'
 
 const Wrapper = styled(DarkGreyCard)`
   width: 100%;
@@ -124,7 +124,7 @@ const DataRow = ({ transaction, color }: { transaction: Transaction; color?: str
         </ExternalLink>
       </Label>
       <Label end={1} fontWeight={400}>
-        {formatTime(transaction.timestamp, activeNetwork === OptimismNetworkInfo ? 8 : 0)}
+        {formatTime(transaction.timestamp, activeNetwork.chainId === ChainId.OPTIMISM ? 8 : 0)}
       </Label>
     </ResponsiveGrid>
   )

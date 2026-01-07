@@ -1,37 +1,32 @@
 import { createAction } from '@reduxjs/toolkit'
 import { TokenData, TokenChartEntry } from './reducer'
 import { PriceChartEntry, Transaction } from 'types'
-import { SupportedNetwork } from 'constants/networks'
 
 // protocol wide info
-export const updateTokenData = createAction<{ tokens: TokenData[]; networkId: SupportedNetwork }>(
-  'tokens/updateTokenData',
-)
+export const updateTokenData = createAction<{ tokens: TokenData[]; networkId: number }>('tokens/updateTokenData')
 
 // add token address to byAddress
-export const addTokenKeys = createAction<{ tokenAddresses: string[]; networkId: SupportedNetwork }>(
-  'tokens/addTokenKeys',
-)
+export const addTokenKeys = createAction<{ tokenAddresses: string[]; networkId: number }>('tokens/addTokenKeys')
 
 // add list of pools token is in
 export const addPoolAddresses = createAction<{
   tokenAddress: string
   poolAddresses: string[]
-  networkId: SupportedNetwork
+  networkId: number
 }>('tokens/addPoolAddresses')
 
 // tvl and volume data over time
 export const updateChartData = createAction<{
   tokenAddress: string
   chartData: TokenChartEntry[]
-  networkId: SupportedNetwork
+  networkId: number
 }>('tokens/updateChartData')
 
 // transactions
 export const updateTransactions = createAction<{
   tokenAddress: string
   transactions: Transaction[]
-  networkId: SupportedNetwork
+  networkId: number
 }>('tokens/updateTransactions')
 
 // price data at arbitrary intervals
@@ -40,5 +35,5 @@ export const updatePriceData = createAction<{
   secondsInterval: number
   priceData: PriceChartEntry[] | undefined
   oldestFetchedTimestamp: number
-  networkId: SupportedNetwork
+  networkId: number
 }>('tokens/updatePriceData')

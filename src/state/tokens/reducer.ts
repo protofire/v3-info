@@ -9,7 +9,7 @@ import {
 } from './actions'
 import { createReducer } from '@reduxjs/toolkit'
 import { PriceChartEntry, Transaction } from 'types'
-import { SupportedNetwork } from 'constants/networks'
+import { getEnabledChains } from 'config/chains'
 
 export type TokenData = {
   // token is in some pool on uniswap
@@ -66,27 +66,7 @@ export interface TokensState {
 
 export const initialState: TokensState = {
   byAddress: {
-    [SupportedNetwork.ETHEREUM]: {},
-    [SupportedNetwork.ARBITRUM]: {},
-    [SupportedNetwork.OPTIMISM]: {},
-    [SupportedNetwork.POLYGON]: {},
-    [SupportedNetwork.CELO]: {},
-    [SupportedNetwork.BNB]: {},
-    [SupportedNetwork.AVALANCHE]: {},
-    [SupportedNetwork.BASE]: {},
-    [SupportedNetwork.ABSTRACT_TESTNET]: {},
-    [SupportedNetwork.ZERO]: {},
-    [SupportedNetwork.BOB]: {},
-    [SupportedNetwork.CYBER]: {},
-    [SupportedNetwork.SHAPE]: {},
-    [SupportedNetwork.REDSTONE]: {},
-    [SupportedNetwork.REDSTONE_GARNET]: {},
-    [SupportedNetwork.INK]: {},
-    [SupportedNetwork.ABSTRACT]: {},
-    [SupportedNetwork.ANIME_TESTNET]: {},
-    [SupportedNetwork.MODE]: {},
-    [SupportedNetwork.ANIME]: {},
-    [SupportedNetwork.ZIRCUIT]: {},
+    ...Object.fromEntries(getEnabledChains().map((c) => [String(c.chainId), {}])),
   },
 }
 

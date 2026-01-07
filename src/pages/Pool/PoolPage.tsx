@@ -26,9 +26,9 @@ import DensityChart from 'components/DensityChart'
 import { MonoSpace } from 'components/shared'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
-import { EthereumNetworkInfo } from 'constants/networks'
 import { GenericImageWrapper } from 'components/Logo'
 import { Navigate, useParams } from 'react-router-dom'
+import { ChainId } from '@uniswap/sdk-core'
 // import { Trace } from '@uniswap/analytics'
 // import { InterfacePageName } from '@uniswap/analytics-events'
 
@@ -180,7 +180,7 @@ function PoolPage({ address }: { address: string }) {
                   fontSize="24px"
                 >{` ${poolData.token0.symbol} / ${poolData.token1.symbol} `}</TYPE.label>
                 <GreyBadge>{feeTierPercent(poolData.feeTier)}</GreyBadge>
-                {activeNetwork === EthereumNetworkInfo ? null : (
+                {activeNetwork.chainId === ChainId.MAINNET ? null : (
                   <GenericImageWrapper src={activeNetwork.imageURL} style={{ marginLeft: '8px' }} size={'26px'} />
                 )}
               </RowFixed>

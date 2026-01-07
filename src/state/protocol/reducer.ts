@@ -2,7 +2,7 @@ import { currentTimestamp } from './../../utils/index'
 import { updateProtocolData, updateChartData, updateTransactions } from './actions'
 import { createReducer } from '@reduxjs/toolkit'
 import { ChartDayData, Transaction } from 'types'
-import { SupportedNetwork } from 'constants/networks'
+import { getEnabledChains } from 'config/chains'
 
 export interface ProtocolData {
   // volume
@@ -40,29 +40,9 @@ const DEFAULT_INITIAL_STATE = {
   lastUpdated: undefined,
 }
 
-export const initialState: ProtocolState = {
-  [SupportedNetwork.ETHEREUM]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.ARBITRUM]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.OPTIMISM]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.POLYGON]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.CELO]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.BNB]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.AVALANCHE]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.BASE]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.ABSTRACT_TESTNET]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.ZERO]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.BOB]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.CYBER]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.SHAPE]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.REDSTONE]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.REDSTONE_GARNET]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.INK]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.ABSTRACT]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.ANIME_TESTNET]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.MODE]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.ANIME]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.ZIRCUIT]: DEFAULT_INITIAL_STATE,
-}
+export const initialState: ProtocolState = Object.fromEntries(
+  getEnabledChains().map((c) => [String(c.chainId), { ...DEFAULT_INITIAL_STATE }]),
+) as ProtocolState
 
 export default createReducer(initialState, (builder) =>
   builder

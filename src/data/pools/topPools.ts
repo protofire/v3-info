@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
 import { useActiveNetworkVersion, useClients } from 'state/application/hooks'
 import { notEmpty } from 'utils'
-import { POOL_HIDE } from '../../constants'
+import { getPoolHideList } from '../../constants'
 
 export const TOP_POOLS = gql`
   query topPools {
@@ -36,9 +36,10 @@ export function useTopPoolAddresses(): {
 
   const formattedData = useMemo(() => {
     if (data) {
+      const hideList = getPoolHideList(currentNetwork.chainId).map((x) => x.toLowerCase())
       return data.pools
         .map((p) => {
-          if (POOL_HIDE[currentNetwork.id].includes(p.id.toLocaleLowerCase())) {
+          if (hideList.includes(p.id.toLocaleLowerCase())) {
             return undefined
           }
           return p.id
@@ -47,7 +48,7 @@ export function useTopPoolAddresses(): {
     } else {
       return undefined
     }
-  }, [currentNetwork.id, data])
+  }, [currentNetwork.chainId, data])
 
   return {
     loading: loading,

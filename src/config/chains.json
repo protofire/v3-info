@@ -1,0 +1,42 @@
+{
+  "chains": [
+    {
+      "key": "ethereum",
+      "chainId": 1,
+      "enabled": true,
+      "default": true,
+      "route": "ethereum",
+      "name": "Ethereum",
+      "logoURI": "/assets/chains/placeholder.svg",
+      "colors": {
+        "bgColor": "#2172E5",
+        "primaryColor": "#2172E5",
+        "secondaryColor": "#96BEDC"
+      },
+      "explorer": {
+        "baseUrl": "https://etherscan.io",
+        "paths": {
+          "tx": "tx",
+          "address": "address",
+          "token": "token",
+          "block": "block"
+        }
+      },
+      "tokenList": {
+        "stagingUrl": "https://example.io/tokenlist.json",
+        "productionUrl": "https://example.io/tokenlist.json"
+      },
+      "subgraphs": {
+        "staging": {
+          "dataUrl": "",
+          "blockUrl": ""
+        },
+        "production": {
+          "dataUrl": "",
+          "blockUrl": ""
+        }
+      }
+    }
+  ]
+}
+

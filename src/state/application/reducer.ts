@@ -10,7 +10,7 @@ import {
   setOpenModal,
   updateActiveNetworkVersion,
 } from './actions'
-import { ZircuitNetworkInfo } from '../../constants/networks'
+import { DEFAULT_NETWORK } from '../../constants/networks'
 
 type PopupList = Array<{ key: string; show: boolean; content: PopupContent; removeAfterMs: number | null }>
 
@@ -35,7 +35,7 @@ const initialState: ApplicationState = {
     syncedBlock: undefined,
     headBlock: undefined,
   },
-  activeNetworkVersion: ZircuitNetworkInfo,
+  activeNetworkVersion: DEFAULT_NETWORK,
 }
 
 export default createReducer(initialState, (builder) =>

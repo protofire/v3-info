@@ -2,7 +2,7 @@ import { useUpdatePoolData, useAllPoolData, useAddPoolKeys } from './hooks'
 import { useEffect, useMemo } from 'react'
 import { useTopPoolAddresses } from 'data/pools/topPools'
 import { usePoolDatas } from 'data/pools/poolData'
-import { POOL_HIDE } from '../../constants'
+import { getPoolHideList } from '../../constants'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 
 export default function Updater(): null {
@@ -24,8 +24,8 @@ export default function Updater(): null {
 
   // load data for pools we need to hide
   useEffect(() => {
-    addPoolKeys(POOL_HIDE[currentNetwork.id])
-  }, [addPoolKeys, currentNetwork.id])
+    addPoolKeys(getPoolHideList(currentNetwork.chainId))
+  }, [addPoolKeys, currentNetwork.chainId])
 
   // detect for which addresses we havent loaded pool data yet
   const unfetchedPoolAddresses = useMemo(() => {

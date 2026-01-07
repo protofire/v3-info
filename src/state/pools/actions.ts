@@ -2,24 +2,23 @@ import { TickProcessed } from './../../data/pools/tickData'
 import { createAction } from '@reduxjs/toolkit'
 import { PoolData, PoolChartEntry } from './reducer'
 import { Transaction } from 'types'
-import { SupportedNetwork } from 'constants/networks'
 
 // protocol wide info
-export const updatePoolData = createAction<{ pools: PoolData[]; networkId: SupportedNetwork }>('pools/updatePoolData')
+export const updatePoolData = createAction<{ pools: PoolData[]; networkId: number }>('pools/updatePoolData')
 
 // add pool address to byAddress
-export const addPoolKeys = createAction<{ poolAddresses: string[]; networkId: SupportedNetwork }>('pool/addPoolKeys')
+export const addPoolKeys = createAction<{ poolAddresses: string[]; networkId: number }>('pool/addPoolKeys')
 
 export const updatePoolChartData = createAction<{
   poolAddress: string
   chartData: PoolChartEntry[]
-  networkId: SupportedNetwork
+  networkId: number
 }>('pool/updatePoolChartData')
 
 export const updatePoolTransactions = createAction<{
   poolAddress: string
   transactions: Transaction[]
-  networkId: SupportedNetwork
+  networkId: number
 }>('pool/updatePoolTransactions')
 
 export const updateTickData = createAction<{
@@ -32,5 +31,5 @@ export const updateTickData = createAction<{
         activeTickIdx: number
       }
     | undefined
-  networkId: SupportedNetwork
+  networkId: number
 }>('pool/updateTickData')

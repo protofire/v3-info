@@ -1,4 +1,3 @@
-import { SupportedNetwork } from 'constants/networks'
 import { fetchPoolChartData } from 'data/pools/chartData'
 import { usePoolDatas } from 'data/pools/poolData'
 import { useTopPoolAddresses } from 'data/pools/topPools'
@@ -9,7 +8,7 @@ import { useActiveNetworkVersion, useDataClient } from 'state/application/hooks'
 import { updatePoolChartData } from 'state/pools/actions'
 import { PoolChartEntry, PoolData } from 'state/pools/reducer'
 import { ChartDayData } from 'types'
-import { POOL_HIDE } from '../../constants'
+import { getPoolHideList } from '../../constants'
 
 /**
  * Calculates offset amount to avoid inaccurate USD data for global TVL.
@@ -17,7 +16,7 @@ import { POOL_HIDE } from '../../constants'
  */
 export function useTVLOffset() {
   const [currentNetwork] = useActiveNetworkVersion()
-  const { data } = usePoolDatas(POOL_HIDE[currentNetwork.id])
+  const { data } = usePoolDatas(getPoolHideList(currentNetwork.chainId))
 
   const tvlOffset = useMemo(() => {
     if (!data) return undefined
@@ -47,13 +46,14 @@ export function useDerivedOffsetTVLHistory() {
 
   useEffect(() => {
     async function fetchAll() {
+      const poolsToHide = getPoolHideList(currentNetwork.chainId)
       // fetch all data for each pool
-      const data = await POOL_HIDE[currentNetwork.id].reduce(
+      const data = await poolsToHide.reduce(
         async (accumP: Promise<{ [key: number]: ChartDayData }>, address) => {
           const accum = await accumP
           const { data } = await fetchPoolChartData(address, dataClient)
           if (!data) return accum
-          dispatch(updatePoolChartData({ poolAddress: address, chartData: data, networkId: SupportedNetwork.ETHEREUM }))
+          dispatch(updatePoolChartData({ poolAddress: address, chartData: data, networkId: currentNetwork.chainId }))
           data.map((poolDayData: PoolChartEntry) => {
             const { date, totalValueLockedUSD, volumeUSD } = poolDayData
             const roundedDate = date
@@ -79,7 +79,7 @@ export function useDerivedOffsetTVLHistory() {
     if (!chartData) {
       fetchAll()
     }
-  }, [chartData, currentNetwork.id, dataClient, dispatch])
+  }, [chartData, currentNetwork.chainId, dataClient, dispatch])
 
   return chartData
 }
@@ -98,7 +98,7 @@ export function useDerivedProtocolTVLHistory() {
 
   const [currentNetwork] = useActiveNetworkVersion()
 
-  const [chartData, setChartData] = useState<{ [key: string]: ChartDayData[] } | undefined>(undefined)
+  const [chartData, setChartData] = useState<{ [key: number]: ChartDayData[] } | undefined>(undefined)
 
   useEffect(() => {
     async function fetchAll() {
@@ -111,12 +111,12 @@ export function useDerivedProtocolTVLHistory() {
         .reduce(
           async (accumP: Promise<{ [key: number]: ChartDayData }>, address) => {
             const accum = await accumP
-            if (POOL_HIDE[currentNetwork.id].includes(address)) {
+            if (getPoolHideList(currentNetwork.chainId).includes(address)) {
               return accum
             }
             const { data } = await fetchPoolChartData(address, dataClient)
             if (!data) return accum
-            dispatch(updatePoolChartData({ poolAddress: address, chartData: data, networkId: currentNetwork.id }))
+            dispatch(updatePoolChartData({ poolAddress: address, chartData: data, networkId: currentNetwork.chainId }))
             data.map((poolDayData: PoolChartEntry) => {
               const { date, totalValueLockedUSD, volumeUSD } = poolDayData
               const roundedDate = date
@@ -136,13 +136,13 @@ export function useDerivedProtocolTVLHistory() {
         )
 
       // Format as array
-      setChartData({ ...chartData, [currentNetwork.id]: Object.values(data) })
+      setChartData({ ...chartData, [currentNetwork.chainId]: Object.values(data) })
     }
 
     if (!chartData) {
       fetchAll()
     }
-  }, [addresses, chartData, currentNetwork.id, dataClient, dispatch])
+  }, [addresses, chartData, currentNetwork.chainId, dataClient, dispatch])
 
-  return chartData?.[currentNetwork.id]
+  return chartData?.[currentNetwork.chainId]
 }

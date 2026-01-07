@@ -1,49 +1,6 @@
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
-import {
-  arbitrumBlockClient,
-  arbitrumClient,
-  blockClient,
-  client,
-  optimismClient,
-  optimismBlockClient,
-  polygonBlockClient,
-  polygonClient,
-  celoClient,
-  celoBlockClient,
-  bscClient,
-  bscBlockClient,
-  avalancheClient,
-  avalancheBlockClient,
-  baseBlockClient,
-  baseClient,
-  abstractTestnetClient,
-  abstractTestnetBlockClient,
-  zeroBlockClient,
-  zeroClient,
-  bobBlockClient,
-  bobClient,
-  cyberClient,
-  cyberBlockClient,
-  shapeClient,
-  shapeBlockClient,
-  redstoneGarnetClient,
-  redstoneClient,
-  redstoneBlockClient,
-  redstoneGarnetBlockClient,
-  inkBlockClient,
-  inkClient,
-  abstractBlockClient,
-  abstractClient,
-  animeTestnetClient,
-  animeTestnetBlockClient,
-  modeBlockClient,
-  modeClient,
-  animeClient,
-  animeBlockClient,
-  zircuitClient,
-  zircuitBlockClient,
-} from 'apollo/client'
-import { NetworkInfo, SupportedNetwork } from 'constants/networks'
+import { getBlockClient, getDataClient } from 'apollo/client'
+import { NetworkInfo } from 'constants/networks'
 import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, AppState } from '../index'
@@ -162,103 +119,13 @@ export function useActiveNetworkVersion(): [NetworkInfo, (activeNetworkVersion: 
 // get the apollo client related to the active network
 export function useDataClient(): ApolloClient<NormalizedCacheObject> {
   const [activeNetwork] = useActiveNetworkVersion()
-  switch (activeNetwork.id) {
-    case SupportedNetwork.ETHEREUM:
-      return client
-    case SupportedNetwork.ARBITRUM:
-      return arbitrumClient
-    case SupportedNetwork.OPTIMISM:
-      return optimismClient
-    case SupportedNetwork.POLYGON:
-      return polygonClient
-    case SupportedNetwork.CELO:
-      return celoClient
-    case SupportedNetwork.BNB:
-      return bscClient
-    case SupportedNetwork.AVALANCHE:
-      return avalancheClient
-    case SupportedNetwork.BASE:
-      return baseClient
-    case SupportedNetwork.ABSTRACT_TESTNET:
-      return abstractTestnetClient
-    case SupportedNetwork.ZERO:
-      return zeroClient
-    case SupportedNetwork.BOB:
-      return bobClient
-    case SupportedNetwork.CYBER:
-      return cyberClient
-    case SupportedNetwork.SHAPE:
-      return shapeClient
-    case SupportedNetwork.REDSTONE:
-      return redstoneClient
-    case SupportedNetwork.REDSTONE_GARNET:
-      return redstoneGarnetClient
-    case SupportedNetwork.INK:
-      return inkClient
-    case SupportedNetwork.ABSTRACT:
-      return abstractClient
-    case SupportedNetwork.ANIME_TESTNET:
-      return animeTestnetClient
-    case SupportedNetwork.MODE:
-      return modeClient
-    case SupportedNetwork.ANIME:
-      return animeClient
-    case SupportedNetwork.ZIRCUIT:
-      return zircuitClient
-    default:
-      return client
-  }
+  return useMemo(() => getDataClient(activeNetwork.chainId), [activeNetwork.chainId])
 }
 
 // get the apollo client related to the active network for fetching blocks
 export function useBlockClient(): ApolloClient<NormalizedCacheObject> {
   const [activeNetwork] = useActiveNetworkVersion()
-  switch (activeNetwork.id) {
-    case SupportedNetwork.ETHEREUM:
-      return blockClient
-    case SupportedNetwork.ARBITRUM:
-      return arbitrumBlockClient
-    case SupportedNetwork.OPTIMISM:
-      return optimismBlockClient
-    case SupportedNetwork.POLYGON:
-      return polygonBlockClient
-    case SupportedNetwork.CELO:
-      return celoBlockClient
-    case SupportedNetwork.BNB:
-      return bscBlockClient
-    case SupportedNetwork.AVALANCHE:
-      return avalancheBlockClient
-    case SupportedNetwork.BASE:
-      return baseBlockClient
-    case SupportedNetwork.ABSTRACT_TESTNET:
-      return abstractTestnetBlockClient
-    case SupportedNetwork.ZERO:
-      return zeroBlockClient
-    case SupportedNetwork.BOB:
-      return bobBlockClient
-    case SupportedNetwork.CYBER:
-      return cyberBlockClient
-    case SupportedNetwork.SHAPE:
-      return shapeBlockClient
-    case SupportedNetwork.REDSTONE:
-      return redstoneBlockClient
-    case SupportedNetwork.REDSTONE_GARNET:
-      return redstoneGarnetBlockClient
-    case SupportedNetwork.INK:
-      return inkBlockClient
-    case SupportedNetwork.ABSTRACT:
-      return abstractBlockClient
-    case SupportedNetwork.ANIME_TESTNET:
-      return animeTestnetBlockClient
-    case SupportedNetwork.MODE:
-      return modeBlockClient
-    case SupportedNetwork.ANIME:
-      return animeBlockClient
-    case SupportedNetwork.ZIRCUIT:
-      return zircuitBlockClient
-    default:
-      return blockClient
-  }
+  return useMemo(() => getBlockClient(activeNetwork.chainId), [activeNetwork.chainId])
 }
 
 // Get all required subgraph clients

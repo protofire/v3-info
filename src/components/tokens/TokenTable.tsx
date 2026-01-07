@@ -14,7 +14,7 @@ import { Label, ClickableText } from '../Text'
 import { PageButtons, Arrow, Break } from 'components/shared'
 import HoverInlineText from '../HoverInlineText'
 import useTheme from 'hooks/useTheme'
-import { TOKEN_HIDE } from '../../constants/index'
+import { getTokenHideList } from '../../constants/index'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
 
@@ -153,7 +153,7 @@ export default function TokenTable({
   const sortedTokens = useMemo(() => {
     return tokenDatas
       ? tokenDatas
-          .filter((x) => !!x && !TOKEN_HIDE[currentNetwork.id].includes(x.address))
+          .filter((x) => !!x && !getTokenHideList(currentNetwork.chainId).includes(x.address))
           .sort((a, b) => {
             if (a && b) {
               return a[sortField as keyof TokenData] > b[sortField as keyof TokenData]
@@ -165,7 +165,7 @@ export default function TokenTable({
           })
           .slice(maxItems * (page - 1), page * maxItems)
       : []
-  }, [tokenDatas, maxItems, page, currentNetwork.id, sortField, sortDirection])
+  }, [tokenDatas, maxItems, page, currentNetwork.chainId, sortField, sortDirection])
 
   const handleSort = useCallback(
     (newField: string) => {

@@ -233,7 +233,7 @@ export default function Header() {
             Tokens
           </StyledNavLink>
           <StyledExternalLink
-            href="https://staging.zircuit-swap.w3us.site"
+            href={process.env.REACT_APP_INTERFACE_URL ?? 'https://example.io'}
             target="_blank"
             rel="noopener noreferrer"
             id={`swap-nav-link`}

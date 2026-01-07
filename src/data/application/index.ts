@@ -1,38 +1,17 @@
-// import { useActiveNetworkVersion } from 'state/application/hooks'
-// import { healthClient } from './../../apollo/client'
-// import { useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
+import { getChainById } from 'config/chains'
+import { useActiveNetworkVersion, useBlockClient, useDataClient } from 'state/application/hooks'
 
-export const SUBGRAPH_HEALTH = gql`
-  query health($name: Bytes) {
-    indexingStatusForCurrentVersion(subgraphName: $name, subgraphError: allow) {
-      synced
-      health
-      chains {
-        chainHeadBlock {
-          number
-        }
-        latestBlock {
-          number
-        }
+export const SUBGRAPH_META = gql`
+  query subgraphMeta {
+    _meta {
+      block {
+        number
       }
     }
   }
 `
-
-// interface HealthResponse {
-//   indexingStatusForCurrentVersion: {
-//     chains: {
-//       chainHeadBlock: {
-//         number: string
-//       }
-//       latestBlock: {
-//         number: string
-//       }
-//     }[]
-//     synced: boolean
-//   }
-// }
 
 /**
  * Fetch top addresses by volume
@@ -42,45 +21,45 @@ export function useFetchedSubgraphStatus(): {
   syncedBlock: number | undefined
   headBlock: number | undefined
 } {
-  // const [activeNetwork] = useActiveNetworkVersion()
+  const [activeNetwork] = useActiveNetworkVersion()
+  const chain = getChainById(activeNetwork.chainId)
 
-  // const { loading, error, data } = useQuery<HealthResponse>(SUBGRAPH_HEALTH, {
-  //   client: healthClient,
-  //   fetchPolicy: 'network-only',
-  //   variables: {
-  //     name:
-  //       activeNetwork === EthereumNetworkInfo
-  //         ? 'uniswap/uniswap-v3'
-  //         : activeNetwork === ArbitrumNetworkInfo
-  //         ? 'ianlapham/uniswap-arbitrum-one'
-  //         : 'ianlapham/uniswap-optimism',
-  //   },
-  // })
+  const hasEndpoints = Boolean(chain?.resolved.dataSubgraphUrl && chain?.resolved.blockSubgraphUrl)
+  const dataClient = useDataClient()
+  const blockClient = useBlockClient()
 
-  // const parsed = data?.indexingStatusForCurrentVersion
+  const dataMeta = useQuery<{ _meta?: { block?: { number?: number } } }>(SUBGRAPH_META, {
+    client: dataClient,
+    skip: !hasEndpoints,
+    fetchPolicy: 'network-only',
+  })
 
-  // if (loading) {
-  //   return {
-  //     available: null,
-  //     syncedBlock: undefined,
-  //     headBlock: undefined,
-  //   }
-  // }
+  const blockMeta = useQuery<{ _meta?: { block?: { number?: number } } }>(SUBGRAPH_META, {
+    client: blockClient,
+    skip: !hasEndpoints,
+    fetchPolicy: 'network-only',
+  })
 
-  // if ((!loading && !parsed) || error) {
-  return {
-    available: false,
-    syncedBlock: undefined,
-    headBlock: undefined,
+  if (!hasEndpoints) {
+    return { available: false, syncedBlock: undefined, headBlock: undefined }
   }
-  // }
 
-  // const syncedBlock = parsed?.chains[0].latestBlock.number
-  // const headBlock = parsed?.chains[0].chainHeadBlock.number
+  if (dataMeta.loading || blockMeta.loading) {
+    return { available: null, syncedBlock: undefined, headBlock: undefined }
+  }
 
-  // return {
-  // available: true,
-  // syncedBlock: syncedBlock ? parseFloat(syncedBlock) : undefined,
-  // headBlock: headBlock ? parseFloat(headBlock) : undefined,
-  // }
+  if (
+    dataMeta.error ||
+    blockMeta.error ||
+    !dataMeta.data?._meta?.block?.number ||
+    !blockMeta.data?._meta?.block?.number
+  ) {
+    return { available: false, syncedBlock: undefined, headBlock: undefined }
+  }
+
+  return {
+    available: true,
+    syncedBlock: dataMeta.data._meta.block.number,
+    headBlock: blockMeta.data._meta.block.number,
+  }
 }

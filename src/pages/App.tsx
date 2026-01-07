@@ -1,8 +1,7 @@
-import React, { Suspense, useState, useEffect } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import Header from '../components/Header'
-// import URLWarning from '../components/Header/URLWarning'
 import Popups from '../components/Popups'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
 import Home from './Home'
@@ -12,10 +11,10 @@ import TopBar from 'components/Header/TopBar'
 import { RedirectInvalidToken } from './Token/redirects'
 import { LocalLoader } from 'components/Loader'
 import PoolPage from './Pool/PoolPage'
-import { ExternalLink, TYPE } from 'theme'
+import { TYPE } from 'theme'
 import { useActiveNetworkVersion, useSubgraphStatus } from 'state/application/hooks'
 import { DarkGreyCard } from 'components/Card'
-import { SUPPORTED_NETWORK_VERSIONS, OptimismNetworkInfo, ZircuitNetworkInfo } from 'constants/networks'
+import { DEFAULT_NETWORK, SUPPORTED_NETWORK_VERSIONS } from 'constants/networks'
 import { Link } from 'rebass'
 import { forkConfig } from 'forkConfig'
 
@@ -101,35 +100,27 @@ const Decorator = styled.span`
 const BLOCK_DIFFERENCE_THRESHOLD = 30
 
 export default function App() {
-  // pretend load buffer
   const [loading, setLoading] = useState(true)
   useEffect(() => {
     setTimeout(() => setLoading(false), 1300)
   }, [])
 
-  // update network based on route
-  // TEMP - find better way to do this
   const location = useLocation()
-  const [activeNetwork, setActiveNetwork] = useActiveNetworkVersion()
+  const [, setActiveNetwork] = useActiveNetworkVersion()
   useEffect(() => {
-    if (location.pathname === '/') {
-      setActiveNetwork(ZircuitNetworkInfo)
-    } else {
-      SUPPORTED_NETWORK_VERSIONS.map((n) => {
-        if (location.pathname.includes(n.route.toLocaleLowerCase())) {
-          setActiveNetwork(n)
-        }
-      })
-    }
+    const path = location.pathname || '/'
+    const firstSegment = path.split('/').filter(Boolean)[0]
+    const matched = firstSegment
+      ? SUPPORTED_NETWORK_VERSIONS.find((n) => n.route.toLowerCase() === firstSegment.toLowerCase())
+      : undefined
+    setActiveNetwork(matched ?? DEFAULT_NETWORK)
   }, [location.pathname, setActiveNetwork])
 
-  // subgraph health
   const [subgraphStatus] = useSubgraphStatus()
 
   const showNotSyncedWarning =
-    subgraphStatus.headBlock && subgraphStatus.syncedBlock && activeNetwork === OptimismNetworkInfo
-      ? subgraphStatus.headBlock - subgraphStatus.syncedBlock > BLOCK_DIFFERENCE_THRESHOLD
-      : false
+    Boolean(subgraphStatus.headBlock && subgraphStatus.syncedBlock) &&
+    Number(subgraphStatus.headBlock) - Number(subgraphStatus.syncedBlock) > BLOCK_DIFFERENCE_THRESHOLD
 
   return (
     <Suspense fallback={null}>
@@ -138,7 +129,6 @@ export default function App() {
         <LocalLoader fill={true} />
       ) : (
         <AppWrapper>
-          {/* <URLWarning /> */}
           <HeaderWrapper>
             {showNotSyncedWarning && (
               <BannerWrapper>
@@ -152,7 +142,7 @@ export default function App() {
               <BannerWrapper>
                 <UrlBanner>
                   {`info.uniswap.org is being deprecated on June 11th. Explore the new combined V2 and V3 analytics at `}
-                  <Link href={'https://staging.reservoir.w3us.site/explore'}>
+                  <Link href={'https://example.io'}>
                     <Decorator>app.uniswap.org</Decorator>
                   </Link>
                 </UrlBanner>
@@ -171,11 +161,7 @@ export default function App() {
               <BodyWrapper>
                 <DarkGreyCard style={{ maxWidth: '340px' }}>
                   <TYPE.label>
-                    The Graph hosted network which provides data for this site is temporarily experiencing issues. Check
-                    current status{' '}
-                    <ExternalLink href="https://thegraph.com/hosted-service/subgraph/uniswap/uniswap-v3">
-                      here.
-                    </ExternalLink>
+                    Subgraph endpoints are not configured or are currently unreachable for this network.
                   </TYPE.label>
                 </DarkGreyCard>
               </BodyWrapper>

@@ -6,9 +6,8 @@ import weekOfYear from 'dayjs/plugin/weekOfYear'
 import gql from 'graphql-tag'
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
 import { useActiveNetworkVersion, useClients } from 'state/application/hooks'
-import { abstractTestnetClient, optimismClient, zeroClient } from 'apollo/client'
-import { SupportedNetwork } from 'constants/networks'
 import { useDerivedProtocolTVLHistory } from './derived'
+import { ChainId } from '@uniswap/sdk-core'
 
 // format dayjs with the libraries that we need
 dayjs.extend(utc)
@@ -47,7 +46,7 @@ async function fetchChartData(client: ApolloClient<NormalizedCacheObject>) {
     volumeUSD: string
     tvlUSD: string
   }[] = []
-  const startTimestamp = client === abstractTestnetClient ? 1726079270 : client === zeroClient ? 1730325600 : 1619170975
+  const startTimestamp = 1619170975
   const endTimestamp = dayjs.utc().unix()
 
   let error = false
@@ -113,17 +112,6 @@ async function fetchChartData(client: ApolloClient<NormalizedCacheObject>) {
       timestamp = nextDay
     }
 
-    if (client === optimismClient) {
-      formattedExisting[18855] = {
-        ...formattedExisting[18855],
-        tvlUSD: 13480000,
-      }
-      formattedExisting[18856] = {
-        ...formattedExisting[18856],
-        tvlUSD: 13480000,
-      }
-    }
-
     return {
       data: Object.values(formattedExisting),
       error: false,
@@ -151,19 +139,17 @@ export function useFetchGlobalChartData(): {
 
   const [activeNetworkVersion] = useActiveNetworkVersion()
   const shouldUserDerivedData =
-    activeNetworkVersion.id === SupportedNetwork.ETHEREUM || activeNetworkVersion.id === SupportedNetwork.POLYGON
-  const indexedData = data?.[activeNetworkVersion.id]
+    activeNetworkVersion.chainId === ChainId.MAINNET || activeNetworkVersion.chainId === ChainId.POLYGON
+  const indexedData = data?.[activeNetworkVersion.chainId]
 
   // @TODO: remove this once we have fix for mainnet TVL issue
   const formattedData = shouldUserDerivedData ? derivedData : indexedData
 
   useEffect(() => {
     async function fetch() {
-      const { data, error } = await fetchChartData(dataClient)
-      if (data && !error) {
-        setData({
-          [activeNetworkVersion.id]: data,
-        })
+      const { data: fetched, error } = await fetchChartData(dataClient)
+      if (fetched && !error) {
+        setData((prev) => ({ ...(prev ?? {}), [activeNetworkVersion.chainId]: fetched }))
       } else if (error) {
         setError(true)
       }
@@ -171,7 +157,7 @@ export function useFetchGlobalChartData(): {
     if (!indexedData && !error && !shouldUserDerivedData) {
       fetch()
     }
-  }, [data, error, dataClient, indexedData, activeNetworkVersion.id, shouldUserDerivedData])
+  }, [data, error, dataClient, indexedData, activeNetworkVersion.chainId, shouldUserDerivedData])
 
   return {
     error,

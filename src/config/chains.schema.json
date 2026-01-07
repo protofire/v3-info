@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "v3-info chain registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["chains"],
+  "properties": {
+    "chains": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/chain" }
+    }
+  },
+  "definitions": {
+    "hexColor": {
+      "type": "string",
+      "pattern": "^#([0-9a-fA-F]{6}|[0-9a-fA-F]{8})$"
+    },
+    "chainKey": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "chain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "chainId", "enabled", "route", "name", "logoURI", "colors", "explorer", "tokenList", "subgraphs"],
+      "properties": {
+        "key": { "$ref": "#/definitions/chainKey" },
+        "chainId": { "type": "integer", "minimum": 1 },
+        "enabled": { "type": "boolean" },
+        "default": { "type": "boolean" },
+        "route": { "$ref": "#/definitions/chainKey" },
+        "name": { "type": "string", "minLength": 1 },
+        "logoURI": { "type": "string", "minLength": 1 },
+        "colors": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["bgColor", "primaryColor", "secondaryColor"],
+          "properties": {
+            "bgColor": { "$ref": "#/definitions/hexColor" },
+            "bgColorDark": { "$ref": "#/definitions/hexColor" },
+            "primaryColor": { "$ref": "#/definitions/hexColor" },
+            "secondaryColor": { "$ref": "#/definitions/hexColor" }
+          }
+        },
+        "explorer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["baseUrl", "paths"],
+          "properties": {
+            "baseUrl": { "type": "string", "format": "uri" },
+            "paths": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["tx", "address", "token", "block"],
+              "properties": {
+                "tx": { "$ref": "#/definitions/chainKey" },
+                "address": { "$ref": "#/definitions/chainKey" },
+                "token": { "$ref": "#/definitions/chainKey" },
+                "block": { "$ref": "#/definitions/chainKey" }
+              }
+            }
+          }
+        },
+        "tokenList": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stagingUrl", "productionUrl"],
+          "properties": {
+            "stagingUrl": { "type": "string" },
+            "productionUrl": { "type": "string" }
+          }
+        },
+        "subgraphs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["staging", "production"],
+          "properties": {
+            "staging": { "$ref": "#/definitions/subgraphEndpoints" },
+            "production": { "$ref": "#/definitions/subgraphEndpoints" }
+          }
+        }
+      }
+    },
+    "subgraphEndpoints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dataUrl", "blockUrl"],
+      "properties": {
+        "dataUrl": { "type": "string" },
+        "blockUrl": { "type": "string" }
+      }
+    }
+  }
+}
+

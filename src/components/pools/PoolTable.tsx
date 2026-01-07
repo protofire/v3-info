@@ -12,7 +12,7 @@ import DoubleCurrencyLogo from 'components/DoubleLogo'
 import { feeTierPercent } from 'utils'
 import { Label, ClickableText } from 'components/Text'
 import { PageButtons, Arrow, Break } from 'components/shared'
-import { POOL_HIDE } from '../../constants/index'
+import { getPoolHideList } from '../../constants/index'
 import useTheme from 'hooks/useTheme'
 import { networkPrefix } from 'utils/networkPrefix'
 import { useActiveNetworkVersion } from 'state/application/hooks'
@@ -123,7 +123,7 @@ export default function PoolTable({ poolDatas, maxItems = MAX_ITEMS }: { poolDat
   const sortedPools = useMemo(() => {
     return poolDatas
       ? poolDatas
-          .filter((x) => !!x && !POOL_HIDE[currentNetwork.id].includes(x.address))
+          .filter((x) => !!x && !getPoolHideList(currentNetwork.chainId).includes(x.address))
           .sort((a, b) => {
             if (a && b) {
               return a[sortField as keyof PoolData] > b[sortField as keyof PoolData]
@@ -135,7 +135,7 @@ export default function PoolTable({ poolDatas, maxItems = MAX_ITEMS }: { poolDat
           })
           .slice(maxItems * (page - 1), page * maxItems)
       : []
-  }, [currentNetwork.id, maxItems, page, poolDatas, sortDirection, sortField])
+  }, [currentNetwork.chainId, maxItems, page, poolDatas, sortDirection, sortField])
 
   const handleSort = useCallback(
     (newField: string) => {

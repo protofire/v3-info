@@ -3,7 +3,7 @@ import { TokenData } from 'state/tokens/reducer'
 import { useFetchedTokenDatas } from 'data/tokens/tokenData'
 import gql from 'graphql-tag'
 import { useState, useEffect, useMemo } from 'react'
-import { client } from 'apollo/client'
+import { useClients } from 'state/application/hooks'
 import { usePoolDatas, useAllPoolData } from 'state/pools/hooks'
 import { PoolData } from 'state/pools/reducer'
 import { notEmpty, escapeRegExp } from 'utils'
@@ -137,6 +137,7 @@ export function useFetchSearchResults(value: string): {
 } {
   const allTokens = useAllTokenData()
   const allPools = useAllPoolData()
+  const { dataClient } = useClients()
 
   const [tokenData, setTokenData] = useState<TokenRes | undefined>()
   const [poolData, setPoolData] = useState<PoolRes | undefined>()
@@ -145,14 +146,14 @@ export function useFetchSearchResults(value: string): {
   useEffect(() => {
     async function fetch() {
       try {
-        const tokens = await client.query<TokenRes>({
+        const tokens = await dataClient.query<TokenRes>({
           query: TOKEN_SEARCH,
           variables: {
             value: value ? value.toUpperCase() : '',
             id: value,
           },
         })
-        const pools = await client.query<PoolRes>({
+        const pools = await dataClient.query<PoolRes>({
           query: POOL_SEARCH,
           variables: {
             tokens: tokens.data.asSymbol?.map((t) => t.id),
@@ -173,7 +174,7 @@ export function useFetchSearchResults(value: string): {
     if (value && value.length > 0) {
       fetch()
     }
-  }, [value])
+  }, [dataClient, value])
 
   const allFetchedTokens = useMemo(() => {
     if (tokenData) {
