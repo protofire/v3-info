@@ -82,6 +82,8 @@ export default function PoolPageWrapper() {
   return <PoolPage address={address} />
 }
 
+import { getOrderedTokens } from 'utils/pairNaming'
+
 function PoolPage({ address }: { address: string }) {
   const [activeNetwork] = useActiveNetworkVersion()
 
@@ -97,6 +99,8 @@ function PoolPage({ address }: { address: string }) {
   const poolData = usePoolDatas([address])[0]
   const chartData = usePoolChartData(address)
   const transactions = usePoolTransactions(address)
+
+  const [token0, token1] = poolData ? getOrderedTokens(poolData.token0, poolData.token1) : [undefined, undefined]
 
   const [view, setView] = useState(ChartView.VOL)
   const [latestValue, setLatestValue] = useState<number | undefined>()
@@ -159,9 +163,7 @@ function PoolPage({ address }: { address: string }) {
                 <TYPE.label>{` Pools `}</TYPE.label>
               </StyledInternalLink>
               <TYPE.main>{` > `}</TYPE.main>
-              <TYPE.label>{` ${poolData.token0.symbol} / ${poolData.token1.symbol} ${feeTierPercent(
-                poolData.feeTier,
-              )} `}</TYPE.label>
+              <TYPE.label>{` ${token0!.symbol} / ${token1!.symbol} ${feeTierPercent(poolData.feeTier)} `}</TYPE.label>
             </AutoRow>
             <RowFixed gap="10px" align="center">
               <SavedIcon fill={savedPools.includes(address)} onClick={() => addSavedPool(address)} />
@@ -173,12 +175,8 @@ function PoolPage({ address }: { address: string }) {
           <ResponsiveRow align="flex-end">
             <AutoColumn $gap="lg">
               <RowFixed>
-                <DoubleCurrencyLogo address0={poolData.token0.address} address1={poolData.token1.address} size={24} />
-                <TYPE.label
-                  ml="8px"
-                  mr="8px"
-                  fontSize="24px"
-                >{` ${poolData.token0.symbol} / ${poolData.token1.symbol} `}</TYPE.label>
+                <DoubleCurrencyLogo address0={token0!.address} address1={token1!.address} size={24} />
+                <TYPE.label ml="8px" mr="8px" fontSize="24px">{` ${token0!.symbol} / ${token1!.symbol} `}</TYPE.label>
                 <GreyBadge>{feeTierPercent(poolData.feeTier)}</GreyBadge>
                 {activeNetwork === EthereumNetworkInfo ? null : (
                   <GenericImageWrapper src={activeNetwork.imageURL} style={{ marginLeft: '8px' }} size={'26px'} />

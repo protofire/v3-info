@@ -10,7 +10,15 @@ import { DarkGreyCard } from 'components/Card'
 import TopTokenMovers from 'components/tokens/TopTokenMovers'
 // import { Trace } from '@uniswap/analytics'
 
+import TransactionsTable from 'components/TransactionsTable'
+import { LocalLoader } from 'components/Loader'
+import { useProtocolTransactions } from 'state/protocol/hooks'
+import { useActiveNetworkVersion } from 'state/application/hooks'
+
 export default function TokensOverview() {
+  const [activeNetwork] = useActiveNetworkVersion()
+  const [transactions] = useProtocolTransactions()
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -48,6 +56,14 @@ export default function TokensOverview() {
         </HideSmall>
         <TYPE.main>All Tokens</TYPE.main>
         <TokenTable tokenDatas={formattedTokens} />
+        <TYPE.main>Transactions</TYPE.main>
+        <DarkGreyCard>
+          {transactions ? (
+            <TransactionsTable transactions={transactions} color={activeNetwork.primaryColor} />
+          ) : (
+            <LocalLoader fill={false} />
+          )}
+        </DarkGreyCard>
       </AutoColumn>
     </PageWrapper>
     // </Trace>

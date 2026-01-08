@@ -10,7 +10,15 @@ import { DarkGreyCard } from 'components/Card'
 // import { Trace } from '@uniswap/analytics'
 // import TopPoolMovers from 'components/pools/TopPoolMovers'
 
+import TransactionsTable from 'components/TransactionsTable'
+import { LocalLoader } from 'components/Loader'
+import { useProtocolTransactions } from 'state/protocol/hooks'
+import { useActiveNetworkVersion } from 'state/application/hooks'
+
 export default function PoolPage() {
+  const [activeNetwork] = useActiveNetworkVersion()
+  const [transactions] = useProtocolTransactions()
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -40,6 +48,14 @@ export default function PoolPage() {
         )}
         <TYPE.main>All Pools</TYPE.main>
         <PoolTable poolDatas={poolDatas} />
+        <TYPE.main>Transactions</TYPE.main>
+        <DarkGreyCard>
+          {transactions ? (
+            <TransactionsTable transactions={transactions} color={activeNetwork.primaryColor} />
+          ) : (
+            <LocalLoader fill={false} />
+          )}
+        </DarkGreyCard>
       </AutoColumn>
     </PageWrapper>
     // </Trace>

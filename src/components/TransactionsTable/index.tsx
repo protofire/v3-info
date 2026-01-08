@@ -15,6 +15,7 @@ import useTheme from 'hooks/useTheme'
 import HoverInlineText from 'components/HoverInlineText'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { OptimismNetworkInfo } from 'constants/networks'
+import { getOrderedTokens } from 'utils/pairNaming'
 
 const Wrapper = styled(DarkGreyCard)`
   width: 100%;
@@ -95,15 +96,21 @@ const DataRow = ({ transaction, color }: { transaction: Transaction; color?: str
   const [activeNetwork] = useActiveNetworkVersion()
   const theme = useTheme()
 
+  // Order tokens consistently (WFLOW first)
+  const [orderedToken0, orderedToken1] = getOrderedTokens(
+    { symbol: transaction.token0Symbol, address: '' },
+    { symbol: transaction.token1Symbol, address: '' },
+  )
+
   return (
     <ResponsiveGrid>
       <ExternalLink href={getExplorerLink(activeNetwork.chainId, transaction.hash, ExplorerDataType.TRANSACTION)}>
         <Label color={color ?? theme?.blue1} fontWeight={400}>
           {transaction.type === TransactionType.MINT
-            ? `Add ${transaction.token0Symbol} and ${transaction.token1Symbol}`
+            ? `Add ${orderedToken0.symbol} and ${orderedToken1.symbol}`
             : transaction.type === TransactionType.SWAP
             ? `Swap ${inputTokenSymbol} for ${outputTokenSymbol}`
-            : `Remove ${transaction.token0Symbol} and ${transaction.token1Symbol}`}
+            : `Remove ${orderedToken0.symbol} and ${orderedToken1.symbol}`}
         </Label>
       </ExternalLink>
       <Label end={1} fontWeight={400}>
