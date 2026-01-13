@@ -241,9 +241,7 @@ export default function TokenPage() {
                         </RowBetween>
                       </ButtonGray>
                     </StyledExternalLink>
-                    <StyledExternalLink
-                      href={`swap.zircuit.com/#/swap?inputCurrency=${formattedAddress}`}
-                    >
+                    <StyledExternalLink href={`swap.zircuit.com/#/swap?inputCurrency=${formattedAddress}`}>
                       <ButtonPrimary width="100px" bgColor={backgroundColor} style={{ height: '44px' }}>
                         Trade
                       </ButtonPrimary>
