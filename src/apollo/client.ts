@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 
-export const GRAPH_NODE_URL = process.env.REACT_APP_GRAPH_NODE_URL ?? `https://graph.zircuit-swap.w3us.site`
+export const GRAPH_NODE_URL = process.env.REACT_APP_GRAPH_NODE_URL ?? `https://graph.swap.zircuit.com`
 
 export const healthClient = new ApolloClient({
   uri: 'https://api.thegraph.com/index-node/graphql',
@@ -8,7 +8,7 @@ export const healthClient = new ApolloClient({
 })
 
 export const blockClient = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/abstract/blocks`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/abstract/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -23,7 +23,7 @@ export const blockClient = new ApolloClient({
 })
 
 export const client = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/abstract/uniswap-v3`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/abstract/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -352,7 +352,7 @@ export const celoBlockClient = new ApolloClient({
 })
 
 export const abstractTestnetClient = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/absctract-testnet/v3-subgraph`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/absctract-testnet/v3-subgraph`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -380,7 +380,7 @@ export const abstractTestnetClient = new ApolloClient({
 })
 
 export const abstractTestnetBlockClient = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/absctract-testnet/blocks`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/absctract-testnet/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -394,7 +394,7 @@ export const abstractTestnetBlockClient = new ApolloClient({
   },
 })
 export const zeroClient = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/zero/uniswap-v3`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/zero/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -422,7 +422,7 @@ export const zeroClient = new ApolloClient({
 })
 
 export const zeroBlockClient = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/zero/blocks`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/zero/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -695,7 +695,7 @@ export const inkBlockClient = new ApolloClient({
 })
 
 export const abstractClient = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/abstract/uniswap-v3`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/abstract/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -723,7 +723,7 @@ export const abstractClient = new ApolloClient({
 })
 
 export const abstractBlockClient = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/abstract/blocks`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/abstract/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -824,7 +824,7 @@ export const modeBlockClient = new ApolloClient({
 })
 
 export const animeClient = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/anime/uniswap-v3`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/anime/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -852,7 +852,7 @@ export const animeClient = new ApolloClient({
 })
 
 export const animeBlockClient = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/anime/blocks`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/anime/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
@@ -867,7 +867,7 @@ export const animeBlockClient = new ApolloClient({
 })
 
 export const zircuitClient = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/zircuit-mainnet/uniswap-v3`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/zircuit-mainnet/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -891,7 +891,7 @@ export const zircuitClient = new ApolloClient({
 })
 
 export const zircuitBlockClient = new ApolloClient({
-  uri: `https://graph.zircuit-swap.w3us.site/subgraphs/name/zircuit-mainnet/blocks`,
+  uri: `https://graph.swap.zircuit.com/subgraphs/name/zircuit-mainnet/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
