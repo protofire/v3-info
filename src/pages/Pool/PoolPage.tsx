@@ -26,7 +26,7 @@ import DensityChart from 'components/DensityChart'
 import { MonoSpace } from 'components/shared'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
-import { AbstractTestnetNetworkInfo, EthereumNetworkInfo } from 'constants/networks'
+import { AbstractTestnetNetworkInfo, EthereumNetworkInfo, ShapeNetworkNetworkInfo } from 'constants/networks'
 import { GenericImageWrapper } from 'components/Logo'
 import { Navigate, useParams } from 'react-router-dom'
 // import { Trace } from '@uniswap/analytics'
@@ -211,7 +211,7 @@ function PoolPage({ address }: { address: string }) {
                 </StyledInternalLink>
               </ResponsiveRow>
             </AutoColumn>
-            {activeNetwork !== AbstractTestnetNetworkInfo ? null : (
+            {[AbstractTestnetNetworkInfo, ShapeNetworkNetworkInfo].includes(activeNetwork) ? (
               <RowFixed>
                 <StyledExternalLink
                   href={`https://staging.shapeswap.xyz/#/add/${poolData.token0.address}/${poolData.token1.address}/${poolData.feeTier}`}
@@ -231,7 +231,7 @@ function PoolPage({ address }: { address: string }) {
                   </ButtonPrimary>
                 </StyledExternalLink>
               </RowFixed>
-            )}
+            ) : null}
           </ResponsiveRow>
           <ContentLayout>
             <DarkGreyCard>

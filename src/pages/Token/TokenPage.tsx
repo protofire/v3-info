@@ -36,7 +36,7 @@ import { MonoSpace } from 'components/shared'
 import dayjs from 'dayjs'
 import { useActiveNetworkVersion } from 'state/application/hooks'
 import { networkPrefix } from 'utils/networkPrefix'
-import { EthereumNetworkInfo } from 'constants/networks'
+import { AbstractTestnetNetworkInfo, EthereumNetworkInfo, ShapeNetworkNetworkInfo } from 'constants/networks'
 import { GenericImageWrapper } from 'components/Logo'
 import { useCMCLink } from 'hooks/useCMCLink'
 import CMCLogo from '../../assets/images/cmc.png'
@@ -231,7 +231,7 @@ export default function TokenPage() {
                     (<Percent value={tokenData.priceUSDChange} />)
                   </RowFlat>
                 </AutoColumn>
-                {activeNetwork !== EthereumNetworkInfo ? null : (
+                {[EthereumNetworkInfo, ShapeNetworkNetworkInfo, AbstractTestnetNetworkInfo].includes(activeNetwork) ? (
                   <RowFixed>
                     <StyledExternalLink href={`https://staging.shapeswap.xyz/#/add/${formattedAddress}`}>
                       <ButtonGray width="170px" mr="12px" height={'100%'} style={{ height: '44px' }}>
@@ -247,7 +247,7 @@ export default function TokenPage() {
                       </ButtonPrimary>
                     </StyledExternalLink>
                   </RowFixed>
-                )}
+                ) : null}
               </ResponsiveRow>
             </AutoColumn>
             <ContentLayout>

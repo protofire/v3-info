@@ -112,14 +112,15 @@ export default function App() {
   const location = useLocation()
   const [activeNetwork, setActiveNetwork] = useActiveNetworkVersion()
   useEffect(() => {
-    if (location.pathname === '/') {
+    let matched = false
+    SUPPORTED_NETWORK_VERSIONS.forEach((n) => {
+      if (location.pathname.includes(n.route.toLocaleLowerCase())) {
+        setActiveNetwork(n)
+        matched = true
+      }
+    })
+    if (!matched) {
       setActiveNetwork(ShapeNetworkNetworkInfo)
-    } else {
-      SUPPORTED_NETWORK_VERSIONS.map((n) => {
-        if (location.pathname.includes(n.route.toLocaleLowerCase())) {
-          setActiveNetwork(n)
-        }
-      })
     }
   }, [location.pathname, setActiveNetwork])
 
