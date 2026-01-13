@@ -152,8 +152,8 @@ export default function App() {
               <BannerWrapper>
                 <UrlBanner>
                   {`info.uniswap.org is being deprecated on June 11th. Explore the new combined V2 and V3 analytics at `}
-                  <Link href={'https://staging.reservoir.w3us.site/explore'}>
-                    <Decorator>app.uniswap.org</Decorator>
+                  <Link href={'https://staging.swap.zircuit.com/explore'}>
+                    <Decorator>swap.zircuit.com</Decorator>
                   </Link>
                 </UrlBanner>
               </BannerWrapper>
