@@ -169,10 +169,7 @@ export default function TokenPage() {
         !tokenData.exists ? (
           <LightGreyCard style={{ textAlign: 'center' }}>
             No pool has been created with this token yet. Create one
-            <StyledExternalLink
-              style={{ marginLeft: '4px' }}
-              href={`swap.zircuit.com/#/add/${formattedAddress}`}
-            >
+            <StyledExternalLink style={{ marginLeft: '4px' }} href={`swap.zircuit.com/#/add/${formattedAddress}`}>
               here.
             </StyledExternalLink>
           </LightGreyCard>
