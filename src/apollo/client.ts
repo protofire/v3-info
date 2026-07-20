@@ -350,7 +350,7 @@ export const celoBlockClient = new ApolloClient({
 })
 
 export const harmonyClient = new ApolloClient({
-  uri: `https://graph.swap.country/subgraphs/name/harmony-uniswap-v3`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/harmony/uniswap-v3`,
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
@@ -378,7 +378,7 @@ export const harmonyClient = new ApolloClient({
 })
 
 export const harmonyBlockClient = new ApolloClient({
-  uri: `https://graph.swap.country/subgraphs/name/harmony-blocks`,
+  uri: `https://graph.swap.w3us.site/subgraphs/name/harmony/blocks`,
   cache: new InMemoryCache(),
   queryDeduplication: true,
   defaultOptions: {
