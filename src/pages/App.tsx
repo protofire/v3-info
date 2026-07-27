@@ -82,6 +82,16 @@ const WarningBanner = styled.div`
   font-weight: 500;
 `
 
+const ReindexingBanner = styled.div`
+  background-color: #2a5f48;
+  padding: 1rem;
+  color: white;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+`
+
 const UrlBanner = styled.div`
   background-color: ${({ theme }) => theme.pink1};
   padding: 1rem 0.75rem;
@@ -144,6 +154,13 @@ export default function App() {
                 </WarningBanner>
               </BannerWrapper>
             )}
+            {forkConfig.showReindexingBanner && (
+              <BannerWrapper>
+                <ReindexingBanner>
+                  The subgraph is currently being reindexed. Data may be inaccurate until reindexing is complete.
+                </ReindexingBanner>
+              </BannerWrapper>
+            )}
             {forkConfig.showBanner && (
               <BannerWrapper>
                 <UrlBanner>
@@ -177,7 +194,7 @@ export default function App() {
               </BodyWrapper>
             </AppWrapper>
           ) : (
-            <BodyWrapper $warningActive={showNotSyncedWarning}>
+            <BodyWrapper $warningActive={showNotSyncedWarning || forkConfig.showReindexingBanner}>
               <Popups />
               <Routes>
                 <Route path="/:networkID?/pools/:address" element={<PoolPage />} />
