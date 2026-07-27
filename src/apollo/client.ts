@@ -906,7 +906,7 @@ export const stableTestnetBlockClient = new ApolloClient({
 })
 
 export const stableClient = new ApolloClient({
-  uri: 'https://graph.swap.w3us.site/subgraphs/name/stable/uniswap-v3',
+  uri: 'https://graph.swap.w3us.site/subgraphs/name/stable/uniswap-v3-new',
   cache: new InMemoryCache({
     typePolicies: {
       Token: {
