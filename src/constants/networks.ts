@@ -8,7 +8,6 @@ import BASE_LOGO_URL from '../assets/images/base-logo.svg'
 import { ChainId } from '@uniswap/sdk-core'
 import AVALANCHE_LOGO_URL from '../assets/images/avalanche-logo.png'
 import ABSTRACT_LOGO_URL from '../assets/images/abstract-logo.png'
-import ZERO_LOGO_URL from '../assets/images/zero-logo.png'
 import BOB_LOGO_URL from '../assets/images/bob-logo.png'
 import CYBER_LOGO_URL from '../assets/images/cyber-logo.png'
 import SHAPE_LOGO_URL from '../assets/images/shape-logo.png'
@@ -29,7 +28,6 @@ export enum SupportedNetwork {
   BASE,
   AVALANCHE,
   ABSTRACT_TESTNET,
-  ZERO,
   BOB,
   CYBER,
   SHAPE,
@@ -150,18 +148,6 @@ export const AbstractTestnetNetworkInfo: NetworkInfo = {
   primaryColor: '#07C983',
   secondaryColor: '#2172E5',
   imageURL: ABSTRACT_LOGO_URL,
-}
-
-export const ZeroNetworkNetworkInfo: NetworkInfo = {
-  chainId: 543210,
-  id: SupportedNetwork.ZERO,
-  route: 'zero',
-  name: 'Zero Mainnet',
-  bgColor: '#FFC2C2',
-  bgColorDark: '#D26378',
-  primaryColor: '#5a45c6ff',
-  secondaryColor: '#2172E5',
-  imageURL: ZERO_LOGO_URL,
 }
 
 export const BobNetworkNetworkInfo: NetworkInfo = {
@@ -295,6 +281,5 @@ export const SUPPORTED_NETWORK_VERSIONS: NetworkInfo[] = [
   AbstractNetworkInfo,
   // AnimeTestnetNetworkInfo,
   // ModeNetworkInfo,
-  ZeroNetworkNetworkInfo,
   AnimeNetworkInfo,
 ]

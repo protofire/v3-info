@@ -26,8 +26,6 @@ export function chainIdToNetworkName(networkId: ChainId) {
       return 'base'
     case ChainId.ABSTRACT_TESTNET:
       return 'abstract-testnet'
-    case ChainId.ZERO:
-      return 'zero'
     case ChainId.BOB:
       return 'bob'
     case ChainId.CYBER:

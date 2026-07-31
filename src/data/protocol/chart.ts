@@ -6,7 +6,7 @@ import weekOfYear from 'dayjs/plugin/weekOfYear'
 import gql from 'graphql-tag'
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
 import { useActiveNetworkVersion, useClients } from 'state/application/hooks'
-import { abstractTestnetClient, optimismClient, zeroClient } from 'apollo/client'
+import { abstractTestnetClient, optimismClient } from 'apollo/client'
 import { SupportedNetwork } from 'constants/networks'
 import { useDerivedProtocolTVLHistory } from './derived'
 
@@ -47,7 +47,7 @@ async function fetchChartData(client: ApolloClient<NormalizedCacheObject>) {
     volumeUSD: string
     tvlUSD: string
   }[] = []
-  const startTimestamp = client === abstractTestnetClient ? 1726079270 : client === zeroClient ? 1730325600 : 1619170975
+  const startTimestamp = client === abstractTestnetClient ? 1726079270 : 1619170975
   const endTimestamp = dayjs.utc().unix()
 
   let error = false

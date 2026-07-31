@@ -50,7 +50,6 @@ export const initialState: ProtocolState = {
   [SupportedNetwork.AVALANCHE]: DEFAULT_INITIAL_STATE,
   [SupportedNetwork.BASE]: DEFAULT_INITIAL_STATE,
   [SupportedNetwork.ABSTRACT_TESTNET]: DEFAULT_INITIAL_STATE,
-  [SupportedNetwork.ZERO]: DEFAULT_INITIAL_STATE,
   [SupportedNetwork.BOB]: DEFAULT_INITIAL_STATE,
   [SupportedNetwork.CYBER]: DEFAULT_INITIAL_STATE,
   [SupportedNetwork.SHAPE]: DEFAULT_INITIAL_STATE,

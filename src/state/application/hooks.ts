@@ -18,8 +18,6 @@ import {
   baseClient,
   abstractTestnetClient,
   abstractTestnetBlockClient,
-  zeroBlockClient,
-  zeroClient,
   bobBlockClient,
   bobClient,
   cyberClient,
@@ -179,8 +177,6 @@ export function useDataClient(): ApolloClient<NormalizedCacheObject> {
       return baseClient
     case SupportedNetwork.ABSTRACT_TESTNET:
       return abstractTestnetClient
-    case SupportedNetwork.ZERO:
-      return zeroClient
     case SupportedNetwork.BOB:
       return bobClient
     case SupportedNetwork.CYBER:
@@ -228,8 +224,6 @@ export function useBlockClient(): ApolloClient<NormalizedCacheObject> {
       return baseBlockClient
     case SupportedNetwork.ABSTRACT_TESTNET:
       return abstractTestnetBlockClient
-    case SupportedNetwork.ZERO:
-      return zeroBlockClient
     case SupportedNetwork.BOB:
       return bobBlockClient
     case SupportedNetwork.CYBER:
