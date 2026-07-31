@@ -1,6 +1,6 @@
 export const forkConfig = {
   showBanner: false,
-  showReindexingBanner: true,
+  showReindexingBanner: false,
   pending: true,
   socials: false,
   latestSyncedBlockSupported: false,
